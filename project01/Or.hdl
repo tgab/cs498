@@ -13,5 +13,7 @@ CHIP Or {
     OUT out;
 
     PARTS:
-    // Implementation missing.
+    Not(in=a, out=na);
+    Not(in=b, out=nb);
+    Nand(a=na, b=nb, out=out);
 }
