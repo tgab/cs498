@@ -13,5 +13,8 @@ CHIP Mux {
     OUT out;
 
     PARTS:
-    // Implementation missing.
+    Not(in=sel, out=nsel);
+    Nand(a=a, b=nsel, out=x);
+    Nand(a=b, b=sel, out=y);
+    Nand(a=x, b=y, out=out);
 }
