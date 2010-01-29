@@ -15,6 +15,8 @@ CHIP DMux4Way {
     OUT a, b, c, d;
 
     PARTS:
-    // Implementation missing.
+    DMux(in=in, sel=sel[1], a=x, b=y);
+    DMux(in=x, sel=sel[0], a=a, b=b);
+    DMux(in=y, sel=sel[0], a=c, b=d); 
 }
 
