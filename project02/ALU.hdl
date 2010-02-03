@@ -41,5 +41,47 @@ CHIP ALU {
         ng; // 1 if out<0, 0 otherwise
 
     PARTS:
-    // Implementation missing.
+    //CHOOSE WHETHER TO zero AND negate x AND y
+    DMux16(in=x, sel=zx, a=x2, b=trash);
+    Xor16v1(a=x2, b=nx, out=xf);
+    DMux16(in=y, sel=zy, a=y2, b=trash2);
+    Xor16v1(a=y2, b=ny, out=yf);
+
+    //ALTERNATE IMPLEMENTATION OF zeroing AND negation
+    /*
+    Not(in=zx, out=zerox);
+    And16(a=x, b[0]=zerox, b[1]=zerox, b[2]=zerox, b[3]=zerox, b[4]=zerox, b[5]=zerox, b[6]=zerox, b[7]=zerox, b[8]=zerox, b[9]=zerox, b[10]=zerox, b[11]=zerox, b[12]=zerox, b[13]=zerox, b[14]=zerox, b[15]=zerox, out=xt);
+    Not16(in=xt, out=negx);
+    Mux16(a=xt, b=negx, sel=nx, out=xf);
+
+    Not(in=zy, out=zeroy);
+    And16(a=y, b[0]=zeroy, b[1]=zeroy, b[2]=zeroy, b[3]=zeroy, b[4]=zeroy, b[5]=zeroy, b[6]=zeroy, b[7]=zeroy, b[8]=zeroy, b[9]=zeroy, b[10]=zeroy, b[11]=zeroy, b[12]=zeroy, b[13]=zeroy, b[14]=zeroy, b[15]=zeroy, out=yt);
+    Not16(in=yt, out=negy);
+    Mux16(a=yt, b=negy, sel=ny, out=yf);
+    */
+
+    //CHOOSE adding OR anding
+    Add16(a=xf, b=yf, out=otadd);
+    And16(a=xf, b=yf, out=otand);
+    Mux16(a=otand, b=otadd, sel=f, out=ot);
+
+    //CHOOSE WHETHER TO negate OUTPUT
+    Xor16v1(a=ot, b=no, out=outt);
+
+    //ALTERNATE IMPLEMENTATION OF negation OF OUTPUT
+    /*
+    Not16(in=ot, out=negot);
+    Mux16(a=ot, b=negot, sel=no, out=outt);
+    */
+
+    //SET zr AND ng
+    Or16Way(in=outt, out=zrt);
+    Not(in=zrt, out=zr);
+    
+    And16(a=outt, b[15]=true, b[0..14]=false, out=outn);
+    Or16Way(in=outn, out=ng);
+
+    //SET output
+    Or16(a=outt, b=false, out=out);
+    
 }

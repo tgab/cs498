@@ -1,0 +1,20 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/02/Or16Way.hdl
+
+/**
+ * Or16Way. Ors each bit of the 16 bit input and
+ * returns a one or a zero.
+ */
+
+CHIP Or16Way {
+
+    IN  in[16];
+    OUT out;
+
+    PARTS:
+    Or8Way(in=in[0..7], out=out1);
+    Or8Way(in=in[8..15], out=out2);
+    Or(a=out1, b=out2, out=out);
+}
