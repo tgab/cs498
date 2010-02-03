@@ -15,6 +15,8 @@ CHIP FullAdder {
         carry;   // MSB of a + b + c
 
     PARTS:
-    // Implementation missing.
+    HalfAdder(a=a, b=b, sum=temp, carry=c1);
+    HalfAdder(a=temp, b=c, sum=sum, carry=c2);
+    Xor(a=c1, b=c2, out=carry);
 }
 
