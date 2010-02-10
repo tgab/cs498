@@ -20,5 +20,17 @@ CHIP RAM8 {
     OUT out[16];
 
     PARTS:
-    // Implementation missing.
+    //if load=1
+    DMux8Way(in=load, sel=address, a=a1, b=b1, c=c1, d=d1, e=e1, f=f1, g=g1, h=h1);
+    Register(in=in, load=a1, out=at);
+    Register(in=in, load=b1, out=bt);
+    Register(in=in, load=c1, out=ct);
+    Register(in=in, load=d1, out=dt);
+    Register(in=in, load=e1, out=et);
+    Register(in=in, load=f1, out=ft);
+    Register(in=in, load=g1, out=gt);
+    Register(in=in, load=h1, out=ht);
+
+    //if load=0
+    Mux8Way16(a=at, b=bt, c=ct, d=dt, e=et, f=ft, g=gt, h=ht, sel=address, out=out);
 }
