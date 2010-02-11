@@ -18,5 +18,17 @@ CHIP PC {
     OUT out[16];
 
     PARTS:
-    // Implementation missing.
+    //If inc=1 then increment the previous input
+    Inc16(in=outp, out=outinc);
+    Mux16(a=outp, b=outinc, sel=inc, out=outi);
+
+    //If load=1 use input, else use previous output
+    Mux16(a=outi, b=in, sel=load, out=outld);
+
+    //If reset=1 then output 0
+    Not(in=reset, out=nr);
+    And16(a=outld, b[0]=nr, b[1]=nr, b[2]=nr, b[3]=nr, b[4]=nr, b[5]=nr, b[6]=nr, b[7]=nr, b[8]=nr, b[9]=nr, b[10]=nr, b[11]=nr, b[12]=nr, b[13]=nr, b[14]=nr, b[15]=nr, out=outr);
+
+    //Delay output one time period
+    Register(in=outr, load=true, out=outp, out=out);
 }
