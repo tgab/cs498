@@ -28,14 +28,19 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
+    // Decide where to route input
     DMux4Way(in=load, sel=address[13..14], a=ram16a, b=ram16b, c=ram8, d=reg);
     Or(a=ram16a, b=ram16b, out=ram16);
+
+    // RAM16K
     RAM16K(in=in, load=ram16, address=address[0..13], out=ram16out);
     
-    //Mux(2way address[12]
-    //RAM4K(in=in, load=ram8, address=address[0..13], out=ram8out);
-    //RAM4K(in=in
-    Register(in=in, load=reg, out=regout);
+    // Screen memory map
+    Screen(in=in, load=ram8, address=address[0..12], out=ram8out);
 
+    // Keyboard
+    Keyboard(out=regout);
+
+    // Decide which output to use
     Mux4Way16(a=ram16out, b=ram16out, c=ram8out, d=regout, sel=address[13..14], out=out);
 }
