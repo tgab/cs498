@@ -39,6 +39,54 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Implementation missing.
+    //Decode instruction
+    And(a=instruction[15], b=instruction[12], out=a);
+    And(a=instruction[15], b=instruction[11], out=c1);
+    And(a=instruction[15], b=instruction[10], out=c2);
+    And(a=instruction[15], b=instruction[9], out=c3);
+    And(a=instruction[15], b=instruction[8], out=c4);
+    And(a=instruction[15], b=instruction[7], out=c5);
+    And(a=instruction[15], b=instruction[6], out=c6);
+    And(a=instruction[15], b=instruction[5], out=d1);
+    And(a=instruction[15], b=instruction[4], out=d2);
+    And(a=instruction[15], b=instruction[3], out=d3);
+    And(a=instruction[15], b=instruction[2], out=j1);
+    And(a=instruction[15], b=instruction[1], out=j2);
+    And(a=instruction[15], b=instruction[0], out=j3);
+
+    Mux16(a=instruction, b=outALU, sel=instruction[15], out=outA);
+
+    // Decide whether or not to load into ARegister
+    Not(in=instruction[15], out=nc);
+    Or(a=d1, b=nc, out=sela);
+
+    // Define A and D registers
+    ARegister(in=outA, load=sela, out=A, out[0..14]=addressM);
+    DRegister(in=outALU, load=d2, out=D);
+    
+    // Choose whether to pass A or M to ALU
+    Mux16(a=A, b=inM, sel=a, out=AM);
+
+    // ALU logic and control bits
+    ALU(x=D, y=AM, zx=c1, nx=c2, zy=c3, ny=c4, f=c5, no=c6, out=outALU, out=outM, zr=zero, ng=neg);
+
+    // Let pos be 1 when the output of ALU is > 0
+    Or(a=neg, b=zero, out=npos);
+    Not(in=npos, out=pos);
+
+    // Decide whether to jump
+    And(a=j1, b=neg, out=jum1);
+    And(a=j2, b=zero, out=jum2);
+    And(a=j3, b=pos, out=jum3);
+    Or(a=jum1, b=jum2, out=jumi);
+    Or(a=jumi, b=jum3, out=jump);
+
+    // Set program counter
+    PC(in=A, load=jump, inc=true, reset=reset, out[0..14]=pc);
+
+    // Decide whether to write to memory
+    And(a=d3, b=true, out=writeM);
+
+    
 }
 
