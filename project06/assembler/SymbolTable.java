@@ -2,6 +2,8 @@
 // Keeps a correspondence between symbolic labels and
 // numeric addresses
 
+package assembler;
+
 import java.util.Hashtable;
 
 public class SymbolTable {

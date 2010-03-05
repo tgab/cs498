@@ -3,6 +3,8 @@
 // Compile: javac Assembler.java
 // Usage: java Assembler.java <filename.asm> <filename.hack>
 
+package assembler;
+
 import java.io.*;
 import java.util.StringTokenizer;
 

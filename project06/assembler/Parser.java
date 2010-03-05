@@ -3,6 +3,8 @@
 // convenient access to the command's components (fields and
 // symbols).  In addition, removes all white space and comments.
 
+package assembler;
+
 import java.io.*;
 import java.util.ArrayList;
 

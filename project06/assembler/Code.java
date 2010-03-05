@@ -1,6 +1,8 @@
 // Code.java
 // Translates Hack assembly language mnemonics into binary code
 
+package assembler;
+
 import java.util.Hashtable;
 
 public class Code {
