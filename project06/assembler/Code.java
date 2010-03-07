@@ -14,7 +14,7 @@ public class Code {
   public Code(){
     // initialize values in dest hash table
     dest = new Hashtable<String, String>(8, 1);
-    dest.put(null, "000");
+    dest.put("null", "000");
     dest.put("M", "001");
     dest.put("D", "010");
     dest.put("MD", "011");
@@ -56,7 +56,7 @@ public class Code {
 
     // initialize values in jump hash table
     jump = new Hashtable<String, String>(8, 1);
-    jump.put(null, "000");
+    jump.put("null", "000");
     jump.put("JGT", "001");
     jump.put("JEQ", "010");
     jump.put("JGE", "011");

@@ -7,6 +7,7 @@ package assembler;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import assembler.Parser;
 
 public class Assembler {
 
@@ -18,7 +19,15 @@ public class Assembler {
       System.exit(1);
     }
 
+    // Save input file name
     String inputFile = args[0];
+
+    // Parse out filename for hack file
+    String fileName = inputFile.substring(0, inputFile.length()-4) + ".hack";
+
+    // Create file stream for output (***add testing for if file exists already, ask
+    //    user before overwriting)
+    BufferedWriter hack = new BufferedWriter(new FileWriter(fileName));
 
     // Create file stream for input
     BufferedReader asm = null;
@@ -31,35 +40,45 @@ public class Assembler {
       System.exit(1);
     }
 
-    // Get first line of file
-    String line = asm.readLine();
-    while (line != null){
-      // Print line
-      System.out.println(line);
+    Parser parser = null;
 
-      // Read next line
-      line = asm.readLine();
+    try {
+      parser = new Parser(asm);
+    }
+    catch (IOException e) {
+      System.err.println(inputFile + ": error while reading file");
     }
 
     // Close file stream
     asm.close();
 
-    // Parse out filename for hack file
-    StringTokenizer inputTokens = new StringTokenizer(inputFile, "/");
-    String fileName = null;
-    while (inputTokens.hasMoreElements()) {
-      fileName = inputTokens.nextToken();
-    }
-    fileName = fileName.substring(0, fileName.length()-4) + ".hack";
-    System.out.println(fileName);
+    // Parse the first line of the file and keep parsing until
+    // end of file reached
+    String command = parser.parseCommand();
 
-    // Create file stream for output (***add testing for file existence, writeability, etc)
-    Writer hack = new BufferedWriter(new FileWriter(fileName));
+    // Check for comments
+    if (command != null) {
+      hack.write(command);
+      hack.newLine();
+    }
+
+
+    while (parser.hasMoreCommands()) {
+      parser.advance();
+      command = parser.parseCommand();
+      if (command != null) {
+        hack.write(command);
+        hack.newLine();
+      }
+
+    }
 
     // Write test output to hack
-    hack.write("test");
+    //hack.write("test");
 
     // Close file stream
     hack.close();
+
+    System.out.println("Output written to " + fileName);
   }
 }

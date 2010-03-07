@@ -7,6 +7,7 @@ package assembler;
 
 import java.io.*;
 import java.util.ArrayList;
+import assembler.Code;
 
 public class Parser {
   public ArrayList<String> commands;
@@ -19,6 +20,7 @@ public class Parser {
   // constructor- opens the input file/stream and gets ready to
   // parse it
   public Parser(BufferedReader stream) throws IOException {
+    commands = new ArrayList<String>();
     String line = stream.readLine();
     Boolean check = commands.add(line);
     while (line != null){
@@ -35,7 +37,7 @@ public class Parser {
 
   // checks if there are more commands in the input
   public Boolean hasMoreCommands(){
-    if (counter < commands.size()-1) {
+    if (counter < commands.size()-2) {
       return true;
     } else {
       return false;
@@ -52,7 +54,7 @@ public class Parser {
   // returns the type of the current command
   public Command commandType() {
     // Checks command type (*** change to regular expressions)
-    if (currentCommand.startsWith("//"))
+    if (currentCommand.startsWith("//") || currentCommand.length() == 0)
       return null;
     else if (currentCommand.startsWith("@"))
       return Command.A_COMMAND;
@@ -94,7 +96,7 @@ public class Parser {
     
     int index = currentCommand.indexOf("=");
     if (index == -1)
-      return null;
+      return "null";
     else {
       String dest = currentCommand.substring(0, index);
       return dest;
@@ -109,15 +111,15 @@ public class Parser {
       System.exit(1);
     }
 
-    String comp = null;
+    String comp = "null";
     int index1 = currentCommand.indexOf("=");
-    if (index1 != -1){
-      comp = currentCommand.substring(index1, currentCommand.length());
+    //if (index1 != -1){
+      comp = currentCommand.substring(index1+1, currentCommand.length());
       int index2 = comp.indexOf(";");
       if (index2 != -1){
         comp = currentCommand.substring(0, index2);
       }
-    }
+    //}
     return comp;
   }
 
@@ -131,11 +133,68 @@ public class Parser {
 
     int index = currentCommand.indexOf(";");
     if (index == -1)
-      return null;
+      return "null";
     else {
-      String jump = currentCommand.substring(index, currentCommand.length());
+      String jump = currentCommand.substring(index+1, currentCommand.length());
       return jump;
     }
+  }
+
+  public String parseCommand(){
+    String command = null;
+    if (counter == commands.size()-1) {
+      System.err.println("Out of bounds, beyond commands");
+      System.exit(1);
+    }
+
+    Command type = commandType();
+    System.out.println(currentCommand);
+    System.out.println(type);
+
+    if (type == Command.C_COMMAND) {
+      Code code = new Code();
+
+      // Get the binary for comp and check for errors
+      System.out.println("Comp: " + comp());
+      String comp = code.comp(comp());
+      if (comp == null) {
+        System.err.println("Line " + counter + ": comp symbol not recognized");
+        System.exit(1);
+      }
+
+      // Get the binary for dest and check for errors
+      System.out.println("Dest: " + dest());
+      String dest = code.dest(dest());
+      if (dest == null) {
+        System.err.println("Line " + counter + ": dest symbol not recognized");
+        System.exit(1);
+      }
+
+      // Get the binary for jump and check for errors
+      String jump = code.jump(jump());
+      System.out.println("Jump: " + jump());
+      if (jump == null) {
+        System.err.println("Line " + counter + ": jump symbol not recognized");
+        System.exit(1);
+      }
+
+      // If there are no errors, put together the command
+      command = "111" + comp + dest + jump;
+    } else if (type == Command.A_COMMAND) {
+      String symbol = symbol();
+      if (symbol == null) {
+        System.err.println("Line " + counter + ": symbol not recognized");
+        System.exit(1);
+      }
+      String z = "0000000000000000";
+      String bin = Integer.toBinaryString(Integer.parseInt(symbol));
+      command = z.substring(0, 16-bin.length()) + bin;
+      //command = "0" + Integer.toBinaryString(Integer.parseInt(symbol));
+    } else if (type == Command.L_COMMAND) {
+
+    }
+    // Return the command
+    return command;
   }
 
 }
