@@ -148,14 +148,14 @@ public class Parser {
     }
 
     Command type = commandType();
-    System.out.println(currentCommand);
-    System.out.println(type);
+    //*****System.out.println(currentCommand);
+    //*****System.out.println(type);
 
     if (type == Command.C_COMMAND) {
       Code code = new Code();
 
       // Get the binary for comp and check for errors
-      System.out.println("Comp: " + comp());
+      //****System.out.println("Comp: " + comp());
       String comp = code.comp(comp());
       if (comp == null) {
         System.err.println("Line " + counter + ": comp symbol not recognized");
@@ -163,7 +163,7 @@ public class Parser {
       }
 
       // Get the binary for dest and check for errors
-      System.out.println("Dest: " + dest());
+      //****System.out.println("Dest: " + dest());
       String dest = code.dest(dest());
       if (dest == null) {
         System.err.println("Line " + counter + ": dest symbol not recognized");
@@ -172,7 +172,7 @@ public class Parser {
 
       // Get the binary for jump and check for errors
       String jump = code.jump(jump());
-      System.out.println("Jump: " + jump());
+      //****System.out.println("Jump: " + jump());
       if (jump == null) {
         System.err.println("Line " + counter + ": jump symbol not recognized");
         System.exit(1);
