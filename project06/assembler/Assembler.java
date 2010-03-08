@@ -1,7 +1,9 @@
 // Assembler.java
 // by Thea Gab
-// Compile: javac Assembler.java
-// Usage: java Assembler.java <filename.asm> <filename.hack>
+// Compile: (from directory with assembler folder)
+//  javac assembler/*.java
+// Usage: (from directory with assembler folder)
+//  java assembler/Assembler <filename.asm>
 
 package assembler;
 
