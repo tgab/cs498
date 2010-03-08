@@ -16,6 +16,8 @@ public class Parser {
   public String currentCommand;
   public int binaryCount;
   public int variableCount;
+  public Boolean Debug = false;
+
   public enum Command {
     A_COMMAND, C_COMMAND, L_COMMAND
   }
@@ -44,7 +46,7 @@ public class Parser {
       } catch (IndexOutOfBoundsException e){
       }
 
-      System.out.println("Line: " + line);
+      if (Debug) System.out.println("Line: " + line);
 
       Boolean check = commands.add(line);
       if (check == false){
@@ -138,13 +140,11 @@ public class Parser {
 
     String comp = "null";
     int index1 = currentCommand.indexOf("=");
-    //if (index1 != -1){
-      comp = currentCommand.substring(index1+1, currentCommand.length());
-      int index2 = comp.indexOf(";");
-      if (index2 != -1){
-        comp = currentCommand.substring(0, index2);
-      }
-    //}
+    comp = currentCommand.substring(index1+1, currentCommand.length());
+    int index2 = comp.indexOf(";");
+    if (index2 != -1){
+      comp = currentCommand.substring(0, index2);
+    }
     return comp;
   }
 
@@ -171,44 +171,29 @@ public class Parser {
 
     //System.out.println("First pass: " + command);
 
-///Currently ignores first line!!!!
+    ///Currently ignores first line!!!!
     while (hasMoreCommands()){
       advance();
       command = currentCommand;
       type = commandType();
-      System.out.println("First pass: " + command);
+      
+      if (Debug) System.out.println("First pass: " + command);
+
       if (type == Command.L_COMMAND){
         String symbol = symbol();
-        System.out.println("L symbol: " + symbol);
 
         String z = "0000000000000000";
         String bin = Integer.toBinaryString(new Integer(binaryCount));
-        System.out.println("Binary: " + bin);
         String address = z.substring(0, 16-bin.length()) + bin;
-        symbolTable.addEntry(symbol, address);
-      } else if (type == Command.A_COMMAND){
-        /*
-        String symbol = symbol();
-        System.out.println("A symbol: " + symbol);
 
-        // can ignore if already in symbol table
-        if (symbolTable.contains(symbol) == false){
-          try {
-            Integer i = Integer.parseInt(symbol);
-          } catch (NumberFormatException e) {
-            // Add symbol to table
-            String z = "0000000000000000";
-            String bin = Integer.toBinaryString(variableCount);
-            String address = z.substring(0, 16-bin.length()) + bin;  
-            symbolTable.addEntry(symbol, address);         
-          }
-        }
-        */
+        symbolTable.addEntry(symbol, address);
+
+      } else if (type == Command.A_COMMAND){
+        // I chose to ignore the A_COMMANDS on the first pass and handle them on second pass
         binaryCount++;
       } else if (type == Command.C_COMMAND){
         binaryCount++;
       }
-      //advance();
     }
 
     reset();
@@ -229,17 +214,16 @@ public class Parser {
     }
 
     Command type = commandType();
-    //*****
-System.out.println("Current command: " + currentCommand);
-    //*****
-System.out.println("Type: " + type);
+
+    // DEBUG
+    if (Debug) System.out.println("Current command: " + currentCommand);
+    if (Debug) System.out.println("Type: " + type);
 
     if (type == Command.C_COMMAND) {
       Code code = new Code();
 
       // Get the binary for comp and check for errors
-      //****
-System.out.println("Comp:" + comp() + "x");
+      if (Debug) System.out.println("Comp: " + comp());
       String comp = code.comp(comp());
       if (comp == null) {
         System.err.println("Line " + counter + ": comp symbol not recognized");
@@ -247,8 +231,7 @@ System.out.println("Comp:" + comp() + "x");
       }
 
       // Get the binary for dest and check for errors
-      //****
-System.out.println("Dest: " + dest());
+      if (Debug) System.out.println("Dest: " + dest());
       String dest = code.dest(dest());
       if (dest == null) {
         System.err.println("Line " + counter + ": dest symbol not recognized");
@@ -257,8 +240,7 @@ System.out.println("Dest: " + dest());
 
       // Get the binary for jump and check for errors
       String jump = code.jump(jump());
-      //****
-System.out.println("Jump: " + jump());
+      if (Debug) System.out.println("Jump: " + jump());
       if (jump == null) {
         System.err.println("Line " + counter + ": jump symbol not recognized");
         System.exit(1);
@@ -277,20 +259,26 @@ System.out.println("Jump: " + jump());
         command = symbolTable.getAddress(symbol);
       } else {
         try {
+          // Try to parse integer if symbol isn't in table
           String z = "0000000000000000";
           String bin = Integer.toBinaryString(Integer.parseInt(symbol));
           command = z.substring(0, 16-bin.length()) + bin;
+
         } catch (NumberFormatException e) {
-          // Add symbol to table
+
+          // If it is not an integer then add the symbol to table with address
+          // of new variable
           String z = "0000000000000000";
           String bin = Integer.toBinaryString(variableCount);
           String address = z.substring(0, 16-bin.length()) + bin;
-          System.out.println("A's address: " + address);
           symbolTable.addEntry(symbol, address);
+
+          // Increase variable count so next variable will be written to next
+          // available space
           variableCount++;
+
+          // The current command will be the address assigned to the symbol
           command = address;
-          //System.err.println("Symbol " + symbol + ": not recognized");
-          //System.exit(1);
         }
       }
     } else if (type == Command.L_COMMAND) {

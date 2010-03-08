@@ -53,7 +53,7 @@ public class Assembler {
     // Close file stream
     asm.close();
 
-    // Create symbol table and do first pass
+    // Create symbol table and do first pass (saving the labels into the symbol table)
     SymbolTable symbolTable = new SymbolTable();
     parser.firstPass(symbolTable);
 
@@ -77,9 +77,6 @@ public class Assembler {
       }
 
     }
-
-    // Write test output to hack
-    //hack.write("test");
 
     // Close file stream
     hack.close();
