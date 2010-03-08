@@ -8,6 +8,7 @@ package assembler;
 import java.io.*;
 import java.util.StringTokenizer;
 import assembler.Parser;
+import assembler.SymbolTable;
 
 public class Assembler {
 
@@ -52,9 +53,13 @@ public class Assembler {
     // Close file stream
     asm.close();
 
+    // Create symbol table and do first pass
+    SymbolTable symbolTable = new SymbolTable();
+    parser.firstPass(symbolTable);
+
     // Parse the first line of the file and keep parsing until
     // end of file reached
-    String command = parser.parseCommand();
+    String command = parser.parseCommand(symbolTable);
 
     // Check for comments
     if (command != null) {
@@ -65,7 +70,7 @@ public class Assembler {
 
     while (parser.hasMoreCommands()) {
       parser.advance();
-      command = parser.parseCommand();
+      command = parser.parseCommand(symbolTable);
       if (command != null) {
         hack.write(command);
         hack.newLine();
