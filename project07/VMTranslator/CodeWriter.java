@@ -23,8 +23,21 @@ public class CodeWriter {
   }
 
   // Writes the assembly code translation of given command, when command is C_PUSH or C_POP
-  public void WritePushPop(Parser.Command command, String segment, Integer index) {
+  public void WritePushPop(Parser.Command command, String segment, Integer index) throws Exception {
+    if (command == Command.C_PUSH){
+      if (segment == "constant"){
+        new PushConstantTemplate().render(index);
+      } else {
 
+      }
+    }
+    else if (command == Command.C_POP){
+
+    }
+    else {
+      System.out.println("Error: invalid push or pop");
+      System.exit(1);
+    }
   }
 
   // Closes output file

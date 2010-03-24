@@ -1,0 +1,11 @@
+<%args>
+  Integer num;
+</%args>
+
+// push_const: push constant <% num %>
+@<% num %>
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
