@@ -1,4 +1,4 @@
-// neg -y
+// neg: -y
 @SP
 A=M-1
 M=-M

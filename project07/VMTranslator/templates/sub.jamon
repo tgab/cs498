@@ -1,4 +1,4 @@
-// sub x - y
+// sub: x - y
 @SP
 M=M-1
 A=M

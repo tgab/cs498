@@ -1,4 +1,4 @@
-// add x + y
+// add: x + y
 @SP
 M=M-1
 A=M
