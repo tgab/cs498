@@ -8,10 +8,12 @@ import VMTranslator.templates.*;
 
 public class CodeWriter {
   public OutputStreamWriter outStream;
+  public Integer count;
 
   // Gets ready to write to output stream
   public CodeWriter(OutputStreamWriter stream) throws IOException {
     outStream = stream;
+    count = 0;
   }
 
   // Informs the code writer that translation of a new VM file is started
@@ -23,6 +25,37 @@ public class CodeWriter {
   public void writeArithemetic(String command) throws Exception {
     if (command.equals("add")){
       new AddTemplate().render(outStream);
+    }
+    else if (command.equals("sub")){
+      new SubTemplate().render(outStream);
+    }
+    else if (command.equals("neg")){
+      new NegTemplate().render(outStream);
+    }
+    else if (command.equals("eq")){
+      new EqTemplate().render(outStream, count);
+      count++;
+    }
+    else if (command.equals("gt")){
+      new GtTemplate().render(outStream, count);
+      count++;
+    }
+    else if (command.equals("lt")){
+      new LtTemplate().render(outStream, count);
+      count++;
+    }
+    else if (command.equals("and")){
+      new AndTemplate().render(outStream);
+    }
+    else if (command.equals("or")){
+      new OrTemplate().render(outStream);
+    }
+    else if (command.equals("not")){
+      new NotTemplate().render(outStream);
+    }
+    else {
+      System.err.println("Invalid command");
+      System.exit(1);
     }
   }
 
@@ -39,7 +72,7 @@ public class CodeWriter {
 
     }
     else {
-      System.out.println("Error: invalid push or pop");
+      System.err.println("Error: invalid push or pop");
       System.exit(1);
     }
   }

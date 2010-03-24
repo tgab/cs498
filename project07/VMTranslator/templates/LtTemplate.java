@@ -5,7 +5,9 @@ package VMTranslator.templates;
 
 
 @org.jamon.annotations.Template(
-  signature = "B8C1FD7E374752F9C0E4C4E200B7BDF1")
+  signature = "9E37B8A032780204A8D13D4FA095454B",
+  requiredArguments = {
+    @org.jamon.annotations.Argument(name = "count", type = "Integer")})
 public class LtTemplate
   extends org.jamon.AbstractTemplateProxy
 {
@@ -29,6 +31,17 @@ public class LtTemplate
   public static class ImplData
     extends org.jamon.AbstractTemplateProxy.ImplData
   {
+    // 2, 3
+    public void setCount(Integer count)
+    {
+      // 2, 3
+      m_count = count;
+    }
+    public Integer getCount()
+    {
+      return m_count;
+    }
+    private Integer m_count;
   }
   @Override
   protected ImplData makeImplData()
@@ -63,27 +76,29 @@ public class LtTemplate
   protected org.jamon.AbstractTemplateImpl constructImpl(){
     return new LtTemplateImpl(getTemplateManager(), getImplData());
   }
-  public org.jamon.Renderer makeRenderer()
+  public org.jamon.Renderer makeRenderer(final Integer count)
   {
     return new org.jamon.AbstractRenderer() {
       @Override
       public void renderTo(final java.io.Writer jamonWriter)
         throws java.io.IOException
       {
-        render(jamonWriter);
+        render(jamonWriter, count);
       }
     };
   }
   
-  public void render(final java.io.Writer jamonWriter)
+  public void render(final java.io.Writer jamonWriter, final Integer count)
     throws java.io.IOException
   {
-    renderNoFlush(jamonWriter);
+    renderNoFlush(jamonWriter, count);
     jamonWriter.flush();
   }
-  public void renderNoFlush(final java.io.Writer jamonWriter)
+  public void renderNoFlush(final java.io.Writer jamonWriter, final Integer count)
     throws java.io.IOException
   {
+    ImplData implData = getImplData();
+    implData.setCount(count);
     Intf instance = (Intf) getTemplateManager().constructImpl(this);
     instance.renderNoFlush(jamonWriter);
     reset();
