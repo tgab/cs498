@@ -19,7 +19,10 @@ public class addImpl
   }
   
   public void renderNoFlush(@SuppressWarnings({"unused","hiding"}) final java.io.Writer jamonWriter)
+    throws java.io.IOException
   {
+    // 1, 1
+    jamonWriter.write("// add x + y\r\n@SP\r\nM=M-1\r\nA=M\r\nD=M\r\n@SP\r\nA=M-1\r\nM=M+D");
   }
   
   
