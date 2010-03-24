@@ -22,7 +22,7 @@ public class NotTemplateImpl
     throws java.io.IOException
   {
     // 1, 1
-    jamonWriter.write("// not: NOT y\r\n@SP\r\nA=M-1\r\nM=!M");
+    jamonWriter.write("// !y\r\n@SP\r\nA=M-1\r\nM=!M");
   }
   
   

@@ -9,6 +9,7 @@ package VMTranslator;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import VMTranslator.CodeWriter;
 
 public class VMtranslator {
 
@@ -33,7 +34,7 @@ public class VMtranslator {
       //while (out.exists()){
       //  System.out.println(out + " already exists.  overwrite? (y/n)"); 
       //}
-      BufferedWriter asm = new BufferedWriter(new FileWriter(output));
+      OutputStreamWriter asm = new OutputStreamWriter(new FileOutputStream(output));
 
       // Create file stream for input
       BufferedReader vm = null;
@@ -45,10 +46,31 @@ public class VMtranslator {
         System.exit(1);
       }
 
+
+
+      Parser parser = null;
+
+      try {
+        parser = new Parser(vm);
+      }
+      catch (IOException e) {
+        System.err.println(source + ": error while reading file");
+      }
+
       // Close file stream
       vm.close();
 
-      asm.write("test");
+      // Create code writer
+      CodeWriter writer = new CodeWriter(asm);
+
+      // Loop through commands and handle each one
+      while (parser.hasMoreCommands()) {
+        parser.handleCommand(writer);
+        parser.advance();
+      }
+
+      // Handle last command
+      parser.handleCommand(writer);
 
       // Close file stream
       asm.close();

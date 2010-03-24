@@ -22,7 +22,7 @@ public class OrTemplateImpl
     throws java.io.IOException
   {
     // 1, 1
-    jamonWriter.write("// or: x | y\r\n@SP\r\nM=M-1\r\nA=M\r\nD=M\r\n@SP\r\nA=M-1\r\nM=D|M");
+    jamonWriter.write("// x | y\r\n@SP\r\nM=M-1\r\nA=M\r\nD=M\r\n@SP\r\nA=M-1\r\nM=D|M");
   }
   
   

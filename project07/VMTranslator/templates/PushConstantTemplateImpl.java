@@ -24,10 +24,10 @@ public class PushConstantTemplateImpl
     throws java.io.IOException
   {
     // 5, 1
-    jamonWriter.write("// push_const: push constant ");
-    // 5, 30
+    jamonWriter.write("// push constant ");
+    // 5, 18
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(num), jamonWriter);
-    // 5, 39
+    // 5, 27
     jamonWriter.write("\r\n@");
     // 6, 2
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(num), jamonWriter);

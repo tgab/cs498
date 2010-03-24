@@ -2,7 +2,7 @@
   Integer num;
 </%args>
 
-// push_const: push constant <% num %>
+// push constant <% num %>
 @<% num %>
 D=A
 @SP

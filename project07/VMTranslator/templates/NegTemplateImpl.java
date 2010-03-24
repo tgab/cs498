@@ -22,7 +22,7 @@ public class NegTemplateImpl
     throws java.io.IOException
   {
     // 1, 1
-    jamonWriter.write("// neg: -y\r\n@SP\r\nA=M-1\r\nM=-M");
+    jamonWriter.write("// -y\r\n@SP\r\nA=M-1\r\nM=-M");
   }
   
   

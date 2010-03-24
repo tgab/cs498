@@ -4,6 +4,7 @@ package VMTranslator;
 
 import java.io.*;
 import java.util.ArrayList;
+import VMTranslator.CodeWriter;
 
 public class Parser {
 
@@ -107,5 +108,25 @@ public class Parser {
   public Integer arg2() {
     String [] args = currentCommand.split(" ");
     return Integer.parseInt(args[2]);
+  }
+
+  public void handleCommand(CodeWriter writer) {
+    Command type = commandType();
+    if (type == Command.C_PUSH){
+      try {
+        writer.writePushPop(type, arg1(), arg2());
+      } catch (Exception e){
+        System.out.println("Error performing arithemetic function");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_ARITHEMETIC){
+      try {
+        writer.writeArithemetic(currentCommand);
+      } catch (Exception e){
+        System.out.println("Error performing push/pop");
+        System.exit(1);
+      }
+    }
   }
 }
