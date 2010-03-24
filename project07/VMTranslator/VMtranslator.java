@@ -29,6 +29,10 @@ public class VMtranslator {
 
       // Create file stream for output
       // TODO: add testing for if file exists already, ask user before overwriting
+      //File out = new File(output);
+      //while (out.exists()){
+      //  System.out.println(out + " already exists.  overwrite? (y/n)"); 
+      //}
       BufferedWriter asm = new BufferedWriter(new FileWriter(output));
 
       // Create file stream for input
