@@ -5,12 +5,15 @@
 
 // pop <% segment %> <% index %>
 @<% segment %>
-D=M
+D=A
 @<% index %>
 D=D+A
-A=D
-D=M
+@location
+M=D
 @SP
-M=M+1
-A=M-1
+M=M-1
+A=M
+D=M
+@location
+A=M
 M=D

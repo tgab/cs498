@@ -5,7 +5,10 @@ package VMTranslator.templates;
 
 
 @org.jamon.annotations.Template(
-  signature = "B8C1FD7E374752F9C0E4C4E200B7BDF1")
+  signature = "214436044E8ABCFC2A1BA23CD1AF873B",
+  requiredArguments = {
+    @org.jamon.annotations.Argument(name = "segment", type = "String"),
+    @org.jamon.annotations.Argument(name = "index", type = "Integer")})
 public class PopTemplate
   extends org.jamon.AbstractTemplateProxy
 {
@@ -29,6 +32,28 @@ public class PopTemplate
   public static class ImplData
     extends org.jamon.AbstractTemplateProxy.ImplData
   {
+    // 2, 3
+    public void setSegment(String segment)
+    {
+      // 2, 3
+      m_segment = segment;
+    }
+    public String getSegment()
+    {
+      return m_segment;
+    }
+    private String m_segment;
+    // 3, 3
+    public void setIndex(Integer index)
+    {
+      // 3, 3
+      m_index = index;
+    }
+    public Integer getIndex()
+    {
+      return m_index;
+    }
+    private Integer m_index;
   }
   @Override
   protected ImplData makeImplData()
@@ -63,27 +88,30 @@ public class PopTemplate
   protected org.jamon.AbstractTemplateImpl constructImpl(){
     return new PopTemplateImpl(getTemplateManager(), getImplData());
   }
-  public org.jamon.Renderer makeRenderer()
+  public org.jamon.Renderer makeRenderer(final String segment, final Integer index)
   {
     return new org.jamon.AbstractRenderer() {
       @Override
       public void renderTo(final java.io.Writer jamonWriter)
         throws java.io.IOException
       {
-        render(jamonWriter);
+        render(jamonWriter, segment, index);
       }
     };
   }
   
-  public void render(final java.io.Writer jamonWriter)
+  public void render(final java.io.Writer jamonWriter, final String segment, final Integer index)
     throws java.io.IOException
   {
-    renderNoFlush(jamonWriter);
+    renderNoFlush(jamonWriter, segment, index);
     jamonWriter.flush();
   }
-  public void renderNoFlush(final java.io.Writer jamonWriter)
+  public void renderNoFlush(final java.io.Writer jamonWriter, final String segment, final Integer index)
     throws java.io.IOException
   {
+    ImplData implData = getImplData();
+    implData.setSegment(segment);
+    implData.setIndex(index);
     Intf instance = (Intf) getTemplateManager().constructImpl(this);
     instance.renderNoFlush(jamonWriter);
     reset();

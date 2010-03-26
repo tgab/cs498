@@ -23,6 +23,7 @@ public class CodeWriter {
 
   // Writes the assembly code translation of given command
   public void writeArithemetic(String command) throws Exception {
+    // Find correct template for given arithemetic command
     if (command.equals("add")){
       new AddTemplate().render(outStream);
     }
@@ -62,13 +63,44 @@ public class CodeWriter {
   // Writes the assembly code translation of given command, when command is C_PUSH or C_POP
   public void writePushPop(Parser.Command command, String segment, Integer index) throws Exception {
     if (command == Parser.Command.C_PUSH){
+      // Find correct template for given push command and pass in parameters
       if (segment.equals("constant")){
         new PushConstantTemplate().render(outStream, index);
-      } else {
-
+      }
+      else if (segment.equals("local")){
+        new PushTemplate().render(outStream, "LCL", index);
+      }
+      else if (segment.equals("argument")){
+        new PushTemplate().render(outStream, "ARG", index);
+      }
+      else if (segment.equals("this")){
+        new PushTemplate().render(outStream, "THIS", index);
+      }
+      else if (segment.equals("that")){
+        new PushTemplate().render(outStream, "THAT", index);
+      }
+      else if (segment.equals("temp")){
+        new PushTempTemplate().render(outStream, "5", index);
       }
     }
     else if (command == Parser.Command.C_POP){
+      // Find correct template for given pop command and pass in parameters
+      if (segment.equals("local")){
+        new PopTemplate().render(outStream, "LCL", index);
+      }
+      else if (segment.equals("argument")){
+        new PopTemplate().render(outStream, "ARG", index);
+      }
+      else if (segment.equals("this")){
+        new PopTemplate().render(outStream, "THIS", index);
+      }
+      else if (segment.equals("that")){
+        new PopTemplate().render(outStream, "THAT", index);
+      }
+      else if (segment.equals("temp")){
+        new PopTempTemplate().render(outStream, "5", index);
+      }
+
 
     }
     else {

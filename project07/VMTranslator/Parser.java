@@ -116,7 +116,7 @@ public class Parser {
       try {
         writer.writePushPop(type, arg1(), arg2());
       } catch (Exception e){
-        System.err.println("Error performing arithemetic function");
+        System.err.println("Error performing push");
         System.exit(1);
       }
     }
@@ -124,7 +124,15 @@ public class Parser {
       try {
         writer.writeArithemetic(currentCommand);
       } catch (Exception e){
-        System.err.println("Error performing push/pop");
+        System.err.println("Error performing arithemetic function");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_POP){
+      try {
+        writer.writePushPop(type, arg1(), arg2());
+      } catch (Exception e){
+        System.err.println("Error performing pop");
         System.exit(1);
       }
     }

@@ -1,0 +1,19 @@
+<%args>
+  String segment;
+  Integer index;
+</%args>
+
+// pop <% segment %> <% index %>
+@<% segment %>
+D=M
+@<% index %>
+D=D+A
+@location
+M=D
+@SP
+M=M-1
+A=M
+D=M
+@location
+A=M
+M=D

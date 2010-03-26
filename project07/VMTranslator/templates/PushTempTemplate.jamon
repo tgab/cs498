@@ -5,7 +5,7 @@
 
 // pop <% segment %> <% index %>
 @<% segment %>
-D=M
+D=A
 @<% index %>
 D=D+A
 A=D
