@@ -80,7 +80,7 @@ D=M
 @location
 A=M
 M=D
-// pop 3 0
+// push 3 0
 @3
 D=A
 @0
@@ -91,7 +91,7 @@ D=M
 M=M+1
 A=M-1
 M=D
-// pop 3 1
+// push 3 1
 @3
 D=A
 @1
@@ -109,7 +109,7 @@ A=M
 D=M
 @SP
 A=M-1
-M=M+D// pop THIS 2
+M=M+D// push THIS 2
 @THIS
 D=M
 @2
@@ -127,7 +127,7 @@ A=M
 D=M
 @SP
 A=M-1
-M=M-D// pop THAT 6
+M=M-D// push THAT 6
 @THAT
 D=M
 @6

@@ -144,7 +144,7 @@ A=M
 D=M
 @location
 A=M
-M=D// pop LCL 0
+M=D// push LCL 0
 @LCL
 D=M
 @0
@@ -155,7 +155,7 @@ D=M
 M=M+1
 A=M-1
 M=D
-// pop THAT 5
+// push THAT 5
 @THAT
 D=M
 @5
@@ -173,7 +173,7 @@ A=M
 D=M
 @SP
 A=M-1
-M=M+D// pop ARG 1
+M=M+D// push ARG 1
 @ARG
 D=M
 @1
@@ -191,7 +191,7 @@ A=M
 D=M
 @SP
 A=M-1
-M=M-D// pop THIS 6
+M=M-D// push THIS 6
 @THIS
 D=M
 @6
@@ -202,7 +202,7 @@ D=M
 M=M+1
 A=M-1
 M=D
-// pop THIS 6
+// push THIS 6
 @THIS
 D=M
 @6
@@ -227,7 +227,7 @@ A=M
 D=M
 @SP
 A=M-1
-M=M-D// pop 5 6
+M=M-D// push 5 6
 @5
 D=A
 @6
