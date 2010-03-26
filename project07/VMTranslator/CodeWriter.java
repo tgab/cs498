@@ -82,6 +82,9 @@ public class CodeWriter {
       else if (segment.equals("temp")){
         new PushTempTemplate().render(outStream, "5", index);
       }
+      else if (segment.equals("pointer")){
+        new PushTempTemplate().render(outStream, "3", index);
+      }
     }
     else if (command == Parser.Command.C_POP){
       // Find correct template for given pop command and pass in parameters
@@ -99,6 +102,9 @@ public class CodeWriter {
       }
       else if (segment.equals("temp")){
         new PopTempTemplate().render(outStream, "5", index);
+      }
+      else if (segment.equals("pointer")){
+        new PopTempTemplate().render(outStream, "3", index);
       }
 
 
