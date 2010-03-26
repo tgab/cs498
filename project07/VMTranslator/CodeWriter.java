@@ -9,6 +9,7 @@ import VMTranslator.templates.*;
 public class CodeWriter {
   public OutputStreamWriter outStream;
   public Integer count;
+  public String file;
 
   // Gets ready to write to output stream
   public CodeWriter(OutputStreamWriter stream) throws IOException {
@@ -18,7 +19,7 @@ public class CodeWriter {
 
   // Informs the code writer that translation of a new VM file is started
   public void setFileName(String fileName) {
-
+    file = fileName;
   }
 
   // Writes the assembly code translation of given command
@@ -85,6 +86,13 @@ public class CodeWriter {
       else if (segment.equals("pointer")){
         new PushTempTemplate().render(outStream, "3", index);
       }
+      else if (segment.equals("static")){
+        if (file.equals(null)){
+          System.err.println("Must set file name");
+          System.exit(1);
+        }
+        new PushStaticTemplate().render(outStream, file, index);
+      }
     }
     else if (command == Parser.Command.C_POP){
       // Find correct template for given pop command and pass in parameters
@@ -106,8 +114,13 @@ public class CodeWriter {
       else if (segment.equals("pointer")){
         new PopTempTemplate().render(outStream, "3", index);
       }
-
-
+      else if (segment.equals("static")){
+        if (file.equals(null)){
+          System.err.println("Must set file name");
+          System.exit(1);
+        }
+        new PopStaticTemplate().render(outStream, file, index);
+      }
     }
     else {
       System.err.println("Error: invalid push or pop");

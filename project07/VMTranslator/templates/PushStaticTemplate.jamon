@@ -1,0 +1,12 @@
+<%args>
+  String filename;
+  Integer index;
+</%args>
+
+// push static <% index %>
+@<% filename %>.<% index %>
+D=M
+@SP
+M=M+1
+A=M-1
+M=D

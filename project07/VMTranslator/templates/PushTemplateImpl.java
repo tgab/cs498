@@ -26,14 +26,14 @@ public class PushTemplateImpl
     throws java.io.IOException
   {
     // 6, 1
-    jamonWriter.write("// pop ");
-    // 6, 8
+    jamonWriter.write("// push ");
+    // 6, 9
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(segment), jamonWriter);
-    // 6, 21
-    jamonWriter.write(" ");
     // 6, 22
+    jamonWriter.write(" ");
+    // 6, 23
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(index), jamonWriter);
-    // 6, 33
+    // 6, 34
     jamonWriter.write("\r\n@");
     // 7, 2
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(segment), jamonWriter);

@@ -27,6 +27,10 @@ public class VMtranslator {
 
       // Parse out filename for asm file
       String output = source.substring(0, source.length()-3) + ".asm";
+      String name = source.substring(0, source.length()-3);
+      String [] parts = name.split("/");
+      String filename = parts[parts.length-1];
+      System.out.println(filename);
 
       // Create file stream for output
       // TODO: add testing for if file exists already, ask user before overwriting
@@ -62,6 +66,7 @@ public class VMtranslator {
 
       // Create code writer
       CodeWriter writer = new CodeWriter(asm);
+      writer.setFileName(filename);
 
       // Loop through commands and handle each one
       while (parser.hasMoreCommands()) {

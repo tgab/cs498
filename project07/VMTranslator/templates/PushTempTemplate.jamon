@@ -3,7 +3,7 @@
   Integer index;
 </%args>
 
-// pop <% segment %> <% index %>
+// push <% segment %> <% index %>
 @<% segment %>
 D=A
 @<% index %>
