@@ -1,0 +1,25 @@
+<%args>
+  Integer count;
+</%args>
+
+// x > y ?
+@SP
+M=M-1
+A=M
+D=M
+A=A-1
+D=M-D
+
+@TRUE<% count %>
+D;JGT
+D=0
+@END_EQ<% count %>
+0;JMP
+
+(TRUE<% count %>)
+D=-1
+
+(END_EQ<% count %>)
+@SP
+A=M-1
+M=D

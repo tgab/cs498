@@ -1,0 +1,16 @@
+<%args>
+  String segment;
+  Integer index;
+</%args>
+
+// push <% segment %> <% index %>
+@<% segment %>
+D=M
+@<% index %>
+D=D+A
+A=D
+D=M
+@SP
+M=M+1
+A=M-1
+M=D
