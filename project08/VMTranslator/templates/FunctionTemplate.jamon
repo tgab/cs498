@@ -1,0 +1,13 @@
+<%args>
+  String f;
+  int k;
+</%args>
+
+// function <% f %> <% k %>
+(<% f %>)
+<%for int i=0; i < k; i++ %>
+@SP
+M=M+1
+A=M-1
+M=0
+</%for>

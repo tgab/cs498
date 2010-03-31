@@ -1,0 +1,55 @@
+<%args>
+  String f;
+  int n;
+</%args>
+
+// call <% f %> <% n %>
+@<% f %>.return
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+// save LCL
+@LCL
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+// save ARG
+@ARG
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+// save THIS
+@THIS
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+// save THAT
+@THAT
+D=A
+@SP
+M=M+1
+A=M-1
+M=D
+// reposition ARG and LCL
+@SP
+D=M
+@LCL
+M=D
+@<% n %>
+D=D-A
+@5
+D=D-A
+@ARG
+M=D
+// transfer control
+@<% f %>
+0;JMP
+(<% f %>.return)

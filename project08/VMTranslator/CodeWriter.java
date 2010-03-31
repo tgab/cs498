@@ -150,17 +150,17 @@ public class CodeWriter {
 
   // writes assembly code for call command
   public void writeCall(String functionName, int numArgs) throws Exception {
-
+    new CallTemplate().render(outStream, functionName, numArgs);
   }
 
   // writes assembly code for return command
   public void writeReturn() throws Exception {
-
+    new ReturnTemplate().render(outStream);
   }
 
   // writes assembly code for the function command
   public void writeFunction(String functionName, int numLocals) throws Exception {
-
+    new FunctionTemplate().render(outStream, functionName, numLocals);
   }
 
   // Closes output file
