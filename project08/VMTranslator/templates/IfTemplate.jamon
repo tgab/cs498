@@ -1,0 +1,11 @@
+<%args>
+  String b;
+</%args>
+
+// if-goto <% b %>
+@SP
+M=M-1
+A=M
+D=M
+@<% b %>
+D;JNE

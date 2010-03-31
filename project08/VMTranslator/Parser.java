@@ -136,5 +136,53 @@ public class Parser {
         System.exit(1);
       }
     }
+    else if (type == Command.C_LABEL){
+      try {
+        writer.writeLabel(arg1());
+      } catch (Exception e){
+        System.err.println("Error writing label");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_GOTO){
+      try {
+        writer.writeGoto(arg1());
+      } catch (Exception e){
+        System.err.println("Error writing goto");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_IF){
+      try {
+        writer.writeIf(arg1());
+      } catch (Exception e){
+        System.err.println("Error writing if-goto");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_CALL){
+      try {
+        writer.writeCall(arg1(), arg2());
+      } catch (Exception e){
+        System.err.println("Error writing call");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_FUNCTION){
+      try {
+        writer.writeFunction(arg1(), arg2());
+      } catch (Exception e){
+        System.err.println("Error writing function");
+        System.exit(1);
+      }
+    }
+    else if (type == Command.C_RETURN){
+      try {
+        writer.writeReturn();
+      } catch (Exception e){
+        System.err.println("Error writing return code");
+        System.exit(1);
+      }
+    }
   }
 }

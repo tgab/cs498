@@ -1,0 +1,7 @@
+<%args>
+  String b;
+</%args>
+
+// goto <% b %>
+@<% b %>
+0;JMP

@@ -128,6 +128,41 @@ public class CodeWriter {
     }
   }
 
+  // writes bootstrap code to file
+  public void writeInit() throws Exception{
+
+  }
+
+  // writes assembly code for label command
+  public void writeLabel(String label) throws Exception {
+    new LabelTemplate().render(outStream, file + "$" + label);
+  }
+
+  // writes assembly code for goto command
+  public void writeGoto(String label) throws Exception {
+    new GotoTemplate().render(outStream, file + "$" + label);
+  }
+
+  // writes assembly code for if-goto command
+  public void writeIf(String label) throws Exception {
+    new IfTemplate().render(outStream, file + "$" + label);
+  }
+
+  // writes assembly code for call command
+  public void writeCall(String functionName, int numArgs) throws Exception {
+
+  }
+
+  // writes assembly code for return command
+  public void writeReturn() throws Exception {
+
+  }
+
+  // writes assembly code for the function command
+  public void writeFunction(String functionName, int numLocals) throws Exception {
+
+  }
+
   // Closes output file
   public void Close() {
 

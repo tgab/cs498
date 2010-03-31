@@ -1,0 +1,6 @@
+<%args>
+  String b;
+</%args>
+
+// label <% b %>
+(<% b %>)
