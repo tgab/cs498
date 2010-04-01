@@ -87,14 +87,22 @@ public class VMtranslator {
 
       // Parse out filename for asm file
       int last = source.lastIndexOf("/");
-      String output = source.substring(0, source.length()-1) + ".asm";
-      System.out.println(output);
+      String output = source.substring(0, source.length()-1);
+      int second_last = output.lastIndexOf("/");
+      output = output + "/" + output.substring(second_last+1, output.length()) + ".asm";
 
       OutputStreamWriter asm = new OutputStreamWriter(new FileOutputStream(output));
 
       // Create code writer
       CodeWriter writer = new CodeWriter(asm);
-
+      
+      // Write bootstrap code to file
+      try {
+        writer.writeInit();
+      } catch (Exception e){
+        System.out.println("Error writing bootstrap code");
+        System.exit(1);
+      }
 
       // Loop through all the files in the specified directory
       for (int i=0; i < files.length; i++){

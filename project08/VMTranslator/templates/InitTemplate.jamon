@@ -1,11 +1,10 @@
-<%args>
-  String f;
-  int n;
-  int i;
-</%args>
-
-// call <% f %> <% n %>
-@<% f %>.return<% i %>
+// init
+@256
+D=A
+@SP
+M=D
+// call Sys.init
+@0
 D=A
 @SP
 M=M+1
@@ -44,13 +43,14 @@ M=D
 D=M
 @LCL
 M=D
-@<% n %>
+@0
 D=D-A
 @5
 D=D-A
 @ARG
 M=D
 // transfer control
-@<% f %>
+@Sys.init
 0;JMP
-(<% f %>.return<% i %>)
+
+

@@ -10,6 +10,8 @@ public class CodeWriter {
   public OutputStreamWriter outStream;
   public Integer count;
   public String file;
+  public String function="null";
+  public Integer calls=0;
 
   // Gets ready to write to output stream
   public CodeWriter(OutputStreamWriter stream) throws IOException {
@@ -130,36 +132,39 @@ public class CodeWriter {
 
   // writes bootstrap code to file
   public void writeInit() throws Exception{
-
+    new InitTemplate().render(outStream);
   }
 
   // writes assembly code for label command
   public void writeLabel(String label) throws Exception {
-    new LabelTemplate().render(outStream, file + "$" + label);
+    new LabelTemplate().render(outStream, function + "$" + label);
   }
 
   // writes assembly code for goto command
   public void writeGoto(String label) throws Exception {
-    new GotoTemplate().render(outStream, file + "$" + label);
+    new GotoTemplate().render(outStream, function + "$" + label);
   }
 
   // writes assembly code for if-goto command
   public void writeIf(String label) throws Exception {
-    new IfTemplate().render(outStream, file + "$" + label);
+    new IfTemplate().render(outStream, function + "$" + label);
   }
 
   // writes assembly code for call command
   public void writeCall(String functionName, int numArgs) throws Exception {
-    new CallTemplate().render(outStream, functionName, numArgs);
+    new CallTemplate().render(outStream, functionName, numArgs, calls);
+    calls++;
   }
 
   // writes assembly code for return command
   public void writeReturn() throws Exception {
+    //function = "null";
     new ReturnTemplate().render(outStream);
   }
 
   // writes assembly code for the function command
   public void writeFunction(String functionName, int numLocals) throws Exception {
+    function = functionName;
     new FunctionTemplate().render(outStream, functionName, numLocals);
   }
 

@@ -40,7 +40,7 @@ public class EqTemplateImpl
     // 22, 8
     org.jamon.escaping.Escaping.HTML.write(org.jamon.emit.StandardEmitter.valueOf(count), jamonWriter);
     // 22, 19
-    jamonWriter.write(")\r\n@SP\r\nA=M-1\r\nM=D");
+    jamonWriter.write(")\r\n@SP\r\nA=M-1\r\nM=D\r\n");
   }
   
   

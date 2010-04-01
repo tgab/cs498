@@ -22,7 +22,7 @@ public class ReturnTemplateImpl
     throws java.io.IOException
   {
     // 1, 1
-    jamonWriter.write("// return\r\n// make temp var with location of LCL\r\n@LCL\r\nD=M\r\n@frame\r\nM=D\r\n// put return address in temp var\r\n@5\r\nD=D-A\r\nA=D\r\nD=M\r\n@return\r\nM=D\r\n// reposition return value (pop ARG 0)\r\n@ARG\r\nD=M\r\n@location\r\nM=D\r\n@SP\r\nM=M-1\r\nA=M\r\nD=M\r\n@location\r\nA=M\r\nM=D\r\n// restore SP\r\n@ARG\r\nD=M\r\nD=D+1\r\n@SP\r\nM=D\r\n// restore THAT\r\n@frame\r\nD=M-1\r\nA=D\r\nD=M\r\n@THAT\r\nM=D\r\n// restore THIS\r\n@frame\r\nD=M\r\n@2\r\nD=D-A\r\nA=D\r\nD=M\r\n@THIS\r\nM=D\r\n// restore ARG\r\n@frame\r\nD=M\r\n@3\r\nD=D-A\r\nA=D\r\nD=M\r\n@ARG\r\nM=D\r\n// restore LCL\r\n@frame\r\nD=M\r\n@4\r\nD=D-A\r\nA=D\r\nD=M\r\n@LCL\r\nM=D\r\n// goto return\r\n@return\r\nA=M\r\n0;JMP");
+    jamonWriter.write("// return\r\n// make temp var with location of LCL\r\n@LCL\r\nD=M\r\n@frame\r\nM=D\r\n// put return address in temp var\r\n@5\r\nD=D-A\r\nA=D\r\nD=M\r\n@return\r\nM=D\r\n// reposition return value (pop ARG 0)\r\n@ARG\r\nD=M\r\n@location\r\nM=D\r\n@SP\r\nM=M-1\r\nA=M\r\nD=M\r\n@location\r\nA=M\r\nM=D\r\n// restore SP\r\n@ARG\r\nD=M\r\nD=D+1\r\n@SP\r\nM=D\r\n// restore THAT\r\n@frame\r\nD=M-1\r\nA=D\r\nD=M\r\n@THAT\r\nM=D\r\n// restore THIS\r\n@frame\r\nD=M\r\n@2\r\nD=D-A\r\nA=D\r\nD=M\r\n@THIS\r\nM=D\r\n// restore ARG\r\n@frame\r\nD=M\r\n@3\r\nD=D-A\r\nA=D\r\nD=M\r\n@ARG\r\nM=D\r\n// restore LCL\r\n@frame\r\nD=M\r\n@4\r\nD=D-A\r\nA=D\r\nD=M\r\n@LCL\r\nM=D\r\n// goto return\r\n@return\r\nA=M\r\n0;JMP\r\n");
   }
   
   
