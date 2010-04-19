@@ -3,6 +3,7 @@
 package SyntaxAnalyzer;
 
 import java.io.*;
+import SyntaxAnalyzer.JackTokenizer.Token;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
@@ -25,16 +26,16 @@ public class CompilationEngine {
       token_type = tokenizer.tokenType();
 	//returns token's corresponding XML line
 		if(token_type == Token.KEYWORD) {
-			outStream.write("<keyword> " + token_typetokenizer.keyWord() + " </keyword>");
+			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>");
 		}
 		if(token_type == Token.IDENTIFIER) {
-			outStream.write("<identifier> " + token_typetokenizer.identifier() + " </identifier>");
+			outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>");
 		}
 		if(token_type == Token.INT_CONST) {	
-			outStream.write("<integerConstant> " + token_typetokenizer.intVal() + " </integerConstant>");
+			outStream.write("<integerConstant> " + tokenizer.intVal() + " </integerConstant>");
 		}
 		if(token_type == Token.STRING_CONST) {
-			outStream.write("<stringConstant> " + token_typetokenizer.stringVal() + " </stringConstant>");
+			outStream.write("<stringConstant> " + tokenizer.stringVal() + " </stringConstant>");
 		}
 		
       tokenizer.advance();

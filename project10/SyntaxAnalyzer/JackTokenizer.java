@@ -14,6 +14,7 @@ public class JackTokenizer {
   public int variableCount;
   public Boolean Debug = false;
   public Boolean inComment = false;
+  public Boolean firstComment = false;
 
   public enum Token {
     KEYWORD, SYMBOL, IDENTIFIER, INT_CONST, STRING_CONST;
@@ -33,17 +34,22 @@ public class JackTokenizer {
       line = split[0];
 	  
 	  if (line.contains("/*")){
+	    firstComment = true;
 	    inComment = true;
+		String[] split1 = line.split("/*");
+		line = split1[0];
 	  }
 	  
 	  if (line.contains("*/") && inComment){
 	    inComment = false;
-		String[] split = line.split("*/");
-		line = split[1];
+		String[] split2 = line.split("*/");
+		line = split2[1];
 	  }
 	  
-	  if (!inComment){
-        // Get rid of whitespace
+	  if (!inComment | firstComment){
+	    firstComment = false;
+		
+        // Get rid of whitespace at beginning and end
         try {
           while (Character.isWhitespace(line.charAt(0))){
             line = line.substring(1, line.length());
@@ -52,6 +58,7 @@ public class JackTokenizer {
             line = line.substring(0, line.length()-1);
           }
         } catch (IndexOutOfBoundsException e){
+		    
         }
 
         if (Debug) System.out.println("Line: " + line);
