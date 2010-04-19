@@ -1,0 +1,43 @@
+Hey, these are just some ideas, feel free to ask questions and change or add things
+
+We should have 3 classes
+
+Main.jack -  create and run the game
+Board.jack - construct and manage the game board
+Game.jack - manage the game's logic and scoring
+
+
+
+Main.jack
+----------
+Initialize a new game instance and run it(Very similar to Sample Square Main.Jack)
+
+Board.jack  //Game board
+-----------
+-We should have a constructor that creates a new board (initializes the board)
+-Destructor to deallocate memory, etc
+-Method that gets the current X and Y position assuming we use a grid System
+-Method to Draw the board
+-Method to set piece
+-Method to get Color of piece
+-Method to Draw the game piece (circle - white or black...color can be boolean(black/white)
+-Method to Draw the game piece on the Board at X Y location
+-Method to indicate where we are on the board.. cursor of some sort?
+-Method to move that cursor to wherever we are currently to indicate current location
+
+Game.jack
+----------
+-Constructor to create a new game(Initialize the game, board and score)
+-Destructor 
+-Method to handle a player's turn
+-----move the cursor in regards to arrow keys
+-----Make a "move"
+-Method to iterate turns between players until end of game
+-Method to indicate which player's turn it is
+-Method to make a move(make the move and determine whether it's legal)
+-Method to Check Victory (Refer to Game Rules)
+-Method to update Scores
+
+
+
+

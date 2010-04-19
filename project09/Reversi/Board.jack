@@ -1,0 +1,228 @@
+/*
+Game Board 8x8 Grid with boarder + pieces and player cursor.
+States - 0 empty, 1 black, 2 white
+*/
+class Board {
+	field Array boardData;
+	static int cellSize;
+	field int PosX;
+	field int PosY;
+	field int scoreW;
+	field int scoreB;
+
+	//Create a new Board
+	constructor Board new() {
+		var int i;
+		let cellSize = 31;
+
+		let boardData = Array.new(64);	//boardData array for 8x8 grid
+
+		// Initialize scores to zero
+		let scoreW = 0;
+		let scoreB = 0;
+		
+		let i = 0;
+		// initialize board to be all zeros
+		while (i < 64) {
+			let boardData[i] = 0;
+			let i = i + 1;
+		}
+
+		do drawBoard();
+		let PosX = 5;				//Set initial Cursor positions
+		let PosY = 5;
+		do drawCursor(true);
+		do drawScore(21, 9);
+		return this;
+	}
+
+	// destructor
+	method void dispose() {
+		do boardData.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+	
+	// Draw's the board at initial state
+	method void drawBoard() {
+		var int i;
+		do Screen.setColor(true);
+		let i = 0;
+		while (i<9) {
+			do Screen.drawLine(132+(cellSize*i),4, 132+(cellSize*i), 252);
+			do Screen.drawLine(132,4+(cellSize*i) , 380, 4+(cellSize*i));
+			let i=i+1;
+		}
+		return;
+	}
+
+	//Draws a game piece in the given board position according to boardData array(8x8 grid)
+	method void drawPiece(int x, int y) {
+		var int colorData;
+		var boolean color;
+		let colorData = boardData[y*8  + x];
+		if (colorData = 0) {
+			return;
+		}
+		let color = false;
+		if (colorData = 1) {
+			let color = true;
+		}
+
+		do Screen.setColor(true);
+		do Screen.drawCircle(147+(cellSize*x), 19+(cellSize*y), 12);
+		if (~(color)) {
+			do Screen.setColor(false);
+			do Screen.drawCircle(147+(cellSize*x), 19+(cellSize*y), 11);
+		}
+		return;
+	}
+	
+	
+	// set the given position to the given color
+	method void setPiece(int x, int y, int color) {
+		let boardData[y*8  + x] = color;
+		do drawPiece(x,y);
+		return;
+	}	
+	
+	// Returns the color at the given position
+	method int getColor(int x, int y) {
+		return boardData[y*8  + x];
+	}
+
+	// Returns the X coordinate of current position
+	method int getX() {
+		return PosX;
+	}
+
+	// Returns the Y coordinate of current position
+	method int getY() {
+		return PosY;
+	}
+
+	//Draws the cursor in the given colon, indicating current location
+	method void drawCursor(boolean color) {
+		var int x;
+		var int y;
+		let x = 134+(cellSize*PosX);
+		let y = 6+(cellSize*PosY);
+		do Screen.setColor(color);
+		do Screen.drawLine(x, y, x+cellSize-4, y);
+		do Screen.drawLine(x, y+cellSize-4, x+cellSize-4, y+cellSize-4);
+		
+		return;
+	}
+
+	
+	//	Move the cursor to the given direction 
+	method void moveCursor(int d){ //GOTO needs to be implemented
+		do drawCursor(false);
+		if ( (d = 4) & (PosX > 0) ) {
+			let PosX = PosX - 1;
+		} else {
+			if ( (d = 6) & (PosX < 7) ) {
+				let PosX = PosX + 1;
+			} else {
+				if ( (d = 8) & (PosY > 0) ) {
+					let PosY = PosY - 1;
+				} else {
+					if ( (d = 2) & (PosY < 7) ) {
+						let PosY = PosY + 1;
+					}
+				}
+			}
+		}
+		do drawCursor(true);
+		return;
+	}
+	
+	method int getWhiteScore() {
+		return scoreW;
+	}
+	  
+	method int getBlackScore() {
+		return scoreB;
+	}
+	  
+	method void updateScore(){
+		var int i;
+		var int blackScore;
+		var int whiteScore;
+		let i = 0;
+		while (i < 64) {
+			if (boardData[i] = 1) {
+				let blackScore = blackScore + 1;
+			}
+			if (boardData[i] = 2) {
+				let whiteScore = whiteScore + 1;
+			}
+			let i = i + 1;
+		}
+		do drawScore(blackScore, whiteScore);
+		
+		let scoreW = whiteScore; 
+		let scoreB = blackScore;
+		return;
+	}
+
+	//  Display number of each color piece
+	method void drawScore(int blackScore, int whiteScore){
+		// initialize digits
+		var int blackSingle;
+		var int blackTen;
+		var int whiteSingle;
+		var int whiteTen;
+		
+		// assign digit values
+		let blackTen = Math.divide(blackScore, 10);
+		let blackSingle = blackScore - ( blackTen * 10 );
+		let whiteTen = Math.divide(whiteScore, 10);
+		let whiteSingle = whiteScore - ( whiteTen * 10 );
+		
+		// color piece tiles
+		do Screen.setColor(true);
+		do Screen.drawCircle(442, 100, 12);
+		do Screen.drawCircle(442, 210, 12);
+		do Screen.setColor(false);
+		do Screen.drawCircle(442, 210, 11);
+
+		// color digit tiles
+		do drawNumber(blackTen, 425, 40);
+		do drawNumber(blackSingle, 445, 40);
+		do drawNumber(whiteTen, 425, 150);
+		do drawNumber(whiteSingle, 445, 150);
+		return;
+	}
+	
+	//  Color the tile for a single digit
+	method void drawNumber(int score, int x, int y){
+		// Initialize tile
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x, y, x+14, y+30);
+		do Screen.setColor(true);
+		if ( (score = 0 ) | (score = 2) | (score = 3) | (score > 4)) {
+			do Screen.drawRectangle(x, y, x + 14, y + 2);				// Top bar
+		}
+		if ( (score = 2) | (score = 6) | ( score = 8 ) | ( score = 0 )) {
+			do Screen.drawRectangle(x, y + 16, x + 2, y + 30);			// Bottom left bar
+		}
+		if ( ( score > 7 ) | ( score = 0 ) | ( ( score > 3 ) & ( score < 7 ) ) ) {
+			do Screen.drawRectangle(x, y, x + 2, y + 16);				// Top left bar
+		}
+		if ( ( score < 5 ) | ( score > 6 ) ) {
+			do Screen.drawRectangle(x + 12, y, x + 14, y + 16);			// Top right bar
+		}
+		if ( ~( score = 2 ) ) {
+			do Screen.drawRectangle(x + 12, y + 16, x + 14, y + 30);	// Bottom right bar
+		}
+		if ( ~( score = 1 ) & ~( score = 4 ) & ~( score = 7 ) & ~( score = 9 )) {
+			do Screen.drawRectangle(x, y + 28, x + 14, y + 30); 		// Bottom bar
+		}
+		if ( ~( score = 1 ) & ~( score = 7 ) & ~( score = 0 )) {
+			do Screen.drawRectangle(x, y + 14, x + 14, y + 16); 		// Middle bar
+		}
+		return;
+	}
+
+}

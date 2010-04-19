@@ -1,0 +1,647 @@
+class Game {
+
+	field Board board;
+      field int player; // 1 if current player is black, 2 if current player is white
+	
+	//Create a new game
+	constructor Game new(){
+		let board = Board.new();
+		//Test Pieces 
+		do board.setPiece(4, 3, 1); //test set piece
+            do board.setPiece(3, 4, 1);
+		do board.setPiece(3, 3, 2);
+            do board.setPiece(4, 4, 2);
+		do board.updateScore();
+
+		// Set initial player to be black
+		let player = 1;
+		do Output.moveCursor(1, 50);
+		do Output.printString("black's turn");
+
+		return this;
+	}
+
+	// destructor
+	method void dispose() {
+		do board.dispose();
+		do Memory.deAlloc(this);
+		return;
+	}
+
+
+
+	//Handle the player's turn - Move cursor with arrow keys and make a move
+	method void makePlayerTurn(boolean twoPerson) {
+		var int i;
+		var char key;
+		var boolean valid;
+		var int j;
+		var int color;
+		var int x, y;
+		
+		let i = 0;
+		while (i = 0) {
+			while (key = 0) {
+				do Sys.wait(0);
+				let key = Keyboard.keyPressed();
+			}
+			// move cursor according to arrow keys pressed
+			if ((key=131) | (key=56)) {
+				do board.moveCursor(8);
+			}
+			if ((key=130) | (key=52)) {
+				do board.moveCursor(4);
+			}
+			if ((key=133) | (key=50)) {
+				do board.moveCursor(2);
+			}
+			if ((key=132) | (key=54)) {
+				do board.moveCursor(6);
+			}
+
+			//do Output.printInt(key);
+
+			if (key=128) {
+				let color = board.getColor(board.getX(), board.getY());
+
+				// check to see if move is valid
+				let valid = isValidMove(board.getX(), board.getY(), player, true);
+
+				if (valid){
+            		do board.setPiece(board.getX(), board.getY(), player);
+
+					do board.updateScore();
+
+					if (twoPerson) {
+						if (player = 1) {
+							do Output.moveCursor(1, 50);
+							do Output.printString("white's turn");
+							let player = 2;
+						} else {
+							do Output.moveCursor(1, 50);
+							do Output.printString("black's turn");
+							let player = 1;
+						}
+					} else {
+						// switch to computer
+						if (~(player = 2)){
+							do Output.moveCursor(1, 50);
+							do Output.printString("white's turn");
+							let player = 2;
+						}
+						
+						do Sys.wait(1000);
+						
+						// do the first valid position the computer finds
+						let x = 0;
+						let y = 0;
+						while (x < 8){
+							while (y < 8){
+								let valid = isValidMove(x, y, player, true);
+								if (valid){
+									do board.setPiece(x, y, player);
+									let x = 100;
+									let y = 100;
+								}
+								let y = y + 1;
+							}
+							let x = x + 1;
+							let y = 0;
+						}
+						
+						if (~valid) {
+							do Output.moveCursor(10, 1);
+							do Output.printString("white has no");
+							do Output.moveCursor(11, 1);
+							do Output.printString("valid moves");
+							do Sys.wait(1000);
+							do Output.moveCursor(10, 1);
+							do Output.printString("            ");
+							do Output.moveCursor(11, 1);
+							do Output.printString("           ");
+						}
+						
+						do Output.moveCursor(1, 50);
+						do Output.printString("black's turn");
+						let player = 1;
+					}
+				}
+
+				// check to see if next player has valid move still
+				let valid = anyValidMove();
+				if (~valid){
+					// swap players and check if other player has valid move
+					if (player = 1) {
+						do Output.moveCursor(10, 1);
+						do Output.printString("black has no");
+						do Output.moveCursor(11, 1);
+						do Output.printString("valid moves");
+						do Sys.wait(1000);
+						do Output.moveCursor(10, 1);
+						do Output.printString("            ");
+						do Output.moveCursor(11, 1);
+						do Output.printString("           ");
+						do Output.moveCursor(1, 50);
+						do Output.printString("white's turn");
+						let player = 2;
+
+					} else {
+						do Output.moveCursor(10, 1);
+						do Output.printString("white has no");
+						do Output.moveCursor(11, 1);
+						do Output.printString("valid moves");
+						do Sys.wait(1000);
+						do Output.moveCursor(10, 1);
+						do Output.printString("            ");
+						do Output.moveCursor(11, 1);
+						do Output.printString("           ");
+						do Output.moveCursor(1, 50);
+						do Output.printString("black's turn");
+						let player = 1;
+					}
+					
+					// If there are no valid moves left the game is over
+					let valid = anyValidMove();
+					if (~valid) {
+						do Output.moveCursor(10, 1);
+						do Output.printString("no valid");
+						do Output.moveCursor(11, 1);
+						do Output.printString("moves left");
+						do Sys.wait(1000);
+						do Output.moveCursor(10, 1);
+						do Output.printString("            ");
+						do Output.moveCursor(11, 1);
+						do Output.printString("           ");
+						let i = 2;
+						do drawVictory();
+					}
+					
+					// If playing against the computer then swap back
+					if (~twoPerson) {
+						do Sys.wait(1000);
+						
+						// do the first valid position the computer finds
+						let x = 0;
+						let y = 0;
+						while (x < 8){
+							while (y < 8){
+								let valid = isValidMove(x, y, player, true);
+								if (valid){
+									do board.setPiece(x, y, player);
+									let x = 100;
+									let y = 100;
+								}
+								let y = y + 1;
+							}
+							let x = x + 1;
+							let y = 0;
+						}
+						do Output.moveCursor(1, 50);
+						do Output.printString("black's turn");
+						let player = 1;
+					}
+				}
+
+			}
+			
+			// wait for the key to be unpressed
+			while (~(key=0)) {
+				do Sys.wait(0);
+				let key = Keyboard.keyPressed();
+			}
+		} 
+		return;
+	}
+
+	method boolean anyValidMove() {
+		var int j;
+		var int k;
+		var boolean valid;
+		
+		let valid = false;
+		let j = 0;
+		let k = 0;
+
+		while (j < 8) {
+			while (k < 8) {
+				if (board.getColor(j, k) = 0) {
+					let valid = isValidMove(j, k, player, false);
+					if (valid) {
+						return true;
+					}
+				}
+				let k = k + 1;
+			}
+			let k = 0;
+			let j = j + 1;
+		}
+
+		return false;
+	}
+
+	method boolean isValidMove(int x, int y, int color, boolean flip){
+		var int antiColor;
+		var int xVar;
+		var int yVar;
+		var int count;
+		var boolean valid;
+		var boolean cont;
+
+		let valid = false;
+
+		// Check that x and y are within valid boundaries
+		if ( (x < 0) | (x > 7) ) {
+			return false;
+            }
+		if ( (y < 0) | (y > 7) ) {
+			return false;
+		}
+
+		// Check if a piece is already in that position
+		if (~(board.getColor(x, y) = 0)){
+			return false;
+		}
+
+
+		let antiColor = 0;
+		if (color = 1) {
+			let antiColor = 2;
+		}
+		if (color = 2) {
+			let antiColor = 1;
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence to left of position
+		while ( (xVar > 0) & (cont) ) {
+			let xVar = xVar - 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, y) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, y) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("left");
+							//do Output.printInt(count);
+							let xVar = xVar + 1;
+							do board.setPiece(xVar, y, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, y) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence to right of position
+		while ( (xVar < 7) & (cont) ) {
+			let xVar = xVar + 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, y) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, y) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("right");
+							//do Output.printInt(count);
+							let xVar = xVar - 1;
+							do board.setPiece(xVar, y, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, y) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence above position
+		while ( (yVar > 0) & (cont) ) {
+			let yVar = yVar - 1;
+
+
+			// if position is blank stop
+			if (board.getColor(x, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(x, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("above");
+							//do Output.printInt(count);
+							let yVar = yVar + 1;
+							do board.setPiece(x, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(x, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence below position
+		while ( (yVar < 7) & (cont) ) {
+			let yVar = yVar + 1;
+
+			// if position is blank stop
+			if (board.getColor(x, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(x, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("below");
+							//do Output.printInt(count);
+							let yVar = yVar - 1;
+							do board.setPiece(x, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(x, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence diagonally upper left of position
+		while ( (xVar > 0) & (yVar > 0) & (cont) ) {
+			let yVar = yVar - 1;
+			let xVar = xVar - 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("upple");
+							//do Output.printInt(count);
+							let yVar = yVar + 1;
+							let xVar = xVar + 1;
+							do board.setPiece(xVar, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence diagonally lower right of position
+		while ( (xVar < 7) & (yVar < 7) & (cont) ) {
+			let yVar = yVar + 1;
+			let xVar = xVar + 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("lowri");
+							//do Output.printInt(count);
+							let yVar = yVar - 1;
+							let xVar = xVar - 1;
+							do board.setPiece(xVar, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence diagonally upper right of position
+		while ( (xVar < 7) & (yVar > 0) & (cont) ) {
+			let yVar = yVar - 1;
+			let xVar = xVar + 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("uppri");
+							//do Output.printInt(count);
+							let yVar = yVar + 1;
+							let xVar = xVar - 1;
+							do board.setPiece(xVar, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		let xVar = x;
+		let yVar = y;
+		let count = 0;
+		let cont = true;
+
+		// check for valid sequence diagonally lower left of position
+		while ( (xVar > 0) & (yVar < 7) & (cont) ) {
+			let yVar = yVar + 1;
+			let xVar = xVar - 1;
+
+			// if position is blank stop
+			if (board.getColor(xVar, yVar) = 0) {
+				let cont = false;
+			}
+
+			// if position is the player's color, check to make sure other color count is greater than zero
+			if (board.getColor(xVar, yVar) = color) {
+				if (count > 0) {
+					// if we should flip the discs, then do so
+					if (flip) {
+						while (count > 0) {
+							//do Output.printString("lowle");
+							//do Output.printInt(count);
+							let yVar = yVar - 1;
+							let xVar = xVar + 1;
+							do board.setPiece(xVar, yVar, color);
+							let count = count - 1;
+						}
+						let valid = true;
+						let cont = false;
+					} else {
+						return true;
+					}
+				} else {
+					let cont = false;
+				}
+			}
+
+			// if position is not the player's color, add to count and keep going
+			if (board.getColor(xVar, yVar) = antiColor) {
+				let count = count + 1;
+			}
+		}
+
+		return valid;
+    }
+	
+	method void drawVictory() {
+		do Screen.setColor(false);
+		do Screen.drawRectangle(0,112,511,152); //was 144
+		if (board.getWhiteScore() > board.getBlackScore()) {
+			do Output.moveCursor(11, 13);
+			do Output.printString("GAME OVER! ");	
+			do Output.printString("White wins!  Really, Black??");
+			do Output.moveCursor(12, 3);
+			do Output.printString("Always have the first move and still losing...tsk, tsk...");	
+		}
+		if (board.getWhiteScore() < board.getBlackScore()) {
+			do Output.moveCursor(11, 17);
+			do Output.printString("GAME OVER! ");
+			do Output.printString("Black wins!   Sweet. ");
+			do Output.moveCursor(12, 23);
+			do Output.printString("Not for you, White.");	
+		}
+		if (board.getWhiteScore() = board.getBlackScore()) {
+			do Output.moveCursor(11, 12);
+			do Output.printString("GAME OVER! Tie Score!  You're both losers.");
+		}
+		return;
+	}
+
+}
+

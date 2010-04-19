@@ -1,0 +1,85 @@
+class Main {
+	
+    function void main() {
+		//Create and run a new game #GOTO right now just tests cursor movement
+	
+		var boolean game2Player;  //True if user selects 2-player option, 
+								  //false if user selects a game against the computer
+
+		var Game game;
+		
+		let game2Player = false;
+		let game2Player = Main.drawWelcome();
+		
+		do Output.println();	
+		do Output.println();		
+		if (game2Player) {
+			do Output.printString("Beginning 2-player game...");
+		}
+		else {
+			do Output.printString("Beginning 1-player game...");
+		}
+		
+		do Sys.wait(2000);
+		
+		do Screen.clearScreen();
+		do Output.moveCursor(0,0);
+		let	game = Game.new();
+		
+		do game.makePlayerTurn(game2Player);
+		do game.dispose();
+	
+		do Sys.halt();
+        return;
+    }
+	
+	
+	function boolean drawWelcome() {
+		var boolean flag;
+		var char key;
+		
+		let key = 0;
+		
+		do Output.println();
+		do Output.printString("Welcome to Ravenous Reversi!");
+		do Output.println();
+		do Output.println();
+		do Output.printString("The object of this game is to flip the color of your opponents");
+		do Output.println();
+		do Output.printString("discs to the color of your discs.  This is accommplished by");	
+		do Output.println();
+		do Output.printString("placing your disc adjacent to an opponents disc so that the");		
+		do Output.println();
+		do Output.printString("opponents disc is surronded by your discs on at least 2 sides.");
+		do Output.println();
+		do Output.printString("If you cannont make a move that flips at least one opposing");		
+		do Output.println();
+		do Output.printString("disc, the game is over and the player with the most discs");
+		do Output.println();
+		do Output.printString("remaining on the board is the winner.");
+		do Output.println();		
+		do Output.println();
+		do Output.printString("Game Play Options");
+		do Screen.drawLine(0,135,137,135);
+		do Output.println();	
+		do Output.println();		
+		do Output.printString("1: Play Reversi against the computer");
+		do Output.println();		
+		do Output.printString("2: Play 2-player Reversi");
+		do Output.println();
+		do Output.println();		
+		do Output.printString("Enter your option: ");		
+		
+		let key = Keyboard.readChar();
+		
+		if (key=49) {
+			let flag = false;
+		}
+		if (key=50) {
+			
+			let flag = true;
+		}
+		
+		return flag;
+	}
+}
