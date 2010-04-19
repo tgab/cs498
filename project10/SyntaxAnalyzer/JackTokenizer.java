@@ -13,6 +13,7 @@ public class JackTokenizer {
   public int binaryCount;
   public int variableCount;
   public Boolean Debug = false;
+  public Boolean inComment = false;
 
   public enum Token {
     KEYWORD, SYMBOL, IDENTIFIER, INT_CONST, STRING_CONST;
@@ -30,24 +31,36 @@ public class JackTokenizer {
       // Get rid of comments
       String[] split = line.split("//");
       line = split[0];
-
-	// Get rid of whitespace
-      try {
-        while (Character.isWhitespace(line.charAt(0))){
-          line = line.substring(1, line.length());
+	  
+	  if (line.contains("/*")){
+	    inComment = true;
+	  }
+	  
+	  if (line.contains("*/") && inComment){
+	    inComment = false;
+		String[] split = line.split("*/");
+		line = split[1];
+	  }
+	  
+	  if (!inComment){
+        // Get rid of whitespace
+        try {
+          while (Character.isWhitespace(line.charAt(0))){
+            line = line.substring(1, line.length());
+          }
+          while (Character.isWhitespace(line.charAt(line.length()-1))){
+            line = line.substring(0, line.length()-1);
+          }
+        } catch (IndexOutOfBoundsException e){
         }
-        while (Character.isWhitespace(line.charAt(line.length()-1))){
-          line = line.substring(0, line.length()-1);
+
+        if (Debug) System.out.println("Line: " + line);
+
+        // Add token to array
+        Boolean check = tokens.add(line);
+        if (check == false){
+          System.err.println("Error adding line to tokens list");
         }
-      } catch (IndexOutOfBoundsException e){
-      }
-
-      if (Debug) System.out.println("Line: " + line);
-
-      // Add token to array
-      Boolean check = tokens.add(line);
-      if (check == false){
-        System.err.println("Error adding line to tokens list");
       }
 
       // Read next line
@@ -84,8 +97,9 @@ public class JackTokenizer {
   }
   
   // Returns the keyword which is the current token
-  public Keyword keyWord() {
-	return Keyword.CLASS;
+  public String keyWord() {
+    return "if";
+	//return Keyword.CLASS;
   }
 
   // Returns the character which is the current token
@@ -95,7 +109,7 @@ public class JackTokenizer {
 	  return '0';
 	}
 	  
-	return '0';
+	return 'c';
   }
 
   // Returns the identifier which is the current token
@@ -105,7 +119,7 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return null;
+    return "this is identifier";
   }
   
   public Integer intVal() {
@@ -114,7 +128,7 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return 0;
+    return 43;
   }
   
   public String stringVal() {
@@ -123,6 +137,6 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return null;
+    return "this is string const";
   }
 }
