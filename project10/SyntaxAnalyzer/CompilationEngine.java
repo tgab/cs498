@@ -7,7 +7,7 @@ import java.io.*;
 public class CompilationEngine {
   public OutputStreamWriter outStream;
   public JackTokenizer tokenizer;
-  public JackTokenizer.Token token;
+  public JackTokenizer.Token token_type;
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
@@ -16,15 +16,32 @@ public class CompilationEngine {
   }
 
   // Compiles a complete class
-  public void CompileClass() {
-    // Loop through tokens and handle each one
+  public void CompileClass() throws IOException {
+	//print default <tokens>
+	outStream.write("<tokens>");
+	// Loop through tokens and handle each one
     while (tokenizer.hasMoreTokens()) {
-      token = tokenizer.tokenType();
+	  //assigns token's type
+      token_type = tokenizer.tokenType();
+	//returns token's corresponding XML line
+		if(token_type == Token.KEYWORD) {
+			outStream.write("<keyword> " + token_typetokenizer.keyWord() + " </keyword>");
+		}
+		if(token_type == Token.IDENTIFIER) {
+			outStream.write("<identifier> " + token_typetokenizer.identifier() + " </identifier>");
+		}
+		if(token_type == Token.INT_CONST) {
+			outStream.write("<integerConstant> " + token_typetokenizer.intVal() + " </integerConstant>");
+		}
+		if(token_type == Token.STRING_CONST) {
+			outStream.write("<stringConstant> " + token_typetokenizer.stringVal() + " </stringConstant>");
+		}
+		
       tokenizer.advance();
     }
 
     // Handle last token
-    token = tokenizer.tokenType();
+    token_type = tokenizer.tokenType();
   
   }
   

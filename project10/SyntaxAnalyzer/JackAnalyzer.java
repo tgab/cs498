@@ -1,4 +1,4 @@
-// JackAnalyzer.java
+ // JackAnalyzer.java
 // by Thea Gab
 // Compile: (from directory with SyntaxAnalyzer folder)
 //  javac SyntaxAnalyzer/*.java
