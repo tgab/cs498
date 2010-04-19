@@ -4,15 +4,16 @@ package SyntaxAnalyzer;
 
 import java.io.*;
 import java.util.ArrayList;
+import org.apache.commons.lang.*;
 
 public class JackTokenizer {
-
+  public String entireFile;
   public ArrayList<String> tokens;
   public int counter;
   public String currentToken;
   public int binaryCount;
   public int variableCount;
-  public Boolean Debug = false;
+  public Boolean Debug = true;
   public Boolean inComment = false;
   public Boolean firstComment = false;
 
@@ -32,21 +33,25 @@ public class JackTokenizer {
       // Get rid of comments
       String[] split = line.split("//");
       line = split[0];
+      entireFile = entireFile + line;
 	  
-	  if (line.contains("/*")){
-	    firstComment = true;
-	    inComment = true;
-		String[] split1 = line.split("/*");
-		line = split1[0];
-	  }
+      // Read next line
+      line = stream.readLine();
+    }
+	
+      System.out.println(entireFile);
+	  entireFile = entireFile.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
 	  
-	  if (line.contains("*/") && inComment){
-	    inComment = false;
-		String[] split2 = line.split("*/");
-		line = split2[1];
-	  }
 	  
-	  if (!inComment | firstComment){
+	  System.out.println();
+	  System.out.println();
+	  System.out.println();
+	  System.out.println();
+	  System.out.println(entireFile);
+	  
+	  //line = StringUtils.substringBetween(line, "/*", "*/");
+	  //line = line.repla
+	  if ((!inComment || firstComment) && (line != null)) {
 	    firstComment = false;
 		
         // Get rid of whitespace at beginning and end
@@ -69,10 +74,8 @@ public class JackTokenizer {
           System.err.println("Error adding line to tokens list");
         }
       }
-
-      // Read next line
-      line = stream.readLine();
-    }
+	  
+	  
     counter = 0;
     binaryCount = 0;
     variableCount = 16;
@@ -107,10 +110,9 @@ public class JackTokenizer {
   public String keyWord() {
 	if (tokenType() != Token.KEYWORD) {
 	  System.err.println("Error retrieving keyword");
-	  return '0';
+	  return null;
 	}
     return currentToken;
-	//return Keyword.CLASS;
   }
 
   // Returns the character which is the current token
@@ -120,8 +122,7 @@ public class JackTokenizer {
 	  return '0';
 	}
 	
-	//return char(currentToken);
-	return 'c';
+	return currentToken.charAt(0);
   }
 
   // Returns the identifier which is the current token
