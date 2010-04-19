@@ -30,7 +30,7 @@ public class CompilationEngine {
 		if(token_type == Token.IDENTIFIER) {
 			outStream.write("<identifier> " + token_typetokenizer.identifier() + " </identifier>");
 		}
-		if(token_type == Token.INT_CONST) {
+		if(token_type == Token.INT_CONST) {	
 			outStream.write("<integerConstant> " + token_typetokenizer.intVal() + " </integerConstant>");
 		}
 		if(token_type == Token.STRING_CONST) {
