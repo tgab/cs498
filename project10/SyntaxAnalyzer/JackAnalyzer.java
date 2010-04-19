@@ -74,44 +74,44 @@ public class JackAnalyzer {
 
   public void translate(String source) throws IOException{
   
-      // Define name for output file
-	  String output = source.substring(0, source.length()-5) + "TTest.xml";
+    // Define name for output file
+    String output = source.substring(0, source.length()-5) + "TTest.xml";
 
-      OutputStreamWriter xml = new OutputStreamWriter(new FileOutputStream(output));
+    OutputStreamWriter xml = new OutputStreamWriter(new FileOutputStream(output));
 
-      // Create file stream for input
-      BufferedReader jack = null;
-      try {
-        jack = new BufferedReader(new FileReader(source));
-      }
-      catch (FileNotFoundException e) {
-        System.err.println(source + ": does not exist or cannot be read");
-        System.exit(1);
-      }
+    // Create file stream for input
+    BufferedReader jack = null;
+    try {
+      jack = new BufferedReader(new FileReader(source));
+    }
+    catch (FileNotFoundException e) {
+      System.err.println(source + ": does not exist or cannot be read");
+      System.exit(1);
+    }
 
-	  // Create a tokenizer object
-      JackTokenizer tokenizer = null;
+    // Create a tokenizer object
+    JackTokenizer tokenizer = null;
 
-      try {
-        tokenizer = new JackTokenizer(jack);
-      }
-      catch (IOException e) {
-        System.err.println(source + ": error while reading file");
-      }
+    try {
+      tokenizer = new JackTokenizer(jack);
+    }
+    catch (IOException e) {
+      System.err.println(source + ": error while reading file");
+    }
 
-      // Close file stream
-      jack.close();
+    // Close file stream
+    jack.close();
 
-	  // Create compilation engine
-      CompilationEngine engine = new CompilationEngine(tokenizer, xml);
+    // Create compilation engine
+    CompilationEngine engine = new CompilationEngine(tokenizer, xml);
 	  
-      // Compile this file
-      engine.CompileClass();
+    // Compile this file
+    engine.CompileClass();
 	  
-	  // Close file stream
-	  xml.close();
+    // Close file stream
+    xml.close();
 	  
-	  System.out.println("Output written to " + output);
+    System.out.println("Output written to " + output);
   }
 }
 

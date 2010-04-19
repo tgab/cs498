@@ -7,6 +7,7 @@ import java.io.*;
 public class CompilationEngine {
   public OutputStreamWriter outStream;
   public JackTokenizer tokenizer;
+  public JackTokenizer.Token token;
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
@@ -18,12 +19,12 @@ public class CompilationEngine {
   public void CompileClass() {
     // Loop through tokens and handle each one
     while (tokenizer.hasMoreTokens()) {
-      tokenizer.handleToken();
+      token = tokenizer.tokenType();
       tokenizer.advance();
     }
 
     // Handle last token
-    tokenizer.handleToken();
+    token = tokenizer.tokenType();
   
   }
   

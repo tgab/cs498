@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class JackTokenizer {
 
-  public ArrayList<String> commands;
+  public ArrayList<String> tokens;
   public int counter;
-  public String currentCommand;
+  public String currentToken;
   public int binaryCount;
   public int variableCount;
   public Boolean Debug = false;
@@ -24,7 +24,7 @@ public class JackTokenizer {
 
   // Parses the input stream
   public JackTokenizer(BufferedReader stream) throws IOException {
-    commands = new ArrayList<String>();
+    tokens = new ArrayList<String>();
     String line = stream.readLine();
     while (line != null){
       // Get rid of comments
@@ -44,10 +44,10 @@ public class JackTokenizer {
 
       if (Debug) System.out.println("Line: " + line);
 
-      // Add line to array
-      Boolean check = commands.add(line);
+      // Add token to array
+      Boolean check = tokens.add(line);
       if (check == false){
-        System.err.println("Error adding line to commands list");
+        System.err.println("Error adding line to tokens list");
       }
 
       // Read next line
@@ -56,12 +56,12 @@ public class JackTokenizer {
     counter = 0;
     binaryCount = 0;
     variableCount = 16;
-    currentCommand = commands.get(counter);
+    currentToken = tokens.get(counter);
   }
 
   // Are there more comamnds in input?
   public Boolean hasMoreTokens() {
-    if (counter < commands.size()-1) {
+    if (counter < tokens.size()-1) {
       return true;
     } else {
       return false;
@@ -71,13 +71,13 @@ public class JackTokenizer {
   // Reads next command and makes it current command
   public void advance() {
     counter++;
-    currentCommand = commands.get(counter);
+    currentToken = tokens.get(counter);
   }
 
   // Returns the type of the current VM command
   public Token tokenType() {
     // Checks token type
-    if (currentCommand.startsWith("//") || currentCommand.length() == 0)
+    if (currentToken.startsWith("//") || currentToken.length() == 0)
       return null;
     else
 	  return Token.KEYWORD;
@@ -124,9 +124,5 @@ public class JackTokenizer {
 	}
 	
     return null;
-  }
-
-  public void handleToken() {
-
   }
 }
