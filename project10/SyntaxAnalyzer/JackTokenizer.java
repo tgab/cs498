@@ -107,7 +107,7 @@ public class JackTokenizer {
   public String keyWord() {
 	if (tokenType() != Token.KEYWORD) {
 	  System.err.println("Error retrieving keyword");
-	  return '0';
+	  return null;
 	}
     return currentToken;
 	//return Keyword.CLASS;
