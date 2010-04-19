@@ -105,7 +105,11 @@ public class JackTokenizer {
   
   // Returns the keyword which is the current token
   public String keyWord() {
-    return "if";
+	if (tokenType() != Token.KEYWORD) {
+	  System.err.println("Error retrieving keyword");
+	  return '0';
+	}
+    return currentToken;
 	//return Keyword.CLASS;
   }
 
@@ -115,7 +119,8 @@ public class JackTokenizer {
 	  System.err.println("Error retrieving symbol");
 	  return '0';
 	}
-	  
+	
+	//return char(currentToken);
 	return 'c';
   }
 
@@ -126,7 +131,7 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return "this is identifier";
+    return currentToken;
   }
   
   public Integer intVal() {
@@ -134,8 +139,8 @@ public class JackTokenizer {
 	  System.err.println("Error retrieving integer constant");
 	  return null;
 	}
-	
-    return 43;
+	int num = Integer.parseInt( currentToken );
+    return num;
   }
   
   public String stringVal() {
@@ -144,6 +149,6 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return "this is string const";
+    return currentToken;
   }
 }
