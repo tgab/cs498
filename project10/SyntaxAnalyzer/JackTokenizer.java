@@ -17,6 +17,7 @@ public class JackTokenizer {
   public Boolean Debug = true;
   public Boolean inComment = false;
   public Boolean firstComment = false;
+  public String regexSymbols = "[\\{\\}\\(\\)\\[\\]\\.,;+\\*\\-/&\\|<>=~]";
 
   public enum Token {
     KEYWORD, SYMBOL, IDENTIFIER, INT_CONST, STRING_CONST;
@@ -109,6 +110,7 @@ public class JackTokenizer {
 			  // Make sure that next is not empty or null
 			  if (!next.equals(null) && !next.equals("")){
 				// Add token to array
+				if (Debug) System.out.println(next);
 				Boolean check = tokens.add(next);
 				if (check == false){
 				  System.err.println("Error adding line to tokens list");
@@ -143,10 +145,14 @@ public class JackTokenizer {
   // Returns the type of the current VM command
   public Token tokenType() {
     // Checks token type
-    if (currentToken.startsWith("//") || currentToken.length() == 0)
+    if (currentToken.length() == 0)
       return null;
-    else
-	  return Token.KEYWORD;
+	  
+	// Match regular expressions	
+	if (currentToken.matches(regexSymbols)){
+	  return Token.SYMBOL;
+	}
+	return Token.KEYWORD;
   }
   
   // Returns the keyword which is the current token
