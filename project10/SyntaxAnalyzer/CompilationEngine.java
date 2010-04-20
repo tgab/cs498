@@ -19,23 +19,23 @@ public class CompilationEngine {
   // Compiles a complete class
   public void CompileClass() throws IOException {
 	//print default <tokens>
-	outStream.write("<tokens>");
+	outStream.write("<tokens>\n");
 	// Loop through tokens and handle each one
     while (tokenizer.hasMoreTokens()) {
 	  //assigns token's type
       token_type = tokenizer.tokenType();
 	//returns token's corresponding XML line
 		if(token_type == Token.KEYWORD) {
-			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>");
+			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		}
 		if(token_type == Token.IDENTIFIER) {
-			outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>");
+			outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 		}
 		if(token_type == Token.INT_CONST) {	
-			outStream.write("<integerConstant> " + tokenizer.intVal() + " </integerConstant>");
+			outStream.write("<integerConstant> " + tokenizer.intVal() + " </integerConstant>\n");
 		}
 		if(token_type == Token.STRING_CONST) {
-			outStream.write("<stringConstant> " + tokenizer.stringVal() + " </stringConstant>");
+			outStream.write("<stringConstant> " + tokenizer.stringVal() + " </stringConstant>\n");
 		}
 		
       tokenizer.advance();
@@ -43,6 +43,8 @@ public class CompilationEngine {
 
     // Handle last token
     token_type = tokenizer.tokenType();
+	
+	outStream.write("</tokens>\n");
   
   }
   

@@ -4,10 +4,11 @@ package SyntaxAnalyzer;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 import org.apache.commons.lang.*;
 
 public class JackTokenizer {
-  public String entireFile;
+  public String entireFile = "";
   public ArrayList<String> tokens;
   public int counter;
   public String currentToken;
@@ -28,52 +29,94 @@ public class JackTokenizer {
   // Parses the input stream
   public JackTokenizer(BufferedReader stream) throws IOException {
     tokens = new ArrayList<String>();
+	
+    // Read in file
     String line = stream.readLine();
     while (line != null){
       // Get rid of comments
       String[] split = line.split("//");
       line = split[0];
-      entireFile = entireFile + line;
+	  if (!line.equals(null)){
+        entireFile = entireFile + line;
+	  }
 	  
       // Read next line
       line = stream.readLine();
     }
 	
-      System.out.println(entireFile);
-	  entireFile = entireFile.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
+	// Check that file was read in okay
+	if (Debug) System.out.println(entireFile);
+	
+	// Remove all the comments in original file
+	entireFile = entireFile.replaceAll("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)","");
+
+	// Extract string constants from the file
+	ArrayList<String> largeTokens = new ArrayList<String>();
+	int index1;
+	int index2;
+	
+	while (entireFile.indexOf('"') != -1){
+	  index1 = entireFile.indexOf('"');
+	  index2 = entireFile.indexOf('"', index1 + 1);
 	  
-	  
-	  System.out.println();
-	  System.out.println();
-	  System.out.println();
-	  System.out.println();
-	  System.out.println(entireFile);
-	  
-	  //line = StringUtils.substringBetween(line, "/*", "*/");
-	  //line = line.repla
-	  if ((!inComment || firstComment) && (line != null)) {
-	    firstComment = false;
+	  if (index2 == -1) {
+	    System.err.println("Error finding end of quote.");
+		System.exit(1);
+	  } else {
+	    largeTokens.add(entireFile.substring(0, index1));
+		largeTokens.add(entireFile.substring(index1, index2));
+		entireFile = entireFile.substring(index2+1);
+	  }
+	}
+	largeTokens.add(entireFile);
+	
+	// Loop through all the larger chunks and separate them into tokens
+	for (int j=0; j < largeTokens.size(); j++){
 		
-        // Get rid of whitespace at beginning and end
-        try {
-          while (Character.isWhitespace(line.charAt(0))){
-            line = line.substring(1, line.length());
-          }
-          while (Character.isWhitespace(line.charAt(line.length()-1))){
-            line = line.substring(0, line.length()-1);
-          }
-        } catch (IndexOutOfBoundsException e){
-		    
-        }
+		String nextToken = largeTokens.get(j);
+		
+		// Check if the token is a string constant, if so add directly to tokens list
+		if (nextToken.indexOf('"') != -1){
+		  Boolean check = tokens.add(nextToken.substring(1));
+		  if (check == false){
+		    System.err.println("Error adding line to tokens list");
+		  }
+		} else {
+			// Separate file based on symbols
+			String delimiters = "{}()[].,;+-*/&|<>=~ ";
+			StringTokenizer tokenized = new StringTokenizer(nextToken, delimiters, true);
+			
+			// Loop through all the tokens
+			while (tokenized.hasMoreTokens()){
+			  String next = tokenized.nextToken();
+				
+			  // Get rid of all whitespace
+			  int i=0;
+			  while (i < next.length()){
+				try {
+				  while (Character.isWhitespace(next.charAt(i))){
+					next = next.substring(0, i) + next.substring(i+1);
+					if (next.length() == 0){
+					  break;
+					}
+				  }
+				} catch (IndexOutOfBoundsException e){
+				  System.err.println("Error trying to remove whitespace.");  
+				}
+				i++;
+			  }
 
-        if (Debug) System.out.println("Line: " + line);
-
-        // Add token to array
-        Boolean check = tokens.add(line);
-        if (check == false){
-          System.err.println("Error adding line to tokens list");
-        }
-      }
+			  // Make sure that next is not empty or null
+			  if (!next.equals(null) && !next.equals("")){
+				// Add token to array
+				Boolean check = tokens.add(next);
+				if (check == false){
+				  System.err.println("Error adding line to tokens list");
+				}
+			  }
+			}
+		}
+	}
 	  
 	  
     counter = 0;
