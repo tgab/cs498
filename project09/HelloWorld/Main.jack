@@ -1,0 +1,13 @@
+/**
+ * The Main class displays Hello World in Jack
+ * 
+ */
+class Main {
+   
+    function void main() {
+		do Output.printString("Hello World");
+		do Output.println();
+		do Sys.halt();
+        return;
+    }
+}
