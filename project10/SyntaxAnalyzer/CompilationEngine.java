@@ -29,14 +29,14 @@ public class CompilationEngine {
 			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		}
 		if(token_type == Token.SYMBOL) {
-			char x = tokenizer.symbol();
-			if(x == '<') {
+			String x = Character.toString(tokenizer.symbol());
+			if(x == "<") {
 				x = "&lt;";
 			}
-			if(x == '>') {
+			if(x == ">") {
 				x = "&gt;";
 			}
-			if(x == '&') {
+			if(x == "&") {
 				x = "&amp;";
 			}
 			outStream.write("<symbol> " + x + " </symbol>\n");
