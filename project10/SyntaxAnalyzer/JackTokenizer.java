@@ -171,6 +171,7 @@ public class JackTokenizer {
 	  return '0';
 	}
 	
+	System.out.println(currentToken);
 	return currentToken.charAt(0);
   }
 
