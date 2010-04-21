@@ -29,7 +29,7 @@
 <symbol> . </symbol>
 <identifier> readInt </identifier>
 <symbol> ( </symbol>
-<keyword> HOW MANY NUMBERS?  </keyword>
+<keyword> "HOW MANY NUMBERS?  </keyword>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
 <identifier> let </identifier>
@@ -64,7 +64,7 @@
 <symbol> . </symbol>
 <identifier> readInt </identifier>
 <symbol> ( </symbol>
-<keyword> ENTER THE NEXT NUMBER:  </keyword>
+<keyword> "ENTER THE NEXT NUMBER:  </keyword>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
 <identifier> let </identifier>
@@ -115,7 +115,7 @@
 <symbol> . </symbol>
 <identifier> printString </identifier>
 <symbol> ( </symbol>
-<keyword> THE AVERAGE IS:  </keyword>
+<keyword> "THE AVERAGE IS:  </keyword>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
 <identifier> do </identifier>
