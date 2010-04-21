@@ -153,14 +153,11 @@ public class JackTokenizer {
       return null;
 	  
 	// Match regular expressions
-	if (currentToken.matches(regexIdentifier)){
-	  return Token.IDENTIFIER;
+	if(Arrays.asList(keywords).contains(currentToken)) {
+		return Token.KEYWORD;
 	}
 	if (currentToken.matches(regexSymbols)){
 	  return Token.SYMBOL;
-	}
-	if(Arrays.asList(keywords).contains(currentToken)) {
-		return Token.KEYWORD;
 	}
 	try {
 		Integer.parseInt(currentToken);
@@ -170,6 +167,9 @@ public class JackTokenizer {
 	}
 	if(currentToken.indexOf('"') != -1) {
 		return Token.STRING_CONST;
+	}
+	if (currentToken.matches(regexIdentifier)){
+	  return Token.IDENTIFIER;
 	}
 	return Token.KEYWORD;
   }
