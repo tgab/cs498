@@ -14,7 +14,7 @@ public class JackTokenizer {
   public String currentToken;
   public int binaryCount;
   public int variableCount;
-  public Boolean Debug = true;
+  public Boolean Debug = false;
   public Boolean inComment = false;
   public Boolean firstComment = false;
   public String regexSymbols = "[\\{\\}\\(\\)\\[\\]\\.,;+\\*\\-/&\\|<>=~]";
@@ -171,7 +171,6 @@ public class JackTokenizer {
 	  return '0';
 	}
 	
-	System.out.println(currentToken);
 	return currentToken.charAt(0);
   }
 
