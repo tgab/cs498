@@ -28,6 +28,9 @@ public class CompilationEngine {
 		if(token_type == Token.KEYWORD) {
 			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		}
+		if(token_type == Token.SYMBOL) {
+			outStream.write("<symbol> " + tokenizer.keyWord() + " </symbol>\n");
+		}
 		if(token_type == Token.IDENTIFIER) {
 			outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 		}
