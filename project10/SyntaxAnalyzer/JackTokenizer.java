@@ -3,13 +3,14 @@
 package SyntaxAnalyzer;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 import org.apache.commons.lang.*;
 
 public class JackTokenizer {
   public String entireFile = "";
-  public ArrayList<String> tokens;
+  public ArrayList<String> tokens; 
   public int counter;
   public String currentToken;
   public int binaryCount;
@@ -19,6 +20,8 @@ public class JackTokenizer {
   public Boolean firstComment = false;
   public String regexIdentifier = "[a-zA-Z_]+[a-zA-Z0-9_]*";
   public String regexSymbols = "[\\{\\}\\(\\)\\[\\]\\.,;+\\*\\-/&\\|<>=~]";
+  String[] keywords = {"class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return"};
+
 
   public enum Token {
     KEYWORD, SYMBOL, IDENTIFIER, INT_CONST, STRING_CONST;
@@ -155,6 +158,9 @@ public class JackTokenizer {
 	}
 	if (currentToken.matches(regexSymbols)){
 	  return Token.SYMBOL;
+	}
+	if(Arrays.asList(keywords).contains(currentToken)) {
+		return Token.KEYWORD;
 	}
 	return Token.KEYWORD;
   }
