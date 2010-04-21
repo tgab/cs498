@@ -29,7 +29,17 @@ public class CompilationEngine {
 			outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		}
 		if(token_type == Token.SYMBOL) {
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			char x = tokenizer.symbol();
+			if(x == '<') {
+				x = "&lt;";
+			}
+			if(x == '>') {
+				x = "&gt;";
+			}
+			if(x == '&') {
+				x = "&amp;";
+			}
+			outStream.write("<symbol> " + x + " </symbol>\n");
 		}
 		if(token_type == Token.IDENTIFIER) {
 			outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
