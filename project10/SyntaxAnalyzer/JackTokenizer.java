@@ -18,6 +18,7 @@ public class JackTokenizer {
   public Boolean Debug = false;
   public Boolean inComment = false;
   public Boolean firstComment = false;
+  public String regexIdentifier = "[a-zA-Z_]+[a-zA-Z0-9_]*";
   public String regexSymbols = "[\\{\\}\\(\\)\\[\\]\\.,;+\\*\\-/&\\|<>=~]";
   String[] keywords = {"class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return"};
 
@@ -81,7 +82,7 @@ public class JackTokenizer {
 		
 		// Check if the token is a string constant, if so add directly to tokens list
 		if (nextToken.indexOf('"') != -1){
-		  Boolean check = tokens.add(nextToken.substring(1));
+		  Boolean check = tokens.add(nextToken);
 		  if (check == false){
 		    System.err.println("Error adding line to tokens list");
 		  }
@@ -151,7 +152,10 @@ public class JackTokenizer {
     if (currentToken.length() == 0)
       return null;
 	  
-	// Match regular expressions	
+	// Match regular expressions
+	if (currentToken.matches(regexIdentifier)){
+	  return Token.IDENTIFIER;
+	}
 	if (currentToken.matches(regexSymbols)){
 	  return Token.SYMBOL;
 	}
@@ -214,6 +218,7 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return currentToken;
+	// String constants have the first " character still, so return string without it
+    return currentToken.substring(1);
   }
 }
