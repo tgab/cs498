@@ -158,6 +158,15 @@ public class JackTokenizer {
 	if(Arrays.asList(keywords).contains(currentToken)) {
 		return Token.KEYWORD;
 	}
+	try {
+		Integer.parseInt(currentToken);
+		return Token.INT_CONST;
+	}catch(NumberFormatException x){
+		//do nothing
+	}
+	if(currentToken.indexOf('"') != -1) {
+		return Token.STRING_CONST;
+	}
 	return Token.KEYWORD;
   }
   
