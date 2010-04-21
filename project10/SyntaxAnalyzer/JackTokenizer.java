@@ -79,7 +79,7 @@ public class JackTokenizer {
 		
 		// Check if the token is a string constant, if so add directly to tokens list
 		if (nextToken.indexOf('"') != -1){
-		  Boolean check = tokens.add(nextToken.substring(1));
+		  Boolean check = tokens.add(nextToken);
 		  if (check == false){
 		    System.err.println("Error adding line to tokens list");
 		  }
@@ -203,6 +203,7 @@ public class JackTokenizer {
 	  return null;
 	}
 	
-    return currentToken;
+	// String constants have the first " character still, so return string without it
+    return currentToken.substring(1);
   }
 }
