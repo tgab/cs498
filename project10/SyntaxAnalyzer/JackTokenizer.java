@@ -17,6 +17,7 @@ public class JackTokenizer {
   public Boolean Debug = false;
   public Boolean inComment = false;
   public Boolean firstComment = false;
+  public String regexIdentifier = "[a-zA-Z_]+[a-zA-Z0-9_]*";
   public String regexSymbols = "[\\{\\}\\(\\)\\[\\]\\.,;+\\*\\-/&\\|<>=~]";
 
   public enum Token {
@@ -148,7 +149,10 @@ public class JackTokenizer {
     if (currentToken.length() == 0)
       return null;
 	  
-	// Match regular expressions	
+	// Match regular expressions
+	if (currentToken.matches(regexIdentifier)){
+	  return Token.IDENTIFIER;
+	}
 	if (currentToken.matches(regexSymbols)){
 	  return Token.SYMBOL;
 	}
