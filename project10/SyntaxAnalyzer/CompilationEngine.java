@@ -30,13 +30,13 @@ public class CompilationEngine {
 		}
 		if(token_type == Token.SYMBOL) {
 			String x = Character.toString(tokenizer.symbol());
-			if(x == "<") {
+			if(x.equals("<")) {
 				x = "&lt;";
 			}
-			if(x == ">") {
+			if(x.equals(">")) {
 				x = "&gt;";
 			}
-			if(x == "&") {
+			if(x.equals("&")) {
 				x = "&amp;";
 			}
 			outStream.write("<symbol> " + x + " </symbol>\n");
