@@ -56,6 +56,31 @@ public class CompilationEngine {
 
     // Handle last token
     token_type = tokenizer.tokenType();
+	if(token_type == Token.KEYWORD) {
+		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+	}
+	if(token_type == Token.SYMBOL) {
+		String x = Character.toString(tokenizer.symbol());
+		if(x.equals("<")) {
+			x = "&lt;";
+		}
+		if(x.equals(">")) {
+			x = "&gt;";
+		}
+		if(x.equals("&")) {
+			x = "&amp;";
+		}
+		outStream.write("<symbol> " + x + " </symbol>\n");
+	}
+	if(token_type == Token.IDENTIFIER) {
+		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+	}
+	if(token_type == Token.INT_CONST) {	
+		outStream.write("<integerConstant> " + tokenizer.intVal() + " </integerConstant>\n");
+	}
+	if(token_type == Token.STRING_CONST) {
+		outStream.write("<stringConstant> " + tokenizer.stringVal() + " </stringConstant>\n");
+	}
 	
 	outStream.write("</tokens>\n");
   
