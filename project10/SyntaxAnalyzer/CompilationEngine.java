@@ -37,28 +37,9 @@ public class CompilationEngine {
 		
 	}
 	
-	// Finished with class
+	// Finished with class, print closing bracket and tag
+	OutputXML(tokenizer.tokenType());
 	outStream.write("</class>\n");
-	
-	outStream.write("<tokens>\n");
-	 
-	// Loop through tokens and handle each one
-    while (tokenizer.hasMoreTokens()) {
-	  //assigns token's type
-      token_type = tokenizer.tokenType();
-
-    	//returns token's corresponding XML line
-		OutputXML(token_type);
-		
-      tokenizer.advance();
-    }
-
-    // Handle last token
-    token_type = tokenizer.tokenType();
-	OutputXML(token_type);
-	
-	outStream.write("</tokens>\n");
-  
   }
   
   // Compiles a static declaration or a field declaration
@@ -86,7 +67,11 @@ public class CompilationEngine {
 	while (tokenizer.keyWord().equals("var")){
 		compileVarDec();
 	}
-	//compileStatements();
+	compileStatements();
+	
+	// Print out closing bracket for subroutine body
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
 	outStream.write("</subroutineBody>\n");
 	outStream.write("</subroutineDec>\n");
   }
@@ -207,6 +192,8 @@ public class CompilationEngine {
 		// Stopping condition if have reached a symbol, the closing }
 		if (tokenizer.tokenType() == Token.SYMBOL) {
 			cont = false;
+		} else {
+			kwd = tokenizer.keyWord();
 		}
 	}
   
@@ -221,6 +208,7 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }
@@ -233,6 +221,7 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }
@@ -245,6 +234,7 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }
@@ -254,11 +244,16 @@ public class CompilationEngine {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
 	
-	// Advance until hit the next keyword for now
+	// Advance until hit the semi-colon symbol
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.SYMBOL){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
+	
+	// Print out the semi-colon
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
   }
   
   // Compiles an if statement
@@ -269,13 +264,16 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
 	
 	// If else statement advance until next keyword for now
 	if (tokenizer.keyWord().equals("else")){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	  	while (tokenizer.tokenType() != Token.KEYWORD){
+			OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
 		}
 	}
@@ -289,6 +287,7 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }
@@ -301,6 +300,7 @@ public class CompilationEngine {
 	// Advance until hit the next keyword for now
 	tokenizer.advance();
 	while (tokenizer.tokenType() != Token.KEYWORD){
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }

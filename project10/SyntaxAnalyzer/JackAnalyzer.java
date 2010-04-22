@@ -106,7 +106,13 @@ public class JackAnalyzer {
     CompilationEngine engine = new CompilationEngine(tokenizer, xml);
 	  
     // Compile this file
-    engine.CompileClass();
+	try {
+		engine.CompileClass();
+	} catch (IndexOutOfBoundsException e){
+		e.printStackTrace();
+		xml.close();
+		System.exit(1);
+	}
 	  
     // Close file stream
     xml.close();
