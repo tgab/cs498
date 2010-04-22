@@ -23,7 +23,7 @@ public class CompilationEngine {
 	outStream.write("<class>\n");
 
 	if(tokenizer.keyWord().equals("class")) {
-		System.out.println("<keyword> " + tokenizer.keyWord() + " </keyword>");
+		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		tokenizer.advance();
 		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 		tokenizer.advance();
