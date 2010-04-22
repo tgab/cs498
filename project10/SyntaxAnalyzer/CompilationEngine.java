@@ -16,7 +16,7 @@ public class CompilationEngine {
 	tokenizer = token;
   }
 
-  // Compiles a complete class
+  // Parses a complete class
   public void CompileClass() throws IOException {
 	
 	// Starting to parse a class
@@ -42,12 +42,12 @@ public class CompilationEngine {
 	outStream.write("</class>\n");
   }
   
-  // Compiles a static declaration or a field declaration
+  // Parses a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
   
   }
   
-  // Compiles a complete method, function, or constructor
+  // Parses a complete method, function, or constructor
   public void CompileSubroutine() throws IOException {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
@@ -76,7 +76,7 @@ public class CompilationEngine {
 	outStream.write("</subroutineDec>\n");
   }
   
-  // Compiles a parameter list
+  // Parses a parameter list
   public void compileParameterList() throws IOException {
 	outStream.write("<parameterList>\n");
 	
@@ -110,12 +110,12 @@ public class CompilationEngine {
 		
 	outStream.write("</parameterList>\n");
 	
-	// Handle closing parentheses
+	// Handle closing parenthesis
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
   }
   
-  // Compiles a var declaration
+  // Parses a var declaration
   public void compileVarDec() throws IOException {
   	Boolean cont = true;
 	
@@ -157,7 +157,7 @@ public class CompilationEngine {
 	outStream.write("</varDec>\n");
   }
   
-  // Compiles a sentence of statements
+  // Parses a sentence of statements
   public void compileStatements() throws IOException {
 	outStream.write("<statements>\n");
 	
@@ -200,20 +200,54 @@ public class CompilationEngine {
 	outStream.write("</statements>\n");
   }
   
-  // Compiles a do statement
+  // Parses a do statement
   public void compileDo() throws IOException {
-	// Print out the first keyword
+	// Print out the do keyword
 	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the next keyword for now
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
+	
+	// Print subroutine name
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// If we have an expression list
+	if (tokenizer.tokenType() == Token.SYMBOL){
+		if (tokenizer.symbol() == '('){
+			// Print opening parenthesis
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+	
+			// Parse expression list
+			CompileExpressionList();
+		}
+	} else {
+		// Print name
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
+	
+	// Print the . symbol
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Print the subroutine name
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Print the opening parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Parse the expression list
+	CompileExpressionList();
+	
+	// Get the ending semi-colon
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
   }
   
-  // Compiles a let statement
+  // Parses a let statement
   public void compileLet() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -226,7 +260,7 @@ public class CompilationEngine {
 	}
   }
   
-  // Compiles a while statement
+  // Parses a while statement
   public void compileWhile() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -239,7 +273,7 @@ public class CompilationEngine {
 	}
   }
   
-  // Compiles a return statement
+  // Parses a return statement
   public void compileReturn() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -256,7 +290,7 @@ public class CompilationEngine {
 	tokenizer.advance();
   }
   
-  // Compiles an if statement
+  // Parses an if statement
   public void compileIf() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -279,7 +313,7 @@ public class CompilationEngine {
 	}
   }
   
-  // Compiles an expression
+  // Parses an expression
   public void CompileExpression() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -292,7 +326,7 @@ public class CompilationEngine {
 	}
   }
   
-  // Compiles a term
+  // Parses a term
   public void CompileTerm() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -305,9 +339,43 @@ public class CompilationEngine {
 	}
   }
   
-  // Compiles a comma-separated list of expressions
+  // Parses a comma-separated list of expressions
   public void CompileExpressionList() throws IOException {
+	outStream.write("<expressionList>\n");
 	
+	Boolean cont = true;
+	token_type = tokenizer.tokenType();
+	
+	// If parameter list is empty, handle and return
+	if (token_type == Token.SYMBOL){
+		if (tokenizer.symbol() == ')'){
+			outStream.write("</expressionList>\n");
+			OutputXML(token_type);
+			tokenizer.advance();
+			return;
+		}
+	}
+	
+	// Otherwise loop through and print out the parameter list
+	while (cont){
+    	//returns token's corresponding XML line
+		OutputXML(token_type);
+		
+		tokenizer.advance();
+		
+		token_type = tokenizer.tokenType();
+		if (token_type == Token.SYMBOL){
+			if (tokenizer.symbol() == ')'){
+				cont = false;
+			}
+		}
+	}
+		
+	outStream.write("</expressionList>\n");
+	
+	// Handle closing parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
   }
   public void OutputXML(Token token_type) throws IOException {
 		if(token_type == Token.KEYWORD) {
