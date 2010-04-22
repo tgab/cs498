@@ -71,7 +71,7 @@ public class CompilationEngine {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	OutputXML(token_type);
+	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 	tokenizer.advance();
@@ -79,45 +79,97 @@ public class CompilationEngine {
 	tokenizer.advance();
 	//Parameter list
 	compileParameterList();
-	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	//Subroutine body:
 	outStream.write("<subroutineBody>\n");
-	tokenizer.advance();
 	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
-	compileVarDec();
+	while (tokenizer.keyWord().equals("var")){
+		compileVarDec();
+	}
+	//compileStatements();
+	outStream.write("</subroutineBody>\n");
+	outStream.write("</subroutineDec>\n");
   }
   
   // Compiles a parameter list
   public void compileParameterList() throws IOException {
 	outStream.write("<parameterList>\n");
-	while (tokenizer.hasMoreTokens()) {
-	  //assigns token's type
-      token_type = tokenizer.tokenType();
-
+	
+	Boolean cont = true;
+	token_type = tokenizer.tokenType();
+	
+	// If parameter list is empty, handle and return
+	if (token_type == Token.SYMBOL){
+		if (tokenizer.symbol() == ')'){
+			outStream.write("</parameterList>\n");
+			OutputXML(token_type);
+			tokenizer.advance();
+			return;
+		}
+	}
+	
+	// Otherwise loop through and print out the parameter list
+	while (cont){
     	//returns token's corresponding XML line
 		OutputXML(token_type);
 		
-      tokenizer.advance();
-    }
-	// Handle last token
-    token_type = tokenizer.tokenType();
-	OutputXML(token_type);
-	
+		tokenizer.advance();
+		
+		token_type = tokenizer.tokenType();
+		if (token_type == Token.SYMBOL){
+			if (tokenizer.symbol() == ')'){
+				cont = false;
+			}
+		}
+	}
+		
 	outStream.write("</parameterList>\n");
-	//Advance to the ')' symbol
+	
+	// Handle closing parentheses
+	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	System.out.println(tokenizer + " should be ')', otherwise check up on compileParameterList");
   }
   
   // Compiles a var declaration
   public void compileVarDec() throws IOException {
+  	Boolean cont = true;
+	
   	outStream.write("<varDec>\n");
-	outStream.write("<keyword> " + tokenizer + " </keyword>\n");
+	
+	// Print out first variable declaration
+	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	outStream.write("<keyword> " + tokenizer + " </keyword>\n");
+	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	outStream.write("<identifier> " + tokenizer + " </identifier>\n");
+	outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+	tokenizer.advance();
+	
+	// Check if there are more
+	if (tokenizer.symbol() == ';'){
+		cont = false;
+	}
+	
+	// If there are more variable declarations continue looping
+	while (cont){
+		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+		tokenizer.advance();
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+		tokenizer.advance();
+		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+		tokenizer.advance();
+		
+		if (tokenizer.symbol() == ';'){
+			cont = false;
+		}
+	}
+	
+	// Handle semi-colon at end
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	outStream.write("</varDec>\n");
   }
   
   // Compiles a sentence of statements
