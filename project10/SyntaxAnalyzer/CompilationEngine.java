@@ -29,9 +29,9 @@ public class CompilationEngine {
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
-		if(tokenizer.equals("static") || tokenizer.equals("field")) {
+		if(tokenizer.keyWord().equals("static") || tokenizer.keyWord().equals("field")) {
 			CompileClassVarDec();
-		}else if(tokenizer.equals("constructor") || tokenizer.equals("function") || tokenizer.equals("method")) {
+		}else if(tokenizer.keyWord().equals("constructor") || tokenizer.keyWord().equals("function") || tokenizer.keyWord().equals("method")) {
 			CompileSubroutine();
 		}
 		
@@ -69,21 +69,21 @@ public class CompilationEngine {
   // Compiles a complete method, function, or constructor
   public void CompileSubroutine() throws IOException {
 	outStream.write("<subroutineDec>\n");
-	outStream.write("<keyword> " + tokenizer + " </keyword>\n");
+	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
 	OutputXML(token_type);
 	tokenizer.advance();
-	outStream.write("<identifier> " + tokenizer + " </identifier>\n");
+	outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 	tokenizer.advance();
-  	outStream.write("<symbol> " + tokenizer + " </symbol>\n");
+  	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
 	//Parameter list
 	compileParameterList();
-	outStream.write("<symbol> " + tokenizer + " </symbol>\n");
+	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	//Subroutine body:
 	outStream.write("<subroutineBody>\n");
 	tokenizer.advance();
-	outStream.write("<symbol> " + tokenizer + " </symbol>\n");
+	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
 	compileVarDec();
   }
