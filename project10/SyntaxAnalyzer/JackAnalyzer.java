@@ -75,7 +75,7 @@ public class JackAnalyzer {
   public void translate(String source) throws IOException{
   
     // Define name for output file
-    String output = source.substring(0, source.length()-5) + "TTest.xml";
+    String output = source.substring(0, source.length()-5) + "Test.xml";
 
     OutputStreamWriter xml = new OutputStreamWriter(new FileOutputStream(output));
 

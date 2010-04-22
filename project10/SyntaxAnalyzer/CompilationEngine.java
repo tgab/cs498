@@ -19,14 +19,15 @@ public class CompilationEngine {
   // Compiles a complete class
   public void CompileClass() throws IOException {
 	
-	 System.out.println("Tokenizer is: " + tokenizer);
-	 if(tokenizer.equals("class")) {										//this never executes - the comparison doesn't work properly											
-	 	outStream.write("<lala> " + tokenizer + " </keyword>\n");
-		System.out.println("<keyword> " + tokenizer + " </keyword>");
+	// Starting to parse a class
+	outStream.write("<class>\n");
+
+	if(tokenizer.keyWord().equals("class")) {
+		System.out.println("<keyword> " + tokenizer.keyWord() + " </keyword>");
 		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer + " </identifier>\n");
+		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 		tokenizer.advance();
-		outStream.write("<symbol> " + tokenizer + " </symbol>\n");
+		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		if(tokenizer.equals("static") || tokenizer.equals("field")) {
 			CompileClassVarDec();
@@ -34,9 +35,13 @@ public class CompilationEngine {
 			CompileSubroutine();
 		}
 		
-	 }
-	//print default <tokens>									//IDK why this is here....
+	}
+	
+	// Finished with class
+	outStream.write("</class>\n");
+	
 	outStream.write("<tokens>\n");
+	 
 	// Loop through tokens and handle each one
     while (tokenizer.hasMoreTokens()) {
 	  //assigns token's type
@@ -57,12 +62,12 @@ public class CompilationEngine {
   }
   
   // Compiles a static declaration or a field declaration
-  public void CompileClassVarDec() {
+  public void CompileClassVarDec() throws IOException {
   
   }
   
   // Compiles a complete method, function, or constructor
-  public void CompileSubroutine() {
+  public void CompileSubroutine() throws IOException {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer + " </keyword>\n");
 	tokenizer.advance();
@@ -84,7 +89,7 @@ public class CompilationEngine {
   }
   
   // Compiles a parameter list
-  public void compileParameterList() {
+  public void compileParameterList() throws IOException {
 	outStream.write("<parameterList>\n");
 	while (tokenizer.hasMoreTokens()) {
 	  //assigns token's type
@@ -106,7 +111,7 @@ public class CompilationEngine {
   }
   
   // Compiles a var declaration
-  public void compileVarDec() {
+  public void compileVarDec() throws IOException {
   	outStream.write("<varDec>\n");
 	outStream.write("<keyword> " + tokenizer + " </keyword>\n");
 	tokenizer.advance();
@@ -116,50 +121,50 @@ public class CompilationEngine {
   }
   
   // Compiles a sentence of statements
-  public void compileStatements() {
+  public void compileStatements() throws IOException {
   
   }
   
   // Compiles a do statement
-  public void compileDo() {
+  public void compileDo() throws IOException {
   
   }
   
   // Compiles a let statement
-  public void compileLet() {
+  public void compileLet() throws IOException {
   
   }
   
   // Compiles a while statement
-  public void compileWhile() {
+  public void compileWhile() throws IOException {
   
   }
   
   // Compiles a return statement
-  public void compileReturn() {
+  public void compileReturn() throws IOException {
   
   }
   
   // Compiles an if statement
-  public void compileIf() {
+  public void compileIf() throws IOException {
   
   }
   
   // Compiles an expression
-  public void CompileExpression() {
+  public void CompileExpression() throws IOException {
   
   }
   
   // Compiles a term
-  public void CompileTerm() {
+  public void CompileTerm() throws IOException {
   
   }
   
   // Compiles a comma-separated list of expressions
-  public void CompileExpressionList() {
+  public void CompileExpressionList() throws IOException {
   
   }
-  public void OutputXML(Token token_type) {
+  public void OutputXML(Token token_type) throws IOException {
 		if(token_type == Token.KEYWORD) {
 			try{
 				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
