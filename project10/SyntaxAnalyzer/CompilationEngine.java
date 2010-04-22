@@ -122,47 +122,140 @@ public class CompilationEngine {
   
   // Compiles a sentence of statements
   public void compileStatements() throws IOException {
+	outStream.write("<statements>\n");
+	
+	String kwd = tokenizer.keyWord();
+	
+	Boolean cont = true;
+	while (cont){
+		if (kwd.equals("let")){
+			outStream.write("<letStatement>\n");
+			compileLet();
+			outStream.write("</letStatement>\n");
+		} else if (kwd.equals("if")){
+			outStream.write("<ifStatement>\n");
+			compileIf();
+			outStream.write("</ifStatement>\n");
+		} else if (kwd.equals("while")){
+			outStream.write("<whileStatement>\n");
+			compileWhile();
+			outStream.write("</whileStatement>\n");
+		} else if (kwd.equals("do")){
+			outStream.write("<doStatement>\n");
+			compileDo();
+			outStream.write("</doStatement>\n");
+		} else if (kwd.equals("return")){
+			outStream.write("<returnStatement>\n");
+			compileReturn();
+			outStream.write("</returnStatement>\n");
+		} else {
+			System.err.println("Error parsing statements.");
+		}
+		
+		// Stopping condition if have reached a symbol, the closing }
+		if (tokenizer.tokenType() == Token.SYMBOL) {
+			cont = false;
+		}
+	}
   
+	outStream.write("</statements>\n");
   }
   
   // Compiles a do statement
   public void compileDo() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
   }
   
   // Compiles a let statement
   public void compileLet() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
   }
   
   // Compiles a while statement
   public void compileWhile() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
   }
   
   // Compiles a return statement
   public void compileReturn() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.SYMBOL){
+		tokenizer.advance();
+	}
   }
   
   // Compiles an if statement
   public void compileIf() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
+	
+	// If else statement advance until next keyword for now
+	if (tokenizer.keyWord().equals("else")){
+		tokenizer.advance();
+	  	while (tokenizer.tokenType() != Token.KEYWORD){
+			tokenizer.advance();
+		}
+	}
   }
   
   // Compiles an expression
   public void CompileExpression() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
   }
   
   // Compiles a term
   public void CompileTerm() throws IOException {
-  
+	// Print out the first keyword
+	OutputXML(tokenizer.tokenType());
+	
+	// Advance until hit the next keyword for now
+	tokenizer.advance();
+	while (tokenizer.tokenType() != Token.KEYWORD){
+		tokenizer.advance();
+	}
   }
   
   // Compiles a comma-separated list of expressions
   public void CompileExpressionList() throws IOException {
-  
+	
   }
   public void OutputXML(Token token_type) throws IOException {
 		if(token_type == Token.KEYWORD) {
