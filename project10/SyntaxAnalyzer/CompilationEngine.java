@@ -3,12 +3,14 @@
 package SyntaxAnalyzer;
 
 import java.io.*;
+import java.util.Arrays;
 import SyntaxAnalyzer.JackTokenizer.Token;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
   public JackTokenizer tokenizer;
   public JackTokenizer.Token token_type;
+  char[] op = {'+','-','*','/','&','|','<','>','='};
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
@@ -29,9 +31,10 @@ public class CompilationEngine {
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
-		if(tokenizer.keyWord().equals("static") || tokenizer.keyWord().equals("field")) {
+		while(tokenizer.keyWord().equals("static") || tokenizer.keyWord().equals("field")) {
 			CompileClassVarDec();
-		}else if(tokenizer.keyWord().equals("constructor") || tokenizer.keyWord().equals("function") || tokenizer.keyWord().equals("method")) {
+		}
+		while(tokenizer.hasMoreTokens() && (tokenizer.keyWord().equals("constructor") || tokenizer.keyWord().equals("function") || tokenizer.keyWord().equals("method"))) {
 			CompileSubroutine();
 		}
 		
@@ -44,7 +47,39 @@ public class CompilationEngine {
   
   // Parses a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
-  
+	Boolean cont = true;
+	
+	outStream.write("<classVarDec>\n");
+	// Print out first keyword
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Print out first variable declaration
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Check if there are more
+	if (tokenizer.symbol() == ';'){
+		cont = false;
+	}
+	
+	// If there are more variable declarations continue looping
+	while (cont){
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		
+		if (tokenizer.symbol() == ';'){
+			cont = false;
+		}
+	}
+	
+	// Handle semi-colon at end
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	outStream.write("</classVarDec>\n");
   }
   
   // Parses a complete method, function, or constructor
@@ -206,58 +241,75 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
-	// Print subroutine name
+	// Print subroutine name or class name
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// If we have an expression list
-	if (tokenizer.tokenType() == Token.SYMBOL){
-		if (tokenizer.symbol() == '('){
-			// Print opening parenthesis
-			OutputXML(tokenizer.tokenType());
-			tokenizer.advance();
-	
-			// Parse expression list
-			CompileExpressionList();
-		}
-	} else {
-		// Print name
+	if (tokenizer.symbol() == '('){
+		// Print opening parenthesis
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+
+		// Parse expression list
+		CompileExpressionList();
+		
+		// Get the ending semi-colon
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+	} else if (tokenizer.symbol() == '.'){
+		// Print the . symbol
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		
+		// Print the subroutine name
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		
+		// Print the opening parenthesis
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		
+		// Parse the expression list
+		CompileExpressionList();
+		
+		// Get the ending semi-colon
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
-	
-	// Print the . symbol
-	OutputXML(tokenizer.tokenType());
-	tokenizer.advance();
-	
-	// Print the subroutine name
-	OutputXML(tokenizer.tokenType());
-	tokenizer.advance();
-	
-	// Print the opening parenthesis
-	OutputXML(tokenizer.tokenType());
-	tokenizer.advance();
-	
-	// Parse the expression list
-	CompileExpressionList();
-	
-	// Get the ending semi-colon
-	OutputXML(tokenizer.tokenType());
-	tokenizer.advance();
-	
   }
   
   // Parses a let statement
   public void compileLet() throws IOException {
-	// Print out the first keyword
+	// Print out the let keyword
 	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the next keyword for now
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
+	
+	// Print out the variable name
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	if (tokenizer.symbol() == '['){
+		// Print out opening bracket
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		// Parse expression
+		CompileExpression();
+		// Print out closing bracket
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
+	
+	// Print out equals sign
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Parse expression
+	CompileExpression();
+	
+	// Print out semi-colon
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
   }
   
   // Parses a while statement
@@ -277,17 +329,21 @@ public class CompilationEngine {
   public void compileReturn() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the semi-colon symbol
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.SYMBOL){
+	
+	if (tokenizer.tokenType() == Token.SYMBOL){
+		if (tokenizer.symbol() == ';'){
+			// Print out the semi-colon
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+		}
+	} else {
+		CompileExpression();
+		
+		// Print out the semi-colon
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
-	
-	// Print out the semi-colon
-	OutputXML(tokenizer.tokenType());
-	tokenizer.advance();
   }
   
   // Parses an if statement
@@ -315,15 +371,33 @@ public class CompilationEngine {
   
   // Parses an expression
   public void CompileExpression() throws IOException {
-	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
+	outStream.write("<expression>\n");
 	
-	// Advance until hit the next keyword for now
+	// Print out the first term
+	outStream.write("<term>\n");
+	OutputXML(tokenizer.tokenType());
+	outStream.write("</term>\n");
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
+	
+	// Check type of next symbol
+	char sym = tokenizer.symbol();
+	
+	while (Arrays.asList(op).contains(sym)){
+		// Print out operation
 		OutputXML(tokenizer.tokenType());
+		
+		// Print out term
 		tokenizer.advance();
+		outStream.write("<term>\n");
+		OutputXML(tokenizer.tokenType());
+		outStream.write("</term>\n");
+		
+		// Check next symbol
+		tokenizer.advance();
+		sym = tokenizer.symbol();
 	}
+	
+	outStream.write("</expression>\n");
   }
   
   // Parses a term

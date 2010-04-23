@@ -23,7 +23,11 @@
 <keyword> let </keyword>
 <identifier> game </identifier>
 <symbol> = </symbol>
+<expression>
+<term>
 <identifier> game </identifier>
+</term>
+</expression>
 <symbol> ; </symbol>
 </letStatement>
 <doStatement>
