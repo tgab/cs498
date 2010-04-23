@@ -186,7 +186,7 @@ public class JackTokenizer {
   // Returns the character which is the current token
   public char symbol() {
 	if (tokenType() != Token.SYMBOL) {
-	  System.err.println("Error retrieving symbol");
+	  System.err.println("Error retrieving symbol at token " + counter);
 	  return '0';
 	}
 	

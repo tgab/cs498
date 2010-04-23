@@ -59,7 +59,6 @@ public class CompilationEngine {
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
 		cont = false;
@@ -69,9 +68,11 @@ public class CompilationEngine {
 	while (cont){
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
-		
-		if (tokenizer.symbol() == ';'){
-			cont = false;
+
+		if (tokenizer.tokenType() == Token.SYMBOL){
+			if (tokenizer.symbol() == ';'){
+				cont = false;
+			}
 		}
 	}
 	
@@ -316,13 +317,29 @@ public class CompilationEngine {
   public void compileWhile() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the next keyword for now
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
-	}
+	
+	// Print out opening parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Compile the expression
+	CompileExpression();
+	
+	// Print out the closing parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Print out the opening bracket
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Compile statements
+	compileStatements();
+	
+	// Print out closing bracket
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
   }
   
   // Parses a return statement
@@ -350,22 +367,42 @@ public class CompilationEngine {
   public void compileIf() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the next keyword for now
 	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
-	}
+	
+	// Print out opening parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Compile the expression
+	CompileExpression();
+	
+	// Print out the closing parenthesis
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Print out the opening bracket
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+	
+	// Compile statements
+	compileStatements();
+	
+	// Print out closing bracket
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
 	
 	// If else statement advance until next keyword for now
 	if (tokenizer.keyWord().equals("else")){
+		// Print out the opening bracket
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
-	  	while (tokenizer.tokenType() != Token.KEYWORD){
-			OutputXML(tokenizer.tokenType());
-			tokenizer.advance();
-		}
+		
+		// Compile statements
+		compileStatements();
+		
+		// Print out closing bracket
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
 	}
   }
   
@@ -433,14 +470,15 @@ public class CompilationEngine {
 	// Otherwise loop through and print out the parameter list
 	while (cont){
     	//returns token's corresponding XML line
-		OutputXML(token_type);
-		
-		tokenizer.advance();
+		CompileExpression();
 		
 		token_type = tokenizer.tokenType();
 		if (token_type == Token.SYMBOL){
 			if (tokenizer.symbol() == ')'){
 				cont = false;
+			} else if (tokenizer.symbol() == ','){
+				OutputXML(tokenizer.tokenType());
+				tokenizer.advance();
 			}
 		}
 	}
