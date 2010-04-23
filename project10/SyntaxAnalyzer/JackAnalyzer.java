@@ -112,6 +112,10 @@ public class JackAnalyzer {
 		e.printStackTrace();
 		xml.close();
 		System.exit(1);
+	} catch (NullPointerException e){
+		e.printStackTrace();
+		xml.close();
+		System.exit(1);
 	}
 	  
     // Close file stream
