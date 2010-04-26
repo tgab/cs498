@@ -423,9 +423,9 @@ public class CompilationEngine {
 	while (Arrays.asList(op).contains(sym)){
 		// Print out operation
 		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
 		
 		// Print out term
-		tokenizer.advance();
 		outStream.write("<term>\n");
 		OutputXML(tokenizer.tokenType());
 		outStream.write("</term>\n");
@@ -440,15 +440,7 @@ public class CompilationEngine {
   
   // Parses a term
   public void CompileTerm() throws IOException {
-	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
-	
-	// Advance until hit the next keyword for now
-	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
-	}
+  
   }
   
   // Parses a comma-separated list of expressions
