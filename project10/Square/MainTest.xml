@@ -29,9 +29,42 @@
 <symbol> . </symbol>
 <identifier> new </identifier>
 <symbol> ( </symbol>
+<expressionList>
+</expressionList>
 <symbol> ) </symbol>
-<symbol> ; </symbol>
 </term>
 </expression>
-<keyword> do </keyword>
+<symbol> ; </symbol>
 </letStatement>
+<doStatement>
+<keyword> do </keyword>
+<identifier> game </identifier>
+<symbol> . </symbol>
+<identifier> run </identifier>
+<symbol> ( </symbol>
+<expressionList>
+</expressionList>
+<symbol> ) </symbol>
+<symbol> ; </symbol>
+</doStatement>
+<doStatement>
+<keyword> do </keyword>
+<identifier> game </identifier>
+<symbol> . </symbol>
+<identifier> dispose </identifier>
+<symbol> ( </symbol>
+<expressionList>
+</expressionList>
+<symbol> ) </symbol>
+<symbol> ; </symbol>
+</doStatement>
+<returnStatement>
+<keyword> return </keyword>
+<symbol> ; </symbol>
+</returnStatement>
+</statements>
+<symbol> } </symbol>
+</subroutineBody>
+</subroutineDec>
+<symbol> } </symbol>
+</class>

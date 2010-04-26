@@ -437,31 +437,31 @@ public class CompilationEngine {
   public void CompileTerm() throws IOException {
 	outStream.write("<term>\n");
 	
-	if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '(') {
+	if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '(') {
 		outStream.write("<symbol> " + "(" + " </symbol>\n");
 		tokenizer.advance();
 		CompileExpression();
 		outStream.write("<symbol> " + ")" + " </symbol>\n");
 		tokenizer.advance();		
-	} else if(tokenizer == "-" || tokenizer == "~") {
+	} else if(tokenizer.tokenType() == Token.SYMBOL && (tokenizer.symbol() == '-' || tokenizer.symbol() == '~'	)) {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		CompileTerm();
-	}else(true) {
+	}else {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
-		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '[') {
+		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '[') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 			CompileExpression();
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
-		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '('){
+		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '('){
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 			CompileExpressionList();
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
-		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '.') {
+		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '.') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 			OutputXML(tokenizer.tokenType());
@@ -469,8 +469,8 @@ public class CompilationEngine {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 			CompileExpressionList();
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
-			tokenizer.advance();
+			//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			//tokenizer.advance();
 			
 		}
 	}
