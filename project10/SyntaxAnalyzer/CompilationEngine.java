@@ -1,5 +1,4 @@
 // CompilationEngine.java
-//THIS IS A TEST COMMENT
 
 package SyntaxAnalyzer;
 
@@ -178,10 +177,6 @@ public class CompilationEngine {
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
-		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
-		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){
@@ -431,7 +426,7 @@ public class CompilationEngine {
 		// Check next symbol
 		sym = tokenizer.symbol();
 	}
-	
+
 	outStream.write("</expression>\n");
   }
   
@@ -457,6 +452,7 @@ public class CompilationEngine {
 			tokenizer.advance();
 			CompileExpression();
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
 		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '('){
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
