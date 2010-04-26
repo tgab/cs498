@@ -5,13 +5,15 @@ package SyntaxAnalyzer;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import SyntaxAnalyzer.JackTokenizer.Token;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
   public JackTokenizer tokenizer;
   public JackTokenizer.Token token_type;
-  char[] op = {'+','-','*','/','&','|','<','>','='};
+  public char[] op = {'+','-','*','/','&','|','<','>','='};
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
@@ -418,7 +420,7 @@ public class CompilationEngine {
 	// Check type of next symbol
 	char sym = tokenizer.symbol();
 	
-	while (Arrays.asList(op).contains(sym)){
+	while (sym == '+' || sym == '-' || sym == '*' || sym == '/' || sym == '&' || sym == '|' || sym == '<' || sym == '>' || sym == '='){
 		// Print out operation
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
@@ -469,8 +471,6 @@ public class CompilationEngine {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 			CompileExpressionList();
-			//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
-			//tokenizer.advance();
 			
 		}
 	}
