@@ -202,36 +202,36 @@ public class CompilationEngine {
 	Boolean cont = true;
 	while (cont){
 		if (kwd.equals("let")){
-			outStream.write("<letStatement>\n");
-			compileLet();
-			outStream.write("</letStatement>\n");
-		} else if (kwd.equals("if")){
-			outStream.write("<ifStatement>\n");
-			compileIf();
-			outStream.write("</ifStatement>\n");
-		} else if (kwd.equals("while")){
-			outStream.write("<whileStatement>\n");
-			compileWhile();
-			outStream.write("</whileStatement>\n");
-		} else if (kwd.equals("do")){
-			outStream.write("<doStatement>\n");
-			compileDo();
-			outStream.write("</doStatement>\n");
-		} else if (kwd.equals("return")){
-			outStream.write("<returnStatement>\n");
-			compileReturn();
-			outStream.write("</returnStatement>\n");
-		} else {
-			System.err.println("Error parsing statements.");
-		}
-		
-		// Stopping condition if have reached a symbol, the closing }
-		if (tokenizer.tokenType() == Token.SYMBOL) {
-			cont = false;
-		} else {
-			kwd = tokenizer.keyWord();
-		}
-	}
+					outStream.write("<letStatement>\n");
+					compileLet();
+					outStream.write("</letStatement>\n");
+				} else if (kwd.equals("if")){
+					outStream.write("<ifStatement>\n");
+					compileIf();
+					outStream.write("</ifStatement>\n");
+				} else if (kwd.equals("while")){
+					outStream.write("<whileStatement>\n");
+					compileWhile();
+					outStream.write("</whileStatement>\n");
+				} else if (kwd.equals("do")){
+					outStream.write("<doStatement>\n");
+					compileDo();
+					outStream.write("</doStatement>\n");
+				} else if (kwd.equals("return")){
+					outStream.write("<returnStatement>\n");
+					compileReturn();
+					outStream.write("</returnStatement>\n");
+				} else {
+					System.err.println("Error parsing statements.");
+				}
+				
+				// Stopping condition if have reached a symbol, the closing }
+				if (tokenizer.tokenType() == Token.SYMBOL) {
+					cont = false;
+				} else {
+					kwd = tokenizer.keyWord();
+				}
+			}
   
 	outStream.write("</statements>\n");
   }
