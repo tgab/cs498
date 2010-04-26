@@ -434,6 +434,7 @@ public class CompilationEngine {
   
   // Parses a term
   public void CompileTerm() throws IOException {
+	outStream.write("<term>\n");
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
 	
@@ -443,6 +444,7 @@ public class CompilationEngine {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
+	outStream.write("</term>\n");
   }
   
   // Parses a comma-separated list of expressions
