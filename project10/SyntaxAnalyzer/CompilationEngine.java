@@ -436,14 +436,43 @@ public class CompilationEngine {
   // Parses a term
   public void CompileTerm() throws IOException {
 	outStream.write("<term>\n");
-	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
 	
-	// Advance until hit the next keyword for now
-	tokenizer.advance();
-	while (tokenizer.tokenType() != Token.KEYWORD){
+	if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '(') {
+		outStream.write("<symbol> " + "(" + " </symbol>\n");
+		tokenizer.advance();
+		CompileExpression();
+		outStream.write("<symbol> " + ")" + " </symbol>\n");
+		tokenizer.advance();		
+	} else if(tokenizer == "-" || tokenizer == "~") {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
+		CompileTerm();
+	}else(true) {
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '[') {
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+			CompileExpression();
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '('){
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+			CompileExpressionList();
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol == '.') {
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+			CompileExpressionList();
+			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			tokenizer.advance();
+			
+		}
 	}
 	outStream.write("</term>\n");
   }
