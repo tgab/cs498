@@ -26,72 +26,7 @@
 <expression>
 <term>
 <identifier> SquareGame </identifier>
-<expression>
-<term>
+</term>
+</expression>
 <symbol> . </symbol>
-<expression>
-<term>
-<identifier> new </identifier>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ) </symbol>
-<expression>
-<term>
-<symbol> ; </symbol>
-<expression>
-<term>
-<keyword> do </keyword>
-<expression>
-<term>
-<identifier> game </identifier>
-<expression>
-<term>
-<symbol> . </symbol>
-<expression>
-<term>
-<identifier> run </identifier>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ) </symbol>
-<expression>
-<term>
-<symbol> ; </symbol>
-<expression>
-<term>
-<keyword> do </keyword>
-<expression>
-<term>
-<identifier> game </identifier>
-<expression>
-<term>
-<symbol> . </symbol>
-<expression>
-<term>
-<identifier> dispose </identifier>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ) </symbol>
-<expression>
-<term>
-<symbol> ; </symbol>
-<expression>
-<term>
-<keyword> return </keyword>
-<expression>
-<term>
-<symbol> ; </symbol>
-<expression>
-<term>
-<symbol> } </symbol>
-<expression>
-<term>
-<symbol> } </symbol>
+</letStatement>
