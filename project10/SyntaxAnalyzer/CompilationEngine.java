@@ -412,10 +412,7 @@ public class CompilationEngine {
 	outStream.write("<expression>\n");
 	
 	// Print out the first term
-	outStream.write("<term>\n");
-	OutputXML(tokenizer.tokenType());
-	outStream.write("</term>\n");
-	tokenizer.advance();
+	CompileTerm();
 	
 	// Check type of next symbol
 	char sym = tokenizer.symbol();
@@ -423,15 +420,12 @@ public class CompilationEngine {
 	while (Arrays.asList(op).contains(sym)){
 		// Print out operation
 		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
 		
 		// Print out term
-		tokenizer.advance();
-		outStream.write("<term>\n");
-		OutputXML(tokenizer.tokenType());
-		outStream.write("</term>\n");
+		CompileTerm();
 		
 		// Check next symbol
-		tokenizer.advance();
 		sym = tokenizer.symbol();
 	}
 	
