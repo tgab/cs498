@@ -243,6 +243,14 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
+	compileSubroutine();
+	
+	// Get the ending semi-colon
+	OutputXML(tokenizer.tokenType());
+	tokenizer.advance();
+  }
+  
+  public void compileSubroutine() throws IOException {
 	// Print subroutine name or class name
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -256,9 +264,6 @@ public class CompilationEngine {
 		// Parse expression list
 		CompileExpressionList();
 		
-		// Get the ending semi-colon
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
 	} else if (tokenizer.symbol() == '.'){
 		// Print the . symbol
 		OutputXML(tokenizer.tokenType());
@@ -274,10 +279,6 @@ public class CompilationEngine {
 		
 		// Parse the expression list
 		CompileExpressionList();
-		
-		// Get the ending semi-colon
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
 	}
   }
   
