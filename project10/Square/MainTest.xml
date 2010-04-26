@@ -24,9 +24,12 @@
 <identifier> game </identifier>
 <symbol> = </symbol>
 <expression>
-<term>
 <identifier> SquareGame </identifier>
-</term>
-</expression>
 <symbol> . </symbol>
+<identifier> new </identifier>
+<symbol> ( </symbol>
+<symbol> ) </symbol>
+<symbol> ; </symbol>
+</expression>
+<keyword> do </keyword>
 </letStatement>
