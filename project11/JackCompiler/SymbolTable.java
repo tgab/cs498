@@ -83,12 +83,12 @@ public class SymbolTable{
 	
 	//Returns the type of the named identifier in the current scope
 	public String TypeOf(String name) {
-		return null;
+		return symbols.get(name).type;
 	}
 	
 	//Returns the index assigned to the name identifier
 	public int IndexOf(String name){
-		return 0;
+		return symbols.get(name).index;
 		
 	}
 }
