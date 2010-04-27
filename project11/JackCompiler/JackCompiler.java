@@ -1,4 +1,4 @@
- // JackCompiler.java
+// JackCompiler.java
 // by Thea Gab
 // Compile: (from directory with JackCompiler folder)
 //  javac JackCompiler/*.java
