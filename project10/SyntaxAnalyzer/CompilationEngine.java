@@ -391,7 +391,11 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// If else statement advance until next keyword for now
-	if (tokenizer.keyWord().equals("else")){
+	if (tokenizer.tokenType() == Token.KEYWORD && tokenizer.keyWord().equals("else")){
+		// Print out the else
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+		
 		// Print out the opening bracket
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
