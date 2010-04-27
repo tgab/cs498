@@ -20,10 +20,10 @@ public class CompilationEngine {
 	tokenizer = token;
   }
 
-  // Parses a complete class
+  // Compiles a complete class
   public void CompileClass() throws IOException {
 	
-	// Starting to parse a class
+	// Starting to compile a class
 	outStream.write("<class>\n");
 
 	if(tokenizer.keyWord().equals("class")) {
@@ -47,7 +47,7 @@ public class CompilationEngine {
 	outStream.write("</class>\n");
   }
   
-  // Parses a static declaration or a field declaration
+  // Compiles a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
 	Boolean cont = true;
 	
@@ -85,7 +85,7 @@ public class CompilationEngine {
 	outStream.write("</classVarDec>\n");
   }
   
-  // Parses a complete method, function, or constructor
+  // Compiles a complete method, function, or constructor
   public void CompileSubroutine() throws IOException {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
@@ -114,7 +114,7 @@ public class CompilationEngine {
 	outStream.write("</subroutineDec>\n");
   }
   
-  // Parses a parameter list
+  // Compiles a parameter list
   public void compileParameterList() throws IOException {
 	outStream.write("<parameterList>\n");
 	
@@ -153,7 +153,7 @@ public class CompilationEngine {
 	tokenizer.advance();
   }
   
-  // Parses a var declaration
+  // Compiles a var declaration
   public void compileVarDec() throws IOException {
   	Boolean cont = true;
 	
@@ -191,7 +191,7 @@ public class CompilationEngine {
 	outStream.write("</varDec>\n");
   }
   
-  // Parses a sentence of statements
+  // Compiles a sentence of statements
   public void compileStatements() throws IOException {
 	outStream.write("<statements>\n");
 	
@@ -234,7 +234,7 @@ public class CompilationEngine {
 	outStream.write("</statements>\n");
   }
   
-  // Parses a do statement
+  // Compiles a do statement
   public void compileDo() throws IOException {
 	// Print out the do keyword
 	OutputXML(tokenizer.tokenType());
@@ -258,7 +258,7 @@ public class CompilationEngine {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 
-		// Parse expression list
+		// Compile expression list
 		CompileExpressionList();
 		
 	} else if (tokenizer.symbol() == '.'){
@@ -274,12 +274,12 @@ public class CompilationEngine {
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
-		// Parse the expression list
+		// Compile the expression list
 		CompileExpressionList();
 	}
   }
   
-  // Parses a let statement
+  // Compiles a let statement
   public void compileLet() throws IOException {
 	// Print out the let keyword
 	OutputXML(tokenizer.tokenType());
@@ -293,7 +293,7 @@ public class CompilationEngine {
 		// Print out opening bracket
 		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
-		// Parse expression
+		// Compile expression
 		CompileExpression();
 		// Print out closing bracket
 		OutputXML(tokenizer.tokenType());
@@ -304,7 +304,7 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
-	// Parse expression
+	// Compile expression
 	CompileExpression();
 	
 	// Print out semi-colon
@@ -312,7 +312,7 @@ public class CompilationEngine {
 	tokenizer.advance();
   }
   
-  // Parses a while statement
+  // Compiles a while statement
   public void compileWhile() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -341,7 +341,7 @@ public class CompilationEngine {
 	tokenizer.advance();
   }
   
-  // Parses a return statement
+  // Compiles a return statement
   public void compileReturn() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -362,7 +362,7 @@ public class CompilationEngine {
 	}
   }
   
-  // Parses an if statement
+  // Compiles an if statement
   public void compileIf() throws IOException {
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -410,7 +410,7 @@ public class CompilationEngine {
 	
   }
   
-  // Parses an expression
+  // Compiles an expression
   public void CompileExpression() throws IOException {
 	outStream.write("<expression>\n");
 	
@@ -435,7 +435,7 @@ public class CompilationEngine {
 	outStream.write("</expression>\n");
   }
   
-  // Parses a term
+  // Compiles a term
   public void CompileTerm() throws IOException {
 	outStream.write("<term>\n");
 	
@@ -478,7 +478,7 @@ public class CompilationEngine {
 	outStream.write("</term>\n");
   }
   
-  // Parses a comma-separated list of expressions
+  // Compiles a comma-separated list of expressions
   public void CompileExpressionList() throws IOException {
 	outStream.write("<expressionList>\n");
 	
