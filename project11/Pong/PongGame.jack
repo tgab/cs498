@@ -89,15 +89,15 @@ class PongGame {
             if (key = 130) {
 	        do bat.setDirection(1);
             }
-	    else {
-	        if (key = 132) {
- 	            do bat.setDirection(2);
-                }
-		else {
-	            if (key = 140) {
+			else {
+				if (key = 132) {
+					do bat.setDirection(2);
+				}
+				else {
+					if (key = 140) {
                         let exit = true;
-		    }
-		}
+					}
+				}
             }
 
             // waits for the key to be released.
