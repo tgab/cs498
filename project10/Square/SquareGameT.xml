@@ -1,4 +1,4 @@
-<tokens>
+	<tokens>
 <keyword> class </keyword>
 <identifier> SquareGame </identifier>
 <symbol> { </symbol>
