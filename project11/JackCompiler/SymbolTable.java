@@ -22,7 +22,7 @@ public class SymbolTable{
 	}
 	
 	//Declare three hashmaps - one for each command type
-	private static HashMap symbols;
+	private static HashMap<String, Entry> symbols;
 
 	//creates a new empty symbol table
 	public SymbolTable()
@@ -78,8 +78,7 @@ public class SymbolTable{
 	
 	//Returns the kind of the named identifier in the current scope
 	public Kind KindOf(String name) {
-		Entry x = new Entry (symbols.get(name));
-		return x.kind;
+		return symbols.get(name).kind;
 	}	
 	
 	//Returns the type of the named identifier in the current scope
