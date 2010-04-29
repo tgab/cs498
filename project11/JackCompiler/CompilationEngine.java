@@ -99,8 +99,13 @@ public class CompilationEngine {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
-	tokenizer.advance();
+	if(tokenizer.tokenType() == Token.IDENTIFIER) {
+		OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
+		tokenizer.advance();
+	}else{
+		OutputXML(tokenizer.tokenType());
+		tokenizer.advance();
+	}
 	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	tokenizer.advance();
   	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
