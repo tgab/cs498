@@ -13,7 +13,7 @@ public class SymbolTable{
 	
 	public enum Kind {
 	    STATIC, FIELD, ARG, VAR;
-	  }
+	}
 	
 	public class Entry {
 		String type;

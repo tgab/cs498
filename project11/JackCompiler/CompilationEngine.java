@@ -29,7 +29,7 @@ public class CompilationEngine {
 	if(tokenizer.keyWord().equals("class")) {
 		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+		outStream.write("<identifier> " + tokenizer.identifier() + " CAT = class USED = false" + " </identifier>\n");
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
@@ -521,6 +521,54 @@ public class CompilationEngine {
 		if(token_type == Token.KEYWORD) {
 			try{
 				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+			}catch(IOException x){
+				//TODO: print error?
+			}
+		}
+		if(token_type == Token.SYMBOL) {
+			String x = Character.toString(tokenizer.symbol());
+			if(x.equals("<")) {
+				x = "&lt;";
+			}
+			if(x.equals(">")) {
+				x = "&gt;";
+			}
+			if(x.equals("&")) {
+				x = "&amp;";
+			}
+			try{
+				outStream.write("<symbol> " + x + " </symbol>\n");
+			}catch(IOException z){
+				System.err.println("error outputing XML");
+			}
+		}
+		if(token_type == Token.IDENTIFIER) {
+			try{
+				outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+			}catch(IOException h){
+				System.err.println("error outputing XML");
+			}
+		}
+		if(token_type == Token.INT_CONST) {	
+			try{
+				outStream.write("<integerConstant> " + tokenizer.intVal() + " </integerConstant>\n");
+			}catch(IOException k) {
+				System.err.println("error outputing XML");
+			}
+		}
+		if(token_type == Token.STRING_CONST) {
+			try{
+				outStream.write("<stringConstant> " + tokenizer.stringVal() + " </stringConstant>\n");
+			}catch(IOException m){
+				System.err.println("error outputing XML");
+			}
+		}
+  }
+  
+  public void OutputXML(Token token_type, Cat c, Boolean used) throws IOException {
+		if(token_type == Token.KEYWORD) {
+			try{
+				outStream.write("<keyword> " + tokenizer.keyWord() + " CAT=" + c + " USED=" + used + " </keyword>\n");
 			}catch(IOException x){
 				//TODO: print error?
 			}
