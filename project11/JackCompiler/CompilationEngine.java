@@ -263,7 +263,7 @@ public class CompilationEngine {
   
   public void compileSubroutine() throws IOException {
 	// Print subroutine name or class name
-	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
+	OutputXML(tokenizer.tokenType(), Cat.SUB, true);
 	tokenizer.advance();
 	
 	// If we have an expression list
@@ -281,7 +281,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		
 		// Print the subroutine name
-		OutputXML(tokenizer.tokenType(), Cat.SUB, false);
+		OutputXML(tokenizer.tokenType(), Cat.SUB, true);
 		tokenizer.advance();
 		
 		// Print the opening parenthesis
@@ -465,7 +465,7 @@ public class CompilationEngine {
 		CompileTerm();
 	}else {
 		if(tokenizer.tokenType() == Token.IDENTIFIER) {
-			OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+			OutputXML(tokenizer.tokenType(), Cat.VAR, true);
 			tokenizer.advance();
 		}else{
 			OutputXML(tokenizer.tokenType());

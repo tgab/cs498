@@ -25,7 +25,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> SquareGame CAT=VAR USED=false </identifier>
+<identifier> SquareGame CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
@@ -38,9 +38,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game CAT=SUB USED=false </identifier>
+<identifier> game CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> run CAT=SUB USED=false </identifier>
+<identifier> run CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -49,9 +49,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game CAT=SUB USED=false </identifier>
+<identifier> game CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=false </identifier>
+<identifier> dispose CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>

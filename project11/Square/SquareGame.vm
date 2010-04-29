@@ -31,7 +31,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Square CAT=VAR USED=false </identifier>
+<identifier> Square CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
@@ -96,9 +96,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=false </identifier>
+<identifier> dispose CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -107,9 +107,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=false </identifier>
+<identifier> Memory CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc CAT=SUB USED=false </identifier>
+<identifier> deAlloc CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -170,7 +170,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit CAT=VAR USED=false </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </term>
 </expression>
@@ -182,7 +182,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -198,7 +198,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard CAT=VAR USED=false </identifier>
+<identifier> Keyboard CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
@@ -211,7 +211,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveSquare CAT=SUB USED=false </identifier>
+<identifier> moveSquare CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -226,7 +226,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -255,7 +255,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -267,9 +267,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> decSize CAT=SUB USED=false </identifier>
+<identifier> decSize CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -284,7 +284,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -296,9 +296,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> incSize CAT=SUB USED=false </identifier>
+<identifier> incSize CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -313,7 +313,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -342,7 +342,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -371,7 +371,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -400,7 +400,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -434,7 +434,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key CAT=VAR USED=false </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -454,7 +454,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard CAT=VAR USED=false </identifier>
+<identifier> Keyboard CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
@@ -467,7 +467,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveSquare CAT=SUB USED=false </identifier>
+<identifier> moveSquare CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -504,7 +504,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction CAT=VAR USED=false </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -516,9 +516,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveUp CAT=SUB USED=false </identifier>
+<identifier> moveUp CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -533,7 +533,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction CAT=VAR USED=false </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -545,9 +545,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveDown CAT=SUB USED=false </identifier>
+<identifier> moveDown CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -562,7 +562,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction CAT=VAR USED=false </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -574,9 +574,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveLeft CAT=SUB USED=false </identifier>
+<identifier> moveLeft CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -591,7 +591,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction CAT=VAR USED=false </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -603,9 +603,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square CAT=SUB USED=false </identifier>
+<identifier> square CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveRight CAT=SUB USED=false </identifier>
+<identifier> moveRight CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -617,9 +617,9 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Sys CAT=SUB USED=false </identifier>
+<identifier> Sys CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> wait CAT=SUB USED=false </identifier>
+<identifier> wait CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
