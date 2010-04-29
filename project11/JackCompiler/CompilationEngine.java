@@ -14,6 +14,10 @@ public class CompilationEngine {
   public JackTokenizer.Token token_type;
   public char[] op = {'+','-','*','/','&','|','<','>','='};
 
+  public enum Cat {
+	  VAR, ARG, STATIC, FIELD, CLASS, SUB;
+  }
+
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
     outStream = stream;
