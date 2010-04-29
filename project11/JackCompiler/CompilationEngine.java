@@ -15,7 +15,7 @@ public class CompilationEngine {
   public char[] op = {'+','-','*','/','&','|','<','>','='};
 
   public enum Cat {
-	  VAR, ARG, STATIC, FIELD, CLASS, SUB;
+	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
   }
 
   // Creates a new compilation engine
@@ -66,7 +66,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// Print out first variable declaration
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), type, false);
 	tokenizer.advance();
@@ -99,7 +99,7 @@ public class CompilationEngine {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	tokenizer.advance();
@@ -171,7 +171,7 @@ public class CompilationEngine {
 	// Print out first variable declaration
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
 	tokenizer.advance();

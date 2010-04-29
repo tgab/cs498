@@ -14,7 +14,7 @@
 <symbol> { </symbol>
 <varDec>
 <keyword> var </keyword>
-<identifier> SquareGame </identifier>
+<identifier> SquareGame CAT=TYPE USED=true </identifier>
 <identifier> game CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>

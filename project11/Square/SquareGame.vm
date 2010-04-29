@@ -4,7 +4,7 @@
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
-<identifier> Square </identifier>
+<identifier> Square CAT=TYPE USED=true </identifier>
 <identifier> square CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
@@ -16,7 +16,7 @@
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
-<identifier> SquareGame </identifier>
+<identifier> SquareGame CAT=TYPE USED=true </identifier>
 <identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>

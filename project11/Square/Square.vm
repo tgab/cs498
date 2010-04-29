@@ -18,7 +18,7 @@
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
-<identifier> Square </identifier>
+<identifier> Square CAT=TYPE USED=true </identifier>
 <identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
