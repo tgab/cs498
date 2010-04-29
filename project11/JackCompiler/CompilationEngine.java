@@ -253,7 +253,7 @@ public class CompilationEngine {
   
   public void compileSubroutine() throws IOException {
 	// Print subroutine name or class name
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	tokenizer.advance();
 	
 	// If we have an expression list
@@ -290,7 +290,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// Print out the variable name
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.VAR, true);
 	tokenizer.advance();
 	
 	if (tokenizer.symbol() == '['){
@@ -454,8 +454,13 @@ public class CompilationEngine {
 		tokenizer.advance();
 		CompileTerm();
 	}else {
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
+		if(tokenizer.TokenType() == Token.IDENTIFIER) {
+			OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+			tokenizer.advance();
+		}else{
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+		}
 		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '[') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();

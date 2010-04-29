@@ -5,7 +5,7 @@
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x CAT=VAR USED=false </identifier>
+<identifier> x </identifier>
 <symbol> , </symbol>
 <identifier> y </identifier>
 <symbol> ; </symbol>
@@ -13,7 +13,7 @@
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> size CAT=VAR USED=false </identifier>
+<identifier> size </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
