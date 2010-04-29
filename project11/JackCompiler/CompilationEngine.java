@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import JackCompiler.JackTokenizer.Token;
+import JackCompiler.SymbolTable;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
