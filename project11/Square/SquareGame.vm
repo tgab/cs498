@@ -33,7 +33,7 @@
 <term>
 <identifier> Square CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -200,7 +200,7 @@
 <term>
 <identifier> Keyboard CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
-<identifier> keyPressed </identifier>
+<identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -456,7 +456,7 @@
 <term>
 <identifier> Keyboard CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
-<identifier> keyPressed </identifier>
+<identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>

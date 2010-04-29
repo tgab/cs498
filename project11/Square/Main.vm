@@ -27,7 +27,7 @@
 <term>
 <identifier> SquareGame CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>

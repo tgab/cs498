@@ -486,7 +486,7 @@ public class CompilationEngine {
 		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '.') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
-			OutputXML(tokenizer.tokenType());
+			OutputXML(tokenizer.tokenType(), Cat.SUB, true);
 			tokenizer.advance();
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
