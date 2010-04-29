@@ -271,7 +271,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		
 		// Print the subroutine name
-		OutputXML(tokenizer.tokenType()), Cat.SUB, false);
+		OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 		tokenizer.advance();
 		
 		// Print the opening parenthesis
