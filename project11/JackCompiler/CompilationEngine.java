@@ -33,7 +33,7 @@ public class CompilationEngine {
 	if(tokenizer.keyWord().equals("class")) {
 		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=class USED=false" + " </identifier>\n");
+		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
@@ -258,7 +258,7 @@ public class CompilationEngine {
   
   public void compileSubroutine() throws IOException {
 	// Print subroutine name or class name
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	tokenizer.advance();
 	
 	// If we have an expression list
@@ -276,7 +276,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		
 		// Print the subroutine name
-		OutputXML(tokenizer.tokenType());
+		OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 		tokenizer.advance();
 		
 		// Print the opening parenthesis
@@ -295,7 +295,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// Print out the variable name
-	OutputXML(tokenizer.tokenType());
+	OutputXML(tokenizer.tokenType(), Cat.VAR, true);
 	tokenizer.advance();
 	
 	if (tokenizer.symbol() == '['){
@@ -459,8 +459,13 @@ public class CompilationEngine {
 		tokenizer.advance();
 		CompileTerm();
 	}else {
-		OutputXML(tokenizer.tokenType());
-		tokenizer.advance();
+		if(tokenizer.tokenType() == Token.IDENTIFIER) {
+			OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+			tokenizer.advance();
+		}else{
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+		}
 		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '[') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
@@ -577,7 +582,7 @@ public class CompilationEngine {
   public void OutputXML(Token token_type, Cat c, Boolean used) throws IOException {
 		if(token_type == Token.KEYWORD) {
 			try{
-				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+				outStream.write("<keyword> " + tokenizer.keyWord() + " CAT=" + c + " USED=" + used + " </keyword>\n");
 			}catch(IOException x){
 				//TODO: print error?
 			}
@@ -601,7 +606,7 @@ public class CompilationEngine {
 		}
 		if(token_type == Token.IDENTIFIER) {
 			try{
-				outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + c + " USED=" + used + " </identifier>\n");
+				outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 			}catch(IOException h){
 				System.err.println("error outputing XML");
 			}
