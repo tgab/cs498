@@ -1,23 +1,23 @@
 <class>
 <keyword> class </keyword>
-<identifier> SquareGame CAT = class USED = false </identifier>
+<identifier> SquareGame CAT=class USED=false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <identifier> Square </identifier>
-<identifier> square CAT=VAR USED=false </identifier>
+<identifier> square CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> direction CAT=VAR USED=false </identifier>
+<identifier> direction CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
 <identifier> SquareGame </identifier>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -86,7 +86,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -132,7 +132,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> run </identifier>
+<identifier> run CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -142,13 +142,13 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> char </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <varDec>
 <keyword> var </keyword>
 <keyword> boolean </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
@@ -491,7 +491,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveSquare </identifier>
+<identifier> moveSquare CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>

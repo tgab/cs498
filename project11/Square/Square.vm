@@ -1,35 +1,35 @@
 <class>
 <keyword> class </keyword>
-<identifier> Square CAT = class USED = false </identifier>
+<identifier> Square CAT=class USED=false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x CAT=VAR USED=false </identifier>
+<identifier> x CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> y </identifier>
+<identifier> y CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> size CAT=VAR USED=false </identifier>
+<identifier> size CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
 <identifier> Square </identifier>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=ARG USED=true </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=ARG USED=true </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Asize </identifier>
+<identifier> Asize CAT=ARG USED=true </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -93,7 +93,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -128,7 +128,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -205,7 +205,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> erase </identifier>
+<identifier> erase CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -282,7 +282,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> incSize </identifier>
+<identifier> incSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -392,7 +392,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> decSize </identifier>
+<identifier> decSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -462,7 +462,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveUp </identifier>
+<identifier> moveUp CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -644,7 +644,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveDown </identifier>
+<identifier> moveDown CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -836,7 +836,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveLeft </identifier>
+<identifier> moveLeft CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -1018,7 +1018,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveRight </identifier>
+<identifier> moveRight CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>

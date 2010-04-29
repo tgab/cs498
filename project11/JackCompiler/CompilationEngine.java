@@ -33,7 +33,7 @@ public class CompilationEngine {
 	if(tokenizer.keyWord().equals("class")) {
 		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer.identifier() + " CAT = class USED = false" + " </identifier>\n");
+		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=class USED=false" + " </identifier>\n");
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
@@ -54,16 +54,21 @@ public class CompilationEngine {
   // Compiles a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
 	Boolean cont = true;
+	Cat type = Cat.STATIC;
 	
 	outStream.write("<classVarDec>\n");
 	// Print out first keyword
+	if (tokenizer.keyWord().equals("field")){
+		type = Cat.FIELD;
+	}
+	
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out first variable declaration
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+	OutputXML(tokenizer.tokenType(), type, false);
 	tokenizer.advance();
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
@@ -72,7 +77,7 @@ public class CompilationEngine {
 	
 	// If there are more variable declarations continue looping
 	while (cont){
-		OutputXML(tokenizer.tokenType());
+		OutputXML(tokenizer.tokenType(), type, false);
 		tokenizer.advance();
 
 		if (tokenizer.tokenType() == Token.SYMBOL){
@@ -96,7 +101,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	tokenizer.advance();
   	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
@@ -138,7 +143,7 @@ public class CompilationEngine {
 	// Otherwise loop through and print out the parameter list
 	while (cont){
     	//returns token's corresponding XML line
-		OutputXML(token_type);
+		OutputXML(token_type, Cat.ARG, false);
 		
 		tokenizer.advance();
 		
@@ -168,7 +173,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
+	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -180,7 +185,7 @@ public class CompilationEngine {
 	while (cont){
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
-		OutputXML(tokenizer.tokenType());
+		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){

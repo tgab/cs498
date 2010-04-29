@@ -1,11 +1,11 @@
 <class>
 <keyword> class </keyword>
-<identifier> Main CAT = class USED = false </identifier>
+<identifier> Main CAT=class USED=false </identifier>
 <symbol> { </symbol>
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> main </identifier>
+<identifier> main CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -15,7 +15,7 @@
 <varDec>
 <keyword> var </keyword>
 <identifier> SquareGame </identifier>
-<identifier> game </identifier>
+<identifier> game CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
