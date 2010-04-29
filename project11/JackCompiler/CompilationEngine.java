@@ -18,6 +18,8 @@ public class CompilationEngine {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
   }
 
+  //TODO: create symbol table!! 
+
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
     outStream = stream;
