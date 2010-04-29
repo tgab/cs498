@@ -1,17 +1,17 @@
 <class>
 <keyword> class </keyword>
-<identifier> SquareGame </identifier>
+<identifier> SquareGame CAT = class USED = false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <identifier> Square </identifier>
-<identifier> square </identifier>
+<identifier> square CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>

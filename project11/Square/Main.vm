@@ -1,6 +1,6 @@
 <class>
 <keyword> class </keyword>
-<identifier> Main </identifier>
+<identifier> Main CAT = class USED = false </identifier>
 <symbol> { </symbol>
 <subroutineDec>
 <keyword> function </keyword>

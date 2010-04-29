@@ -1,11 +1,11 @@
 <class>
 <keyword> class </keyword>
-<identifier> Square </identifier>
+<identifier> Square CAT = class USED = false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
 <identifier> y </identifier>
 <symbol> ; </symbol>
@@ -13,7 +13,7 @@
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
