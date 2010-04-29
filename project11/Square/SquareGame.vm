@@ -5,19 +5,19 @@
 <classVarDec>
 <keyword> field </keyword>
 <identifier> Square </identifier>
-<identifier> square </identifier>
+<identifier> square CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
 <identifier> SquareGame </identifier>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -27,11 +27,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Square </identifier>
+<identifier> Square CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
 <identifier> new </identifier>
 <symbol> ( </symbol>
@@ -61,7 +61,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -86,7 +86,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -96,9 +96,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -107,9 +107,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
+<identifier> Memory CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> deAlloc CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -132,7 +132,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> run </identifier>
+<identifier> run CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -142,19 +142,19 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> char </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <varDec>
 <keyword> var </keyword>
 <keyword> boolean </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -170,7 +170,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=false </identifier>
 </term>
 </term>
 </expression>
@@ -182,7 +182,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -194,11 +194,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard </identifier>
+<identifier> Keyboard CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
 <identifier> keyPressed </identifier>
 <symbol> ( </symbol>
@@ -211,7 +211,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveSquare </identifier>
+<identifier> moveSquare CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -226,7 +226,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -238,7 +238,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -255,7 +255,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -267,9 +267,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> decSize </identifier>
+<identifier> decSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -284,7 +284,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -296,9 +296,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> incSize </identifier>
+<identifier> incSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -313,7 +313,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -325,7 +325,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -342,7 +342,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -354,7 +354,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -371,7 +371,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -383,7 +383,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -400,7 +400,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -412,7 +412,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -434,7 +434,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -450,11 +450,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard </identifier>
+<identifier> Keyboard CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
 <identifier> keyPressed </identifier>
 <symbol> ( </symbol>
@@ -467,7 +467,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveSquare </identifier>
+<identifier> moveSquare CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -491,7 +491,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveSquare </identifier>
+<identifier> moveSquare CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -504,7 +504,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -516,9 +516,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> moveUp </identifier>
+<identifier> moveUp CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -533,7 +533,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -545,9 +545,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> moveDown </identifier>
+<identifier> moveDown CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -562,7 +562,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -574,9 +574,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> moveLeft </identifier>
+<identifier> moveLeft CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -591,7 +591,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=false </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -603,9 +603,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> square </identifier>
+<identifier> square CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> moveRight </identifier>
+<identifier> moveRight CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -617,9 +617,9 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Sys </identifier>
+<identifier> Sys CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> wait </identifier>
+<identifier> wait CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
