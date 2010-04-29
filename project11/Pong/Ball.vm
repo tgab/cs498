@@ -1,84 +1,84 @@
 <class>
 <keyword> class </keyword>
-<identifier> Ball </identifier>
+<identifier> Ball CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> y </identifier>
+<identifier> y CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> lengthy </identifier>
+<identifier> lengthy CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> d </identifier>
+<identifier> d CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> straightD </identifier>
+<identifier> straightD CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> diagonalD </identifier>
+<identifier> diagonalD CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> boolean </keyword>
-<identifier> invert </identifier>
+<identifier> invert CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> positivex </identifier>
+<identifier> positivex CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> positivey </identifier>
+<identifier> positivey CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> leftWall </identifier>
+<identifier> leftWall CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> rightWall </identifier>
+<identifier> rightWall CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> topWall </identifier>
+<identifier> topWall CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> bottomWall </identifier>
+<identifier> bottomWall CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
-<identifier> Ball </identifier>
-<identifier> new </identifier>
+<identifier> Ball CAT=TYPE USED=true </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> AleftWall </identifier>
+<identifier> AleftWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> ArightWall </identifier>
+<identifier> ArightWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> AtopWall </identifier>
+<identifier> AtopWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> AbottomWall </identifier>
+<identifier> AbottomWall CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -86,44 +86,44 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> leftWall </identifier>
+<identifier> leftWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> AleftWall </identifier>
+<identifier> AleftWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> rightWall </identifier>
+<identifier> rightWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> ArightWall </identifier>
+<identifier> ArightWall CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -134,22 +134,22 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> topWall </identifier>
+<identifier> topWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> AtopWall </identifier>
+<identifier> AtopWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> bottomWall </identifier>
+<identifier> bottomWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> AbottomWall </identifier>
+<identifier> AbottomWall CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -160,7 +160,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -171,7 +171,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -194,7 +194,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -204,9 +204,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
+<identifier> Memory CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> deAlloc CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -229,7 +229,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -239,9 +239,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -255,7 +255,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -273,7 +273,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> hide </identifier>
+<identifier> hide CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -283,9 +283,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -299,7 +299,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -317,7 +317,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -327,26 +327,26 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -356,7 +356,7 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -378,7 +378,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> int </keyword>
-<identifier> getLeft </identifier>
+<identifier> getLeft CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -390,7 +390,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -402,7 +402,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> int </keyword>
-<identifier> getRight </identifier>
+<identifier> getRight CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -414,7 +414,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -430,14 +430,14 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> setDestination </identifier>
+<identifier> setDestination CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> destx </identifier>
+<identifier> destx CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> desty </identifier>
+<identifier> desty CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -445,58 +445,58 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> int </keyword>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> temp </identifier>
+<identifier> temp CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> destx </identifier>
+<identifier> destx CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> lengthy </identifier>
+<identifier> lengthy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> desty </identifier>
+<identifier> desty CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Math </identifier>
+<identifier> Math CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> abs </identifier>
+<identifier> abs CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -507,18 +507,18 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Math </identifier>
+<identifier> Math CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> abs </identifier>
+<identifier> abs CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> lengthy </identifier>
+<identifier> lengthy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -529,18 +529,18 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -553,7 +553,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -561,51 +561,51 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> temp </identifier>
+<identifier> temp CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> temp </identifier>
+<identifier> temp CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> positivex </identifier>
+<identifier> positivex CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> desty </identifier>
+<identifier> desty CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -615,18 +615,18 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> positivey </identifier>
+<identifier> positivey CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> destx </identifier>
+<identifier> destx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -641,18 +641,18 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> positivex </identifier>
+<identifier> positivex CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> destx </identifier>
+<identifier> destx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -662,18 +662,18 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> positivey </identifier>
+<identifier> positivey CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> desty </identifier>
+<identifier> desty CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -686,7 +686,7 @@
 </ifStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -697,21 +697,21 @@
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> straightD </identifier>
+<identifier> straightD CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -719,14 +719,14 @@
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> diagonalD </identifier>
+<identifier> diagonalD CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -737,11 +737,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> dy </identifier>
+<identifier> dy CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> dx </identifier>
+<identifier> dx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -760,7 +760,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> int </keyword>
-<identifier> move </identifier>
+<identifier> move CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -770,7 +770,7 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> hide </identifier>
+<identifier> hide CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -782,7 +782,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
@@ -794,15 +794,15 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> straightD </identifier>
+<identifier> straightD CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -814,15 +814,15 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> d </identifier>
+<identifier> d CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> diagonalD </identifier>
+<identifier> diagonalD CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -832,7 +832,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> positivey </identifier>
+<identifier> positivey CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -843,7 +843,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -851,11 +851,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -871,11 +871,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -897,7 +897,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -905,11 +905,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -925,11 +925,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -952,7 +952,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> positivex </identifier>
+<identifier> positivex CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -963,7 +963,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -971,11 +971,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -991,11 +991,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -1017,7 +1017,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> invert </identifier>
+<identifier> invert CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1025,11 +1025,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -1045,11 +1045,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -1074,11 +1074,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
-<identifier> leftWall </identifier>
+<identifier> leftWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1090,7 +1090,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1101,11 +1101,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> leftWall </identifier>
+<identifier> leftWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -1123,11 +1123,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> rightWall </identifier>
+<identifier> rightWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1139,7 +1139,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1150,11 +1150,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> rightWall </identifier>
+<identifier> rightWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -1172,11 +1172,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
-<identifier> topWall </identifier>
+<identifier> topWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1188,7 +1188,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1199,11 +1199,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> topWall </identifier>
+<identifier> topWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -1221,11 +1221,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> bottomWall </identifier>
+<identifier> bottomWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1237,7 +1237,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1248,11 +1248,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> bottomWall </identifier>
+<identifier> bottomWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -1262,7 +1262,7 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -1273,7 +1273,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -1285,11 +1285,11 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> bounce </identifier>
+<identifier> bounce CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -1297,25 +1297,25 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> int </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=VAR USED=true </identifier>
 </term>
 <symbol> / </symbol>
 <term>
@@ -1326,11 +1326,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> lengthy </identifier>
+<identifier> lengthy CAT=VAR USED=true </identifier>
 </term>
 <symbol> / </symbol>
 <term>
@@ -1344,7 +1344,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1356,7 +1356,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1383,7 +1383,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
@@ -1401,7 +1401,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1415,7 +1415,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> lengthx </identifier>
+<identifier> lengthx CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
@@ -1429,7 +1429,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1453,7 +1453,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1469,7 +1469,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1489,7 +1489,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1501,7 +1501,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1512,14 +1512,14 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
@@ -1539,29 +1539,29 @@
 </term>
 <symbol> / </symbol>
 <term>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1579,7 +1579,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1591,7 +1591,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1602,14 +1602,14 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
@@ -1620,29 +1620,29 @@
 </term>
 <symbol> / </symbol>
 <term>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1660,7 +1660,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -1672,7 +1672,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1683,14 +1683,14 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
@@ -1710,29 +1710,29 @@
 </term>
 <symbol> / </symbol>
 <term>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1747,7 +1747,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1758,14 +1758,14 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> divLengthx </identifier>
+<identifier> divLengthx CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
@@ -1776,29 +1776,29 @@
 </term>
 <symbol> / </symbol>
 <term>
-<identifier> divLengthy </identifier>
+<identifier> divLengthy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> factor </identifier>
+<identifier> factor CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1817,18 +1817,18 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> setDestination </identifier>
+<identifier> setDestination CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> newx </identifier>
+<identifier> newx CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> newy </identifier>
+<identifier> newy CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
