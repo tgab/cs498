@@ -63,7 +63,7 @@ public class CompilationEngine {
 	// Print out first variable declaration
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
@@ -259,7 +259,7 @@ public class CompilationEngine {
 	// If we have an expression list
 	if (tokenizer.symbol() == '('){
 		// Print opening parenthesis
-		OutputXML(tokenizer.tokenType());
+		OutputXML(tokenizer.tokenType(), cat c, bool b);
 		tokenizer.advance();
 
 		// Compile expression list
@@ -572,7 +572,7 @@ public class CompilationEngine {
   public void OutputXML(Token token_type, Cat c, Boolean used) throws IOException {
 		if(token_type == Token.KEYWORD) {
 			try{
-				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+				outStream.write("<keyword> " + tokenizer.keyWord() + " CAT=" + c + " USED=" + used + " </keyword>\n");
 			}catch(IOException x){
 				//TODO: print error?
 			}
@@ -596,7 +596,7 @@ public class CompilationEngine {
 		}
 		if(token_type == Token.IDENTIFIER) {
 			try{
-				outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + c + " USED=" + used + " </identifier>\n");
+				outStream.write("<identifier> " + tokenizer.identifier() + " </identifier>\n");
 			}catch(IOException h){
 				System.err.println("error outputing XML");
 			}
