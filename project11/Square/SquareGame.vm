@@ -1,6 +1,6 @@
 <class>
 <keyword> class </keyword>
-<identifier> SquareGame </identifier>
+<identifier> SquareGame CAT = class USED = false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
