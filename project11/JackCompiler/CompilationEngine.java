@@ -259,7 +259,7 @@ public class CompilationEngine {
 	// If we have an expression list
 	if (tokenizer.symbol() == '('){
 		// Print opening parenthesis
-		OutputXML(tokenizer.tokenType(), cat c, bool b);
+		OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 
 		// Compile expression list
@@ -271,7 +271,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		
 		// Print the subroutine name
-		OutputXML(tokenizer.tokenType());
+		OutputXML(tokenizer.tokenType()), Cat.SUB, false);
 		tokenizer.advance();
 		
 		// Print the opening parenthesis
