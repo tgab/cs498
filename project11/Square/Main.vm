@@ -5,7 +5,7 @@
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> main </identifier>
+<identifier> main CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -15,17 +15,17 @@
 <varDec>
 <keyword> var </keyword>
 <identifier> SquareGame </identifier>
-<identifier> game </identifier>
+<identifier> game CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> SquareGame </identifier>
+<identifier> SquareGame CAT=VAR USED=false </identifier>
 <symbol> . </symbol>
 <identifier> new </identifier>
 <symbol> ( </symbol>
@@ -38,9 +38,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> run </identifier>
+<identifier> run CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -49,9 +49,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>

@@ -5,31 +5,31 @@
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> y </identifier>
+<identifier> y CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
 <identifier> Square </identifier>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
-<keyword> int CAT=ARG USED=false </keyword>
-<identifier> Ax </identifier>
+<keyword> int </keyword>
+<identifier> Ax CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
-<keyword> int CAT=ARG USED=false </keyword>
-<identifier> Ay </identifier>
+<keyword> int </keyword>
+<identifier> Ay CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
-<keyword> int CAT=ARG USED=false </keyword>
-<identifier> Asize </identifier>
+<keyword> int </keyword>
+<identifier> Asize CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -37,40 +37,40 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Asize </identifier>
+<identifier> Asize CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -93,7 +93,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -103,9 +103,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
+<identifier> Memory CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> deAlloc CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -128,7 +128,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -138,9 +138,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -154,40 +154,40 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -205,7 +205,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> erase </identifier>
+<identifier> erase CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -215,9 +215,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -231,40 +231,40 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -282,7 +282,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> incSize </identifier>
+<identifier> incSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -301,11 +301,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -325,11 +325,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -347,7 +347,7 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> erase </identifier>
+<identifier> erase CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -356,11 +356,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -371,7 +371,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -392,7 +392,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> decSize </identifier>
+<identifier> decSize CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -405,7 +405,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
@@ -417,7 +417,7 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> erase </identifier>
+<identifier> erase CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -426,11 +426,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -441,7 +441,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -462,7 +462,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveUp </identifier>
+<identifier> moveUp CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -475,7 +475,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
@@ -487,9 +487,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -503,14 +503,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
@@ -519,11 +519,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -536,21 +536,21 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -559,11 +559,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -574,9 +574,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -590,36 +590,36 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -644,7 +644,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveDown </identifier>
+<identifier> moveDown CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -660,11 +660,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -679,9 +679,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -695,36 +695,36 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -737,11 +737,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -752,9 +752,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -768,14 +768,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
@@ -784,11 +784,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -801,21 +801,21 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -836,7 +836,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveLeft </identifier>
+<identifier> moveLeft CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -849,7 +849,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
@@ -861,9 +861,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -877,9 +877,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -887,11 +887,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -904,27 +904,27 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -933,11 +933,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -948,9 +948,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -964,26 +964,26 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -993,11 +993,11 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -1018,7 +1018,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveRight </identifier>
+<identifier> moveRight CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -1034,11 +1034,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1053,9 +1053,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -1069,26 +1069,26 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -1098,11 +1098,11 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
@@ -1111,11 +1111,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -1126,9 +1126,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -1142,9 +1142,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=false </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -1152,11 +1152,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1169,27 +1169,27 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=false </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=false </identifier>
 </term>
 </expression>
 </expressionList>
