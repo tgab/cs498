@@ -1,46 +1,46 @@
 <class>
 <keyword> class </keyword>
-<identifier> Bat </identifier>
+<identifier> Bat CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> y </identifier>
+<identifier> y CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> width </identifier>
+<identifier> width CAT=FIELD USED=false </identifier>
 <symbol> , </symbol>
-<identifier> height </identifier>
+<identifier> height CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
-<identifier> Bat </identifier>
-<identifier> new </identifier>
+<identifier> Bat CAT=TYPE USED=true </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Awidth </identifier>
+<identifier> Awidth CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Aheight </identifier>
+<identifier> Aheight CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -48,51 +48,51 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ax </identifier>
+<identifier> Ax CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Awidth </identifier>
+<identifier> Awidth CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Aheight </identifier>
+<identifier> Aheight CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -103,7 +103,7 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -126,7 +126,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -136,9 +136,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
+<identifier> Memory CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> deAlloc CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -161,7 +161,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -171,9 +171,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -187,7 +187,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -205,7 +205,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> hide </identifier>
+<identifier> hide CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -215,9 +215,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -231,7 +231,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -249,7 +249,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> draw </identifier>
+<identifier> draw CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -259,40 +259,40 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -310,11 +310,11 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> setDirection </identifier>
+<identifier> setDirection CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> Adirection </identifier>
+<identifier> Adirection CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -322,11 +322,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Adirection </identifier>
+<identifier> Adirection CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -342,7 +342,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> int </keyword>
-<identifier> getLeft </identifier>
+<identifier> getLeft CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -354,7 +354,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -366,7 +366,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> int </keyword>
-<identifier> getRight </identifier>
+<identifier> getRight CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -378,11 +378,11 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -394,11 +394,11 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> setWidth </identifier>
+<identifier> setWidth CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> Awidth </identifier>
+<identifier> Awidth CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -406,7 +406,7 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> hide </identifier>
+<identifier> hide CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -415,18 +415,18 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Awidth </identifier>
+<identifier> Awidth CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> show </identifier>
+<identifier> show CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -444,7 +444,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> move </identifier>
+<identifier> move CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -457,7 +457,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> direction </identifier>
+<identifier> direction CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -469,11 +469,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -487,7 +487,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
@@ -499,7 +499,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -513,9 +513,9 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -529,9 +529,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -539,11 +539,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -556,7 +556,7 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
@@ -565,11 +565,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -582,11 +582,11 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -595,9 +595,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -611,26 +611,26 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -640,11 +640,11 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -658,11 +658,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -679,11 +679,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -698,7 +698,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -706,7 +706,7 @@
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -716,9 +716,9 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -732,14 +732,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -749,13 +749,13 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -765,11 +765,11 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -778,9 +778,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setColor </identifier>
+<identifier> setColor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -794,9 +794,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -804,11 +804,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -821,27 +821,27 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> x </identifier>
+<identifier> x CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> width </identifier>
+<identifier> width CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> y </identifier>
+<identifier> y CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> height </identifier>
+<identifier> height CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>

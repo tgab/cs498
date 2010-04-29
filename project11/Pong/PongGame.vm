@@ -1,59 +1,59 @@
 <class>
 <keyword> class </keyword>
-<identifier> PongGame </identifier>
+<identifier> PongGame CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <classVarDec>
 <keyword> static </keyword>
-<identifier> PongGame </identifier>
-<identifier> instance </identifier>
+<identifier> PongGame CAT=TYPE USED=true </identifier>
+<identifier> instance CAT=STATIC USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
-<identifier> Bat </identifier>
-<identifier> bat </identifier>
+<identifier> Bat CAT=TYPE USED=true </identifier>
+<identifier> bat CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
-<identifier> Ball </identifier>
-<identifier> ball </identifier>
+<identifier> Ball CAT=TYPE USED=true </identifier>
+<identifier> ball CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> boolean </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> score </identifier>
+<identifier> score CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> lastWall </identifier>
+<identifier> lastWall CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <classVarDec>
 <keyword> field </keyword>
 <keyword> int </keyword>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=FIELD USED=false </identifier>
 <symbol> ; </symbol>
 </classVarDec>
 <subroutineDec>
 <keyword> constructor </keyword>
-<identifier> PongGame </identifier>
-<identifier> new </identifier>
+<identifier> PongGame CAT=TYPE USED=true </identifier>
+<identifier> new CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -63,9 +63,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> clearScreen </identifier>
+<identifier> clearScreen CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -74,7 +74,7 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -85,13 +85,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Bat </identifier>
+<identifier> Bat CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -108,7 +108,7 @@
 <symbol> , </symbol>
 <expression>
 <term>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
@@ -125,13 +125,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> ball </identifier>
+<identifier> ball CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Ball </identifier>
+<identifier> Ball CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -177,9 +177,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> ball </identifier>
+<identifier> ball CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setDestination </identifier>
+<identifier> setDestination CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -199,9 +199,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Screen </identifier>
+<identifier> Screen CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> drawRectangle </identifier>
+<identifier> drawRectangle CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -233,9 +233,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveCursor </identifier>
+<identifier> moveCursor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -255,9 +255,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -271,7 +271,7 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -282,7 +282,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> score </identifier>
+<identifier> score CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -293,7 +293,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -304,7 +304,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> lastWall </identifier>
+<identifier> lastWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -329,7 +329,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -339,9 +339,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -350,9 +350,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> ball </identifier>
+<identifier> ball CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -361,9 +361,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
+<identifier> Memory CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> deAlloc CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -386,7 +386,7 @@
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> newInstance </identifier>
+<identifier> newInstance CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -396,13 +396,13 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> instance </identifier>
+<identifier> instance CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> PongGame </identifier>
+<identifier> PongGame CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -421,8 +421,8 @@
 </subroutineDec>
 <subroutineDec>
 <keyword> function </keyword>
-<identifier> PongGame </identifier>
-<identifier> getInstance </identifier>
+<identifier> PongGame CAT=TYPE USED=true </identifier>
+<identifier> getInstance CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -434,7 +434,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> instance </identifier>
+<identifier> instance CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
@@ -446,7 +446,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> run </identifier>
+<identifier> run CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -456,7 +456,7 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> char </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
@@ -467,7 +467,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </term>
 </expression>
@@ -482,7 +482,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -498,7 +498,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </term>
 </expression>
@@ -510,13 +510,13 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard </identifier>
+<identifier> Keyboard CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> keyPressed </identifier>
+<identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -527,9 +527,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> move </identifier>
+<identifier> move CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -538,7 +538,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveBall </identifier>
+<identifier> moveBall CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -553,7 +553,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -565,9 +565,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setDirection </identifier>
+<identifier> setDirection CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -589,7 +589,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -601,9 +601,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setDirection </identifier>
+<identifier> setDirection CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -625,7 +625,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -637,7 +637,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -668,7 +668,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -688,7 +688,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </term>
 </expression>
@@ -700,13 +700,13 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> key </identifier>
+<identifier> key CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Keyboard </identifier>
+<identifier> Keyboard CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> keyPressed </identifier>
+<identifier> keyPressed CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -717,9 +717,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> move </identifier>
+<identifier> move CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -728,7 +728,7 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> moveBall </identifier>
+<identifier> moveBall CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -746,7 +746,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -754,9 +754,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveCursor </identifier>
+<identifier> moveCursor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -776,9 +776,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -804,7 +804,7 @@
 <subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> moveBall </identifier>
+<identifier> moveBall CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -814,27 +814,27 @@
 <varDec>
 <keyword> var </keyword>
 <keyword> int </keyword>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> batLeft </identifier>
+<identifier> batLeft CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> batRight </identifier>
+<identifier> batRight CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> ballLeft </identifier>
+<identifier> ballLeft CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> ballRight </identifier>
+<identifier> ballRight CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> ball </identifier>
+<identifier> ball CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> move </identifier>
+<identifier> move CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -851,7 +851,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
@@ -870,11 +870,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
-<identifier> lastWall </identifier>
+<identifier> lastWall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -889,18 +889,18 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> lastWall </identifier>
+<identifier> lastWall CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ; </symbol>
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -911,13 +911,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> batLeft </identifier>
+<identifier> batLeft CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> bat </identifier>
+<identifier> bat CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> getLeft </identifier>
+<identifier> getLeft CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -928,13 +928,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> batRight </identifier>
+<identifier> batRight CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> bat </identifier>
+<identifier> bat CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> getRight </identifier>
+<identifier> getRight CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -945,13 +945,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> ballLeft </identifier>
+<identifier> ballLeft CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> ball </identifier>
+<identifier> ball CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> getLeft </identifier>
+<identifier> getLeft CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -962,13 +962,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> ballRight </identifier>
+<identifier> ballRight CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> ball </identifier>
+<identifier> ball CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> getRight </identifier>
+<identifier> getRight CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -982,7 +982,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> wall </identifier>
+<identifier> wall CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -994,18 +994,18 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> batLeft </identifier>
+<identifier> batLeft CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
-<identifier> ballRight </identifier>
+<identifier> ballRight CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1015,11 +1015,11 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> batRight </identifier>
+<identifier> batRight CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
-<identifier> ballLeft </identifier>
+<identifier> ballLeft CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ) </symbol>
@@ -1034,7 +1034,7 @@
 <term>
 <symbol> ~ </symbol>
 <term>
-<identifier> exit </identifier>
+<identifier> exit CAT=VAR USED=true </identifier>
 </term>
 </term>
 </expression>
@@ -1046,14 +1046,14 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> ballRight </identifier>
+<identifier> ballRight CAT=VAR USED=true </identifier>
 </term>
 <symbol> &lt; </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> batLeft </identifier>
+<identifier> batLeft CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -1068,7 +1068,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1090,14 +1090,14 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> ballLeft </identifier>
+<identifier> ballLeft CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> batRight </identifier>
+<identifier> batRight CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -1112,7 +1112,7 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -1129,11 +1129,11 @@
 </ifStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -1144,14 +1144,14 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> bat </identifier>
+<identifier> bat CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> setWidth </identifier>
+<identifier> setWidth CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> batWidth </identifier>
+<identifier> batWidth CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -1160,11 +1160,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> score </identifier>
+<identifier> score CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> score </identifier>
+<identifier> score CAT=VAR USED=true </identifier>
 </term>
 <symbol> + </symbol>
 <term>
@@ -1175,9 +1175,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> moveCursor </identifier>
+<identifier> moveCursor CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -1197,14 +1197,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> score </identifier>
+<identifier> score CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -1219,14 +1219,14 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> ball </identifier>
+<identifier> ball CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> bounce </identifier>
+<identifier> bounce CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> bouncingDirection </identifier>
+<identifier> bouncingDirection CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>

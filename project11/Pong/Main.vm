@@ -1,11 +1,11 @@
 <class>
 <keyword> class </keyword>
-<identifier> Main </identifier>
+<identifier> Main CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> main </identifier>
+<identifier> main CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -14,16 +14,16 @@
 <symbol> { </symbol>
 <varDec>
 <keyword> var </keyword>
-<identifier> PongGame </identifier>
-<identifier> game </identifier>
+<identifier> PongGame CAT=TYPE USED=true </identifier>
+<identifier> game CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> PongGame </identifier>
+<identifier> PongGame CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> newInstance </identifier>
+<identifier> newInstance CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -32,13 +32,13 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> PongGame </identifier>
+<identifier> PongGame CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> getInstance </identifier>
+<identifier> getInstance CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -49,9 +49,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> run </identifier>
+<identifier> run CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -60,9 +60,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> game </identifier>
+<identifier> game CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> dispose </identifier>
+<identifier> dispose CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
