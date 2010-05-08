@@ -173,7 +173,7 @@ public class CompilationEngine {
 	// Otherwise loop through and print out the parameter list
 	while (cont){
 		OutputXML(token_type);
-		String keyword = tokeniker.keyWord();
+		String keyword = tokenizer.keyWord();
 		tokenizer.advance();
 		token_type = tokenizer.tokenType();
     	//returns token's corresponding XML line
