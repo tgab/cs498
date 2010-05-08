@@ -22,7 +22,7 @@ public class SymbolTable{
 	}
 	
 	//Declare three hashmaps - one for each command type
-	private static HashMap<String, Entry> symbols;
+	public static HashMap<String, Entry> symbols;
 
 	//creates a new empty symbol table
 	public SymbolTable()
