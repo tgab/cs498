@@ -34,136 +34,70 @@
 <identifier> Ax CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Ay CAT=ARG USED=false </identifier>
+<identifier> Ay </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
 <identifier> Awidth CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
+<identifier> Aheight </identifier>
+<symbol> ) </symbol>
+<symbol> { </symbol>
+<keyword> let </keyword>
+<identifier> x </identifier>
+<symbol> = </symbol>
+<identifier> Ax </identifier>
+<symbol> ; </symbol>
+<keyword> let </keyword>
+<identifier> y CAT=ARG USED=false </identifier>
+<symbol> = </symbol>
+<identifier> Ay CAT=ARG USED=false </identifier>
+<symbol> ; </symbol>
+<keyword> let </keyword>
+<identifier> width </identifier>
+<symbol> = </symbol>
+<identifier> Awidth </identifier>
+<symbol> ; </symbol>
+<keyword> let </keyword>
+<identifier> height CAT=ARG USED=false </identifier>
+<symbol> = </symbol>
 <identifier> Aheight CAT=ARG USED=false </identifier>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> x CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Ax CAT=VAR USED=true </identifier>
-</term>
-</expression>
 <symbol> ; </symbol>
-</letStatement>
-<letStatement>
 <keyword> let </keyword>
-<identifier> y CAT=VAR USED=true </identifier>
+<identifier> direction </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
-<identifier> Ay CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> width CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Awidth CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> height CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Aheight CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
 <integerConstant> 2 </integerConstant>
-</term>
-</expression>
 <symbol> ; </symbol>
-</letStatement>
-<doStatement>
 <keyword> do </keyword>
-<identifier> show CAT=SUB USED=true </identifier>
+<identifier> show CAT=ARG USED=false </identifier>
 <symbol> ( </symbol>
-<expressionList>
-</expressionList>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
-</doStatement>
-<returnStatement>
 <keyword> return </keyword>
-<expression>
-<term>
 <keyword> this </keyword>
-</term>
-</expression>
 <symbol> ; </symbol>
-</returnStatement>
-</statements>
 <symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> dispose CAT=SUB USED=false </identifier>
+<identifier> dispose CAT=ARG USED=false </identifier>
 <symbol> ( </symbol>
-<parameterList>
-</parameterList>
 <symbol> ) </symbol>
-<subroutineBody>
 <symbol> { </symbol>
-<statements>
-<doStatement>
 <keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
+<identifier> Memory </identifier>
 <symbol> . </symbol>
-<identifier> deAlloc CAT=SUB USED=true </identifier>
+<identifier> deAlloc </identifier>
 <symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
 <keyword> this </keyword>
-</term>
-</expression>
-</expressionList>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
-</doStatement>
-<returnStatement>
 <keyword> return </keyword>
 <symbol> ; </symbol>
-</returnStatement>
-</statements>
 <symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> show CAT=SUB USED=false </identifier>
+<identifier> show </identifier>
 <symbol> ( </symbol>
-<parameterList>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
