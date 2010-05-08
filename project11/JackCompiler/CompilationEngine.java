@@ -38,6 +38,8 @@ public class CompilationEngine {
 		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		tokenizer.advance();
 		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
+		classTable.Define(tokenizer, tokenizer.identifier(), Kind.STATIC);
+		
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
@@ -73,6 +75,7 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), type, false);
+	classTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
 	tokenizer.advance();
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
@@ -82,6 +85,7 @@ public class CompilationEngine {
 	// If there are more variable declarations continue looping
 	while (cont){
 		OutputXML(tokenizer.tokenType(), type, false);
+		classTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
 		tokenizer.advance();
 
 		if (tokenizer.tokenType() == Token.SYMBOL){
@@ -111,6 +115,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
+	subTable.Define(tokenizer, tokenizer.identifier(), Kind.ARG);							//right kind?
 	tokenizer.advance();
   	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
@@ -153,6 +158,7 @@ public class CompilationEngine {
 	while (cont){
     	//returns token's corresponding XML line
 		OutputXML(token_type, Cat.ARG, false);
+		subTable.Define(tokenizer, tokenizer.identifier(), Kind.ARG);
 		
 		tokenizer.advance();
 		
@@ -183,6 +189,7 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+	subTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -195,6 +202,7 @@ public class CompilationEngine {
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+		subTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){
