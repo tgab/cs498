@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import JackCompiler.JackTokenizer.Token;
 import JackCompiler.SymbolTable;
+import JackCompiler.SymbolTable.Kind;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
@@ -15,6 +16,7 @@ public class CompilationEngine {
   public JackTokenizer.Token token_type;
   public char[] op = {'+','-','*','/','&','|','<','>','='};
   public ArrayList<SymbolTable> symbolList;
+  public String className;
 
   public enum Cat {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
