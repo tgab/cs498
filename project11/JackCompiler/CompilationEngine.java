@@ -81,7 +81,13 @@ public class CompilationEngine {
 	
 	// Print out first variable declaration
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
-	String keyword  = tokenizer.identifier();
+	String keyword;
+	if (tokenizer.tokenType() == Token.KEYWORD){
+		keyword = tokenizer.keyWord();
+	} else {
+		keyword = tokenizer.identifier();
+	}
+	
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), type, false);
 	classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
@@ -94,7 +100,11 @@ public class CompilationEngine {
 	// If there are more variable declarations continue looping
 	while (cont){
 		OutputXML(tokenizer.tokenType(), type, false);
-		classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+		
+		if (tokenizer.tokenType() == Token.IDENTIFIER){
+			classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+		}
+		
 		tokenizer.advance();
 
 		if (tokenizer.tokenType() == Token.SYMBOL){
@@ -174,7 +184,14 @@ public class CompilationEngine {
 	// Otherwise loop through and print out the parameter list
 	while (cont){
 		OutputXML(token_type);
-		String keyword = tokenizer.keyWord();
+		
+		String keyword;
+		if (tokenizer.tokenType() == Token.KEYWORD){
+			keyword = tokenizer.keyWord();
+		} else { //if (tokenizer.tokenType() == Token.IDENTIFIER){
+			keyword = tokenizer.identifier();
+		}
+		
 		tokenizer.advance();
 		token_type = tokenizer.tokenType();
     	//returns token's corresponding XML line
@@ -187,6 +204,10 @@ public class CompilationEngine {
 		if (token_type == Token.SYMBOL){
 			if (tokenizer.symbol() == ')'){
 				cont = false;
+			} else {
+				OutputXML(token_type);
+				tokenizer.advance();
+				token_type = tokenizer.tokenType();
 			}
 		}
 	}
