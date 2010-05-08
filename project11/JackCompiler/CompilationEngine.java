@@ -24,6 +24,7 @@ public class CompilationEngine {
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {	
+	symbolList = new ArrayList<SymbolTable>();
     outStream = stream;
 	tokenizer = token;
   }

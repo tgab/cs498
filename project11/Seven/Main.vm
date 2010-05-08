@@ -1,11 +1,11 @@
 <class>
 <keyword> class </keyword>
-<identifier> Main </identifier>
+<identifier> Main CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> main </identifier>
+<identifier> main CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -15,9 +15,9 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
