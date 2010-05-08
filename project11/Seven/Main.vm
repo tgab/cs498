@@ -45,6 +45,8 @@
 </doStatement>
 <returnStatement>
 <keyword> return </keyword>
+push local 0
+return
 <symbol> ; </symbol>
 </returnStatement>
 </statements>

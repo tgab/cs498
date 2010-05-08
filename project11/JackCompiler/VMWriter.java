@@ -26,43 +26,43 @@ public class VMWriter {
 	// Writes a VM push command
 	public void writePush (Segment s, int index) throws IOException {
 		switch (s){
-			case CONST: outStream.write("push constant " + index + "\n");;
-			case ARG: outStream.write("push argument " + index + "\n");;
-			case LOCAL: outStream.write("push local " + index + "\n");;
-			case STATIC: outStream.write("push static " + index + "\n");;
-			case THIS: outStream.write("push this " + index + "\n");;
-			case THAT: outStream.write("push that " + index + "\n");;
-			case POINTER: outStream.write("push pointer " + index + "\n");;
-			case TEMP: outStream.write("push temp " + index + "\n");;
+			case CONST: outStream.write("push constant " + index + "\n"); break;
+			case ARG: outStream.write("push argument " + index + "\n"); break;
+			case LOCAL: outStream.write("push local " + index + "\n"); break;
+			case STATIC: outStream.write("push static " + index + "\n"); break;
+			case THIS: outStream.write("push this " + index + "\n"); break;
+			case THAT: outStream.write("push that " + index + "\n"); break;
+			case POINTER: outStream.write("push pointer " + index + "\n"); break;
+			case TEMP: outStream.write("push temp " + index + "\n"); break;
 		}
 	}
 	
 	// Writes a VM pop command
 	public void writePop (Segment s, int index) throws IOException {
 		switch (s) {
-			case CONST: outStream.write("pop constant " + index + "\n");;
-			case ARG: outStream.write("pop argument " + index + "\n");;
-			case LOCAL: outStream.write("pop local " + index + "\n");;
-			case STATIC: outStream.write("pop static " + index + "\n");;
-			case THIS: outStream.write("pop this " + index + "\n");;
-			case THAT: outStream.write("pop that " + index + "\n");;
-			case POINTER: outStream.write("pop pointer " + index + "\n");;
-			case TEMP: outStream.write("pop temp " + index + "\n");;
+			case CONST: outStream.write("pop constant " + index + "\n"); break;
+			case ARG: outStream.write("pop argument " + index + "\n"); break;
+			case LOCAL: outStream.write("pop local " + index + "\n"); break;
+			case STATIC: outStream.write("pop static " + index + "\n"); break;
+			case THIS: outStream.write("pop this " + index + "\n"); break;
+			case THAT: outStream.write("pop that " + index + "\n"); break;
+			case POINTER: outStream.write("pop pointer " + index + "\n"); break;
+			case TEMP: outStream.write("pop temp " + index + "\n"); break;
 		}
 	}
 	
 	// Writes a VM arithmetic command
 	public void writeArithmetic (Command c) throws IOException {
 		switch (c) {
-			case ADD: outStream.write("add\n");
-			case SUB: outStream.write("sub\n");
-			case NEG: outStream.write("neg\n");
-			case EQ: outStream.write("eq\n");
-			case GT: outStream.write("gt\n");
-			case LT: outStream.write("lt\n");
-			case AND: outStream.write("and\n");
-			case OR: outStream.write("or\n");
-			case NOT: outStream.write("not\n");
+			case ADD: outStream.write("add\n"); break;
+			case SUB: outStream.write("sub\n"); break;
+			case NEG: outStream.write("neg\n"); break;
+			case EQ: outStream.write("eq\n"); break;
+			case GT: outStream.write("gt\n"); break;
+			case LT: outStream.write("lt\n"); break;
+			case AND: outStream.write("and\n"); break;
+			case OR: outStream.write("or\n"); break;
+			case NOT: outStream.write("not\n"); break;
 		}
 	}
 	

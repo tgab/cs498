@@ -9,9 +9,11 @@ import java.util.List;
 import JackCompiler.JackTokenizer.Token;
 import JackCompiler.SymbolTable;
 import JackCompiler.SymbolTable.Kind;
+import JackCompiler.VMWriter.Segment;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
+  public VMWriter writer;
   public JackTokenizer tokenizer;
   public JackTokenizer.Token token_type;
   public char[] op = {'+','-','*','/','&','|','<','>','='};
@@ -25,6 +27,7 @@ public class CompilationEngine {
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {	
 	symbolList = new ArrayList<SymbolTable>();
+	writer = new VMWriter(stream);
     outStream = stream;
 	tokenizer = token;
   }
@@ -435,6 +438,10 @@ public class CompilationEngine {
 	
 	if (tokenizer.tokenType() == Token.SYMBOL){
 		if (tokenizer.symbol() == ';'){
+			// If it is returning void push zero, then return
+			writer.writePush(Segment.LOCAL, 0);
+			writer.writeReturn();
+			
 			// Print out the semi-colon
 			OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
