@@ -93,7 +93,7 @@ public class CompilationEngine {
 	// If there are more variable declarations continue looping
 	while (cont){
 		OutputXML(tokenizer.tokenType(), type, false);
-		classTable.Define(tokenizer, keyword, Kind.VAR);
+		classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
 		tokenizer.advance();
 
 		if (tokenizer.tokenType() == Token.SYMBOL){
