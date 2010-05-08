@@ -1,11 +1,11 @@
 <class>
 <keyword> class </keyword>
-<identifier> Main </identifier>
+<identifier> Main CAT=CLASS USED=false </identifier>
 <symbol> { </symbol>
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> main </identifier>
+<identifier> main CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 </parameterList>
@@ -14,24 +14,24 @@
 <symbol> { </symbol>
 <varDec>
 <keyword> var </keyword>
-<identifier> Array </identifier>
-<identifier> a </identifier>
+<identifier> Array CAT=TYPE USED=true </identifier>
+<identifier> a CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=false </identifier>
 <symbol> , </symbol>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Array </identifier>
+<identifier> Array CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -47,13 +47,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Array </identifier>
+<identifier> Array CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -69,13 +69,13 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Array </identifier>
+<identifier> Array CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -91,7 +91,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -109,7 +109,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -127,7 +127,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -145,11 +145,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -163,7 +163,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -181,15 +181,15 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -206,11 +206,11 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -224,7 +224,7 @@
 </term>
 <symbol> * </symbol>
 <term>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -232,7 +232,7 @@
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -243,9 +243,9 @@
 </term>
 <symbol> - </symbol>
 <term>
-<identifier> Main </identifier>
+<identifier> Main CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> double </identifier>
+<identifier> double CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -268,7 +268,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -286,11 +286,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -304,9 +304,9 @@
 </letStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -320,14 +320,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -343,9 +343,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> println </identifier>
+<identifier> println CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -354,9 +354,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -370,14 +370,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -393,9 +393,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> println </identifier>
+<identifier> println CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -404,9 +404,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -420,14 +420,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 </term>
 </expression>
 </expressionList>
@@ -436,9 +436,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> println </identifier>
+<identifier> println CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -447,7 +447,7 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
@@ -461,7 +461,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 </term>
 <symbol> = </symbol>
 <term>
@@ -473,14 +473,14 @@
 <statements>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Main </identifier>
+<identifier> Main CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> fill </identifier>
+<identifier> fill CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> , </symbol>
@@ -495,11 +495,11 @@
 </doStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -513,7 +513,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -531,11 +531,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -549,7 +549,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -567,11 +567,11 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -585,7 +585,7 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -596,7 +596,7 @@
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -607,7 +607,7 @@
 </term>
 <symbol> + </symbol>
 <term>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -624,9 +624,9 @@
 </ifStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -640,14 +640,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> c </identifier>
+<identifier> c CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -663,9 +663,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> println </identifier>
+<identifier> println CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -674,9 +674,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printString </identifier>
+<identifier> printString CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
@@ -690,14 +690,14 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> printInt </identifier>
+<identifier> printInt CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>
 <term>
-<identifier> b </identifier>
+<identifier> b CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
@@ -713,9 +713,9 @@
 </doStatement>
 <doStatement>
 <keyword> do </keyword>
-<identifier> Output </identifier>
+<identifier> Output CAT=SUB USED=true </identifier>
 <symbol> . </symbol>
-<identifier> println </identifier>
+<identifier> println CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 </expressionList>
@@ -733,11 +733,11 @@
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> int </keyword>
-<identifier> double </identifier>
+<identifier> double CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <keyword> int </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -747,7 +747,7 @@
 <keyword> return </keyword>
 <expression>
 <term>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 </term>
 <symbol> * </symbol>
 <term>
@@ -763,14 +763,14 @@
 <subroutineDec>
 <keyword> function </keyword>
 <keyword> void </keyword>
-<identifier> fill </identifier>
+<identifier> fill CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
 <parameterList>
 <identifier> Array </identifier>
-<identifier> a </identifier>
+<identifier> a CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -781,7 +781,7 @@
 <symbol> ( </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 </term>
 <symbol> &gt; </symbol>
 <term>
@@ -793,11 +793,11 @@
 <statements>
 <letStatement>
 <keyword> let </keyword>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 </term>
 <symbol> - </symbol>
 <term>
@@ -808,20 +808,20 @@
 </letStatement>
 <letStatement>
 <keyword> let </keyword>
-<identifier> a </identifier>
+<identifier> a CAT=VAR USED=true </identifier>
 <symbol> [ </symbol>
 <expression>
 <term>
-<identifier> size </identifier>
+<identifier> size CAT=VAR USED=true </identifier>
 </term>
 </expression>
 <symbol> ] </symbol>
 <symbol> = </symbol>
 <expression>
 <term>
-<identifier> Array </identifier>
+<identifier> Array CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
-<identifier> new </identifier>
+<identifier> new CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
 <expressionList>
 <expression>

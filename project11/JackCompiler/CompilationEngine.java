@@ -3,6 +3,7 @@
 package JackCompiler;
 
 import java.io.*;
+import java.util.*;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import JackCompiler.JackTokenizer.Token;
 import JackCompiler.SymbolTable;
 import JackCompiler.SymbolTable.Kind;
 import JackCompiler.VMWriter.Segment;
+import JackCompiler.SymbolTable.Entry;
 
 public class CompilationEngine {
   public OutputStreamWriter outStream;
@@ -63,6 +65,8 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType());
 	outStream.write("</class>\n");
 	
+	
+	printTable(symbolList.get(symbolList.size()-1).symbols);
 	symbolList.remove(symbolList.size()-1);
   }
   
@@ -718,4 +722,16 @@ public class CompilationEngine {
 			}
 		}
   }
+
+  public void printTable(HashMap<String, Entry> map) {
+	System.out.println("Printing table hopefully printing...");
+	Iterator iterator = map.keySet().iterator();  
+	
+	while (iterator.hasNext()) {  
+	   String key = iterator.next().toString();  
+	   String value = map.get(key).toString();  
+
+	   System.out.println(key + " " + value);  
+	}
+}
 }

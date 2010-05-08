@@ -66,90 +66,172 @@
 <identifier> Ax CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> Ay </identifier>
+<identifier> Ay CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
 <identifier> AleftWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> ArightWall </identifier>
+<identifier> ArightWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
 <identifier> AtopWall CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> AbottomWall </identifier>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<keyword> let </keyword>
-<identifier> x </identifier>
-<symbol> = </symbol>
-<identifier> Ax </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> y CAT=ARG USED=false </identifier>
-<symbol> = </symbol>
-<identifier> Ay CAT=ARG USED=false </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> leftWall </identifier>
-<symbol> = </symbol>
-<identifier> AleftWall </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> rightWall CAT=ARG USED=false </identifier>
-<symbol> = </symbol>
-<identifier> ArightWall CAT=ARG USED=false </identifier>
-<symbol> - </symbol>
-<integerConstant> 6 </integerConstant>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> topWall </identifier>
-<symbol> = </symbol>
-<identifier> AtopWall </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> bottomWall CAT=ARG USED=false </identifier>
-<symbol> = </symbol>
 <identifier> AbottomWall CAT=ARG USED=false </identifier>
-<symbol> - </symbol>
-<integerConstant> 6 </integerConstant>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> wall </identifier>
-<symbol> = </symbol>
-<integerConstant> 0 </integerConstant>
-<symbol> ; </symbol>
-<keyword> do </keyword>
-<identifier> show CAT=ARG USED=false </identifier>
-<symbol> ( </symbol>
+</parameterList>
 <symbol> ) </symbol>
-<symbol> ; </symbol>
-<keyword> return </keyword>
-<keyword> this </keyword>
-<symbol> ; </symbol>
-<symbol> } </symbol>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> dispose CAT=ARG USED=false </identifier>
-<symbol> ( </symbol>
-<symbol> ) </symbol>
+<subroutineBody>
 <symbol> { </symbol>
+<statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> x CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Ax CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> y CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Ay CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> leftWall CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> AleftWall CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> rightWall CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> ArightWall CAT=VAR USED=true </identifier>
+</term>
+<symbol> - </symbol>
+<term>
+<integerConstant> 6 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> topWall CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> AtopWall CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> bottomWall CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> AbottomWall CAT=VAR USED=true </identifier>
+</term>
+<symbol> - </symbol>
+<term>
+<integerConstant> 6 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> wall CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<integerConstant> 0 </integerConstant>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<doStatement>
 <keyword> do </keyword>
-<identifier> Memory </identifier>
-<symbol> . </symbol>
-<identifier> deAlloc </identifier>
+<identifier> show CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
-<keyword> this </keyword>
+<expressionList>
+</expressionList>
 <symbol> ) </symbol>
 <symbol> ; </symbol>
+</doStatement>
+<returnStatement>
 <keyword> return </keyword>
+<expression>
+<term>
+<keyword> this </keyword>
+</term>
+</expression>
 <symbol> ; </symbol>
+</returnStatement>
+</statements>
 <symbol> } </symbol>
+</subroutineBody>
+</subroutineDec>
+<subroutineDec>
 <keyword> method </keyword>
 <keyword> void </keyword>
-<identifier> show </identifier>
+<identifier> dispose CAT=SUB USED=false </identifier>
 <symbol> ( </symbol>
+<parameterList>
+</parameterList>
+<symbol> ) </symbol>
+<subroutineBody>
+<symbol> { </symbol>
+<statements>
+<doStatement>
+<keyword> do </keyword>
+<identifier> Memory CAT=SUB USED=true </identifier>
+<symbol> . </symbol>
+<identifier> deAlloc CAT=SUB USED=true </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<keyword> this </keyword>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+<symbol> ; </symbol>
+</doStatement>
+<returnStatement>
+<keyword> return </keyword>
+<symbol> ; </symbol>
+</returnStatement>
+</statements>
+<symbol> } </symbol>
+</subroutineBody>
+</subroutineDec>
+<subroutineDec>
+<keyword> method </keyword>
+<keyword> void </keyword>
+<identifier> show CAT=SUB USED=false </identifier>
+<symbol> ( </symbol>
+<parameterList>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
@@ -355,63 +437,117 @@
 <identifier> destx CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
 <keyword> int </keyword>
-<identifier> desty </identifier>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<keyword> var </keyword>
-<keyword> int </keyword>
-<identifier> dx CAT=ARG USED=false </identifier>
-<symbol> , </symbol>
-<identifier> dy CAT=ARG USED=false </identifier>
-<symbol> , </symbol>
-<identifier> temp CAT=ARG USED=false </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> lengthx </identifier>
-<symbol> = </symbol>
-<identifier> destx </identifier>
-<symbol> - </symbol>
-<identifier> x </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> lengthy CAT=ARG USED=false </identifier>
-<symbol> = </symbol>
 <identifier> desty CAT=ARG USED=false </identifier>
-<symbol> - </symbol>
-<identifier> y CAT=ARG USED=false </identifier>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> dx </identifier>
-<symbol> = </symbol>
-<identifier> Math </identifier>
-<symbol> . </symbol>
-<identifier> abs </identifier>
-<symbol> ( </symbol>
-<identifier> lengthx </identifier>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> dy </identifier>
-<symbol> = </symbol>
-<identifier> Math </identifier>
-<symbol> . </symbol>
-<identifier> abs </identifier>
-<symbol> ( </symbol>
-<identifier> lengthy </identifier>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-<keyword> let </keyword>
-<identifier> invert </identifier>
-<symbol> = </symbol>
-<symbol> ( </symbol>
-<identifier> dx CAT=ARG USED=false </identifier>
-<symbol> &lt; </symbol>
-<identifier> dy CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
 <subroutineBody>
+<symbol> { </symbol>
+<varDec>
+<keyword> var </keyword>
+<keyword> int </keyword>
+<identifier> dx CAT=VAR USED=false </identifier>
+<symbol> , </symbol>
+<identifier> dy CAT=VAR USED=false </identifier>
+<symbol> , </symbol>
+<identifier> temp CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
+</varDec>
 <statements>
+<letStatement>
+<keyword> let </keyword>
+<identifier> lengthx CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> destx CAT=VAR USED=true </identifier>
+</term>
+<symbol> - </symbol>
+<term>
+<identifier> x CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> lengthy CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> desty CAT=VAR USED=true </identifier>
+</term>
+<symbol> - </symbol>
+<term>
+<identifier> y CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> dx CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Math CAT=VAR USED=true </identifier>
+<symbol> . </symbol>
+<identifier> abs CAT=SUB USED=true </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<identifier> lengthx CAT=VAR USED=true </identifier>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> dy CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<identifier> Math CAT=VAR USED=true </identifier>
+<symbol> . </symbol>
+<identifier> abs CAT=SUB USED=true </identifier>
+<symbol> ( </symbol>
+<expressionList>
+<expression>
+<term>
+<identifier> lengthy CAT=VAR USED=true </identifier>
+</term>
+</expression>
+</expressionList>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
+<letStatement>
+<keyword> let </keyword>
+<identifier> invert CAT=VAR USED=true </identifier>
+<symbol> = </symbol>
+<expression>
+<term>
+<symbol> ( </symbol>
+<expression>
+<term>
+<identifier> dx CAT=VAR USED=true </identifier>
+</term>
+<symbol> &lt; </symbol>
+<term>
+<identifier> dy CAT=VAR USED=true </identifier>
+</term>
+</expression>
+<symbol> ) </symbol>
+</term>
+</expression>
+<symbol> ; </symbol>
+</letStatement>
 <ifStatement>
 <keyword> if </keyword>
 <symbol> ( </symbol>
