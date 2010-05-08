@@ -36,9 +36,10 @@ public class CompilationEngine {
 
 	if(tokenizer.keyWord().equals("class")) {
 		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+		String keyword = tokenizer.keyWord();
 		tokenizer.advance();
 		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
-		classTable.Define(tokenizer, tokenizer.identifier(), Kind.STATIC);
+		classTable.Define(tokenizer.identifier(), keyword, Kind.STATIC);
 		
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
@@ -73,9 +74,10 @@ public class CompilationEngine {
 	
 	// Print out first variable declaration
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
+	String keyword  = tokenizer.identifier();
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), type, false);
-	classTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
+	classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
 	tokenizer.advance();
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
@@ -85,7 +87,7 @@ public class CompilationEngine {
 	// If there are more variable declarations continue looping
 	while (cont){
 		OutputXML(tokenizer.tokenType(), type, false);
-		classTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
+		classTable.Define(tokenizer, keyword, Kind.VAR);
 		tokenizer.advance();
 
 		if (tokenizer.tokenType() == Token.SYMBOL){
@@ -106,6 +108,7 @@ public class CompilationEngine {
   public void CompileSubroutine() throws IOException {
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+	String thing = tokenizer.keyWord();
 	tokenizer.advance();
 	if(tokenizer.tokenType() == Token.IDENTIFIER) {
 		OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
@@ -115,7 +118,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
-	subTable.Define(tokenizer, tokenizer.identifier(), Kind.ARG);							//right kind?
+	subTable.Define(tokenizer.identifier(), thing, Kind.ARG);							//right kind?
 	tokenizer.advance();
   	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
@@ -156,9 +159,13 @@ public class CompilationEngine {
 	
 	// Otherwise loop through and print out the parameter list
 	while (cont){
+		OutputXML(token_type);
+		String keyword = tokeniker.keyWord();
+		tokenizer.advance();
+		token_type = tokenizer.tokenType();
     	//returns token's corresponding XML line
 		OutputXML(token_type, Cat.ARG, false);
-		subTable.Define(tokenizer, tokenizer.identifier(), Kind.ARG);
+		subTable.Define(tokenizer.identifier(), keyword, Kind.ARG);
 		
 		tokenizer.advance();
 		
@@ -185,11 +192,12 @@ public class CompilationEngine {
 	
 	// Print out first variable declaration
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+	String keyword = tokenizer.keyWord();
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-	subTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
+	subTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -202,7 +210,7 @@ public class CompilationEngine {
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-		subTable.Define(tokenizer, tokenizer.identifier(), Kind.VAR);
+		subTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){
