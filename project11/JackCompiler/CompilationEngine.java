@@ -14,6 +14,7 @@ public class CompilationEngine {
   public JackTokenizer tokenizer;
   public JackTokenizer.Token token_type;
   public char[] op = {'+','-','*','/','&','|','<','>','='};
+  public ArrayList<SymbolTable> symbolList;
 
   public enum Cat {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
@@ -22,7 +23,7 @@ public class CompilationEngine {
   //TODO: create symbol table!! 
 
   // Creates a new compilation engine
-  public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {
+  public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {	
     outStream = stream;
 	tokenizer = token;
   }
