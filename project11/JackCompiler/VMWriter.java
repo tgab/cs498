@@ -1,6 +1,9 @@
 // VMWriter.java
 
 package JackCompiler;
+import java.io.OutputStream;
+
+
 
 public class VMWriter {
 	public enum Segment {
@@ -33,7 +36,7 @@ public class VMWriter {
 	
 	// Writes a VM label command
 	public void writeLabel (String label) {
-	
+		
 	}
 	
 	// Writes a VM goto command
