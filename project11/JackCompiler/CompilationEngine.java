@@ -20,8 +20,6 @@ public class CompilationEngine {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
   }
 
-  //TODO: create symbol table!! 
-
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {	
     outStream = stream;
@@ -30,6 +28,8 @@ public class CompilationEngine {
 
   // Compiles a complete class
   public void CompileClass() throws IOException {
+	symbolList.add(new SymbolTable());
+	SymbolTable classTable = symbolList.get(symbolList.size()-1);
 	
 	// Starting to compile a class
 	outStream.write("<class>\n");
@@ -53,10 +53,14 @@ public class CompilationEngine {
 	// Finished with class, print closing bracket and tag
 	OutputXML(tokenizer.tokenType());
 	outStream.write("</class>\n");
+	
+	symbolList.remove(symbolList.size()-1);
   }
   
   // Compiles a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
+	SymbolTable classTable = symbolList.get(symbolList.size()-1);
+	
 	Boolean cont = true;
 	Cat type = Cat.STATIC;
 	
@@ -100,6 +104,9 @@ public class CompilationEngine {
   
   // Compiles a complete method, function, or constructor
   public void CompileSubroutine() throws IOException {
+	symbolList.add(new SymbolTable());
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
@@ -130,10 +137,14 @@ public class CompilationEngine {
 	tokenizer.advance();
 	outStream.write("</subroutineBody>\n");
 	outStream.write("</subroutineDec>\n");
+	
+	symbolList.remove(symbolList.size()-1);
   }
   
   // Compiles a parameter list
   public void compileParameterList() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<parameterList>\n");
 	
 	Boolean cont = true;
@@ -173,6 +184,9 @@ public class CompilationEngine {
   
   // Compiles a var declaration
   public void compileVarDec() throws IOException {
+	symbolList.add(new SymbolTable());
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
   	Boolean cont = true;
 	
   	outStream.write("<varDec>\n");
@@ -207,10 +221,14 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	outStream.write("</varDec>\n");
+	
+	symbolList.remove(symbolList.size()-1);
   }
   
   // Compiles a sentence of statements
   public void compileStatements() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<statements>\n");
 	
 	String kwd = tokenizer.keyWord();
@@ -254,6 +272,8 @@ public class CompilationEngine {
   
   // Compiles a do statement
   public void compileDo() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print out the do keyword
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -266,6 +286,8 @@ public class CompilationEngine {
   }
   
   public void compileSubroutine() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print subroutine name or class name
 	OutputXML(tokenizer.tokenType(), Cat.SUB, true);
 	tokenizer.advance();
@@ -299,6 +321,8 @@ public class CompilationEngine {
   
   // Compiles a let statement
   public void compileLet() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print out the let keyword
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -332,6 +356,8 @@ public class CompilationEngine {
   
   // Compiles a while statement
   public void compileWhile() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -361,6 +387,8 @@ public class CompilationEngine {
   
   // Compiles a return statement
   public void compileReturn() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -382,6 +410,8 @@ public class CompilationEngine {
   
   // Compiles an if statement
   public void compileIf() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
@@ -430,6 +460,8 @@ public class CompilationEngine {
   
   // Compiles an expression
   public void CompileExpression() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<expression>\n");
 	
 	// Print out the first term
@@ -455,6 +487,8 @@ public class CompilationEngine {
   
   // Compiles a term
   public void CompileTerm() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<term>\n");
 	
 	if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '(') {
@@ -503,6 +537,8 @@ public class CompilationEngine {
   
   // Compiles a comma-separated list of expressions
   public void CompileExpressionList() throws IOException {
+	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	
 	outStream.write("<expressionList>\n");
 	
 	Boolean cont = true;
