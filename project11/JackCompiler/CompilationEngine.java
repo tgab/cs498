@@ -65,7 +65,6 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType());
 	outStream.write("</class>\n");
 	
-	
 	printTable(symbolList.get(symbolList.size()-1).symbols);
 	symbolList.remove(symbolList.size()-1);
   }
@@ -166,6 +165,8 @@ public class CompilationEngine {
 	outStream.write("</subroutineBody>\n");
 	outStream.write("</subroutineDec>\n");
 	
+	System.out.println(symbolList.size());
+	printTable(symbolList.get(symbolList.size()-1).symbols);
 	symbolList.remove(symbolList.size()-1);
   }
   
@@ -228,7 +229,6 @@ public class CompilationEngine {
   
   // Compiles a var declaration
   public void compileVarDec() throws IOException {
-	symbolList.add(new SymbolTable());
 	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
   	Boolean cont = true;
@@ -269,7 +269,6 @@ public class CompilationEngine {
 	
 	outStream.write("</varDec>\n");
 	
-	symbolList.remove(symbolList.size()-1);
   }
   
   // Compiles a sentence of statements
@@ -731,7 +730,7 @@ public class CompilationEngine {
 	   String key = iterator.next().toString();  
 	   String value = map.get(key).toString();  
 
-	   System.out.println(key + " " + value);  
+	   System.out.println(key);  
 	}
 }
 }

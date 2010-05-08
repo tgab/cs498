@@ -58,6 +58,7 @@ public class SymbolTable{
 			var_counter++;
 		}
 		
+		symbols.put(name, e);
 		
 	}
 	
