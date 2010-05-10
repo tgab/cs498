@@ -1,17 +1,3 @@
-<class>
-<keyword> class </keyword>
-<identifier> Main CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> main CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
 <varDec>
 <keyword> var </keyword>
 <keyword> int </keyword>
@@ -20,98 +6,37 @@
 <identifier> value CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Main CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> fillMemory CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 8001 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 16 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
+function Main.main 2
+// Compiling statements
+// Do statement
+// Compiling expression list
+push constant 8001
+push constant 16
 <symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
+push constant 1
+call Main.fillMemory 3
+// Let statement
 <keyword> let </keyword>
 <identifier> value CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <identifier> Memory CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> peek CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 8000 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
+// Compiling expression list
+push constant 8000
 <symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Main CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> convert CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
+// Do statement
+// Compiling expression list
 <identifier> value CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-push local 0
+call Main.convert 1
+// Return statement
+push constant 0
 return
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> convert CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
 <keyword> int </keyword>
 <identifier> value CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
 <varDec>
 <keyword> var </keyword>
 <keyword> int </keyword>
@@ -126,310 +51,129 @@ return
 <identifier> loop CAT=VAR USED=false </identifier>
 <symbol> ; </symbol>
 </varDec>
-<statements>
-<letStatement>
+function Main.convert 1
+// Compiling statements
+// Let statement
 <keyword> let </keyword>
 <identifier> loop CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <keyword> true </keyword>
-</term>
-</expression>
 <symbol> ; </symbol>
-</letStatement>
-<whileStatement>
+// While statement
 <keyword> while </keyword>
 <symbol> ( </symbol>
-<expression>
-<term>
 <identifier> loop CAT=VAR USED=true </identifier>
-</term>
-</expression>
 <symbol> ) </symbol>
 <symbol> { </symbol>
-<statements>
-<letStatement>
+// Compiling statements
+// Let statement
 <keyword> let </keyword>
 <identifier> position CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <identifier> position CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
+push constant 1
+add
 <symbol> ; </symbol>
-</letStatement>
-<letStatement>
+// Let statement
 <keyword> let </keyword>
 <identifier> mask CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <identifier> Main CAT=VAR USED=true </identifier>
 <symbol> . </symbol>
 <identifier> nextMask CAT=SUB USED=true </identifier>
 <symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
+// Compiling expression list
 <identifier> mask CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
 <symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> poke CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 9000 </integerConstant>
-</term>
-<symbol> + </symbol>
-<term>
+// Do statement
+// Compiling expression list
+push constant 9000
 <identifier> position CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
+add
 <identifier> mask CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<ifStatement>
+call Memory.poke 2
+// If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
-<expression>
-<term>
 <symbol> ~ </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
 <identifier> position CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 16 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</term>
-</expression>
+push constant 16
+gt
 <symbol> ) </symbol>
 <symbol> { </symbol>
-<statements>
-<ifStatement>
+// Compiling statements
+// If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
-<expression>
-<term>
 <symbol> ~ </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
 <identifier> value CAT=VAR USED=true </identifier>
-</term>
-<symbol> &amp; </symbol>
-<term>
 <identifier> mask CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</term>
-</expression>
+and
+push constant 0
+eq
 <symbol> ) </symbol>
 <symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> poke CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 8000 </integerConstant>
-</term>
-<symbol> + </symbol>
-<term>
+// Compiling statements
+// Do statement
+// Compiling expression list
+push constant 8000
 <identifier> position CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
+add
+push constant 1
+call Memory.poke 2
 <symbol> } </symbol>
 <keyword> else </keyword>
 <symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> poke CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 8000 </integerConstant>
-</term>
-<symbol> + </symbol>
-<term>
+// Compiling statements
+// Do statement
+// Compiling expression list
+push constant 8000
 <identifier> position CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
+add
+push constant 0
+call Memory.poke 2
 <symbol> } </symbol>
-</ifStatement>
-</statements>
 <symbol> } </symbol>
 <keyword> else </keyword>
 <symbol> { </symbol>
-<statements>
-<letStatement>
+// Compiling statements
+// Let statement
 <keyword> let </keyword>
 <identifier> loop CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <keyword> false </keyword>
-</term>
-</expression>
 <symbol> ; </symbol>
-</letStatement>
-</statements>
 <symbol> } </symbol>
-</ifStatement>
-</statements>
 <symbol> } </symbol>
-</whileStatement>
-<returnStatement>
-<keyword> return </keyword>
-push local 0
+// Return statement
+push constant 0
 return
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> int </keyword>
-<identifier> nextMask CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
 <keyword> int </keyword>
 <identifier> mask CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
+function Main.nextMask 1
+// Compiling statements
+// If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
-<expression>
-<term>
 <identifier> mask CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
+push constant 0
+eq
 <symbol> ) </symbol>
 <symbol> { </symbol>
-<statements>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
+// Compiling statements
+// Return statement
+push constant 1
 <symbol> } </symbol>
 <keyword> else </keyword>
 <symbol> { </symbol>
-<statements>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
+// Compiling statements
+// Return statement
 <identifier> mask CAT=VAR USED=true </identifier>
-</term>
-<symbol> * </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
+push constant 2
+call Math.multiply 2
 <symbol> } </symbol>
-</ifStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> fillMemory CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
 <keyword> int </keyword>
 <identifier> startAddress CAT=ARG USED=false </identifier>
 <symbol> , </symbol>
@@ -440,88 +184,39 @@ return
 <identifier> value CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<whileStatement>
+function Main.fillMemory 3
+// Compiling statements
+// While statement
 <keyword> while </keyword>
 <symbol> ( </symbol>
-<expression>
-<term>
 <identifier> length CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
+push constant 0
+gt
 <symbol> ) </symbol>
 <symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> poke CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
+// Compiling statements
+// Do statement
+// Compiling expression list
 <identifier> startAddress CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
 <identifier> value CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
+call Memory.poke 2
+// Let statement
 <keyword> let </keyword>
 <identifier> length CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <identifier> length CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
+push constant 1
+sub
 <symbol> ; </symbol>
-</letStatement>
-<letStatement>
+// Let statement
 <keyword> let </keyword>
 <identifier> startAddress CAT=VAR USED=true </identifier>
 <symbol> = </symbol>
-<expression>
-<term>
 <identifier> startAddress CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
+push constant 1
+add
 <symbol> ; </symbol>
-</letStatement>
-</statements>
 <symbol> } </symbol>
-</whileStatement>
-<returnStatement>
-<keyword> return </keyword>
-push local 0
+// Return statement
+push constant 0
 return
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>

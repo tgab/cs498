@@ -1,4 +1,4 @@
- 	// CompilationEngine.java
+// CompilationEngine.java
 
 package JackCompiler;
 
@@ -11,6 +11,7 @@ import JackCompiler.JackTokenizer.Token;
 import JackCompiler.SymbolTable;
 import JackCompiler.SymbolTable.Kind;
 import JackCompiler.VMWriter.Segment;
+import JackCompiler.VMWriter.Command;
 import JackCompiler.SymbolTable.Entry;
 
 public class CompilationEngine {
@@ -39,17 +40,18 @@ public class CompilationEngine {
   // Compiles a complete class
   public void CompileClass() throws IOException {
 	// Starting to compile a class
-	outStream.write("<class>\n");
+	//outStream.write("<class>\n");
 
 	if(tokenizer.keyWord().equals("class")) {
-		outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+		//outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 		String keyword = tokenizer.keyWord();
 		tokenizer.advance();
-		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
+		//outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
 		table.Define(tokenizer.identifier(), keyword, Kind.STATIC, true);
+		className = tokenizer.identifier();
 		
 		tokenizer.advance();
-		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+		//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		while(tokenizer.keyWord().equals("static") || tokenizer.keyWord().equals("field")) {
 			CompileClassVarDec();
@@ -61,8 +63,8 @@ public class CompilationEngine {
 	}
 	
 	// Finished with class, print closing bracket and tag
-	OutputXML(tokenizer.tokenType());
-	outStream.write("</class>\n");
+	//OutputXML(tokenizer.tokenType());
+	//outStream.write("</class>\n");
 
 	// DEBUG
 	printTable(table.classSymbols);
@@ -130,60 +132,71 @@ public class CompilationEngine {
   public void CompileSubroutine() throws IOException {
 	table.startSubroutine();
 	
-	outStream.write("<subroutineDec>\n");
-	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
+	//outStream.write("<subroutineDec>\n");
+	//outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	String thing = tokenizer.keyWord();
 	tokenizer.advance();
 	if(tokenizer.tokenType() == Token.IDENTIFIER) {
-		OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
+		//OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 		tokenizer.advance();
 	}else{
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
-	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
+	//OutputXML(tokenizer.tokenType(), Cat.SUB, false);
 	table.Define(tokenizer.identifier(), thing, Kind.ARG, true);							//right kind?
+	String functionName = className + "." + tokenizer.identifier();
+	
 	tokenizer.advance();
-  	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+  	//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
 	
 	//Parameter list
-	compileParameterList();
+	int count = compileParameterList();
+	
+
 	
 	//Subroutine body:
-	outStream.write("<subroutineBody>\n");
-	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+	//outStream.write("<subroutineBody>\n");
+	//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
 	while (tokenizer.keyWord().equals("var")){
-		compileVarDec();
+		count = compileVarDec();
 	}
+	
+	// Write function declaration with name and num local variables
+	writer.writeFunction(functionName, count);
+	
+	
 	compileStatements();
 	
 	// Print out closing bracket for subroutine body
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
-	outStream.write("</subroutineBody>\n");
-	outStream.write("</subroutineDec>\n");
+	//outStream.write("</subroutineBody>\n");
+	//outStream.write("</subroutineDec>\n");
 	
 	// DEBUG
 	printTable(table.symbols);
   }
   
   // Compiles a parameter list
-  public void compileParameterList() throws IOException {
+  public int compileParameterList() throws IOException {
 	
-	outStream.write("<parameterList>\n");
+	//outStream.write("<parameterList>\n");
 	
 	Boolean cont = true;
 	token_type = tokenizer.tokenType();
 	
+	int count = 0;
+	
 	// If parameter list is empty, handle and return
 	if (token_type == Token.SYMBOL){
 		if (tokenizer.symbol() == ')'){
-			outStream.write("</parameterList>\n");
-			OutputXML(token_type);
+			//outStream.write("</parameterList>\n");
+			//OutputXML(token_type);
 			tokenizer.advance();
-			return;
+			return count;
 		}
 	}
 	
@@ -203,6 +216,7 @@ public class CompilationEngine {
     	//returns token's corresponding XML line
 		OutputXML(token_type, Cat.ARG, false);
 		table.Define(tokenizer.identifier(), keyword, Kind.ARG, false);
+		count++;
 		
 		tokenizer.advance();
 		
@@ -223,12 +237,15 @@ public class CompilationEngine {
 	// Handle closing parenthesis
 	OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
+	
+	return count;
   }
   
   // Compiles a var declaration
-  public void compileVarDec() throws IOException {
+  public int compileVarDec() throws IOException {
 	
   	Boolean cont = true;
+	int count = 0;
 	
   	outStream.write("<varDec>\n");
 	
@@ -240,6 +257,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
 	table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
+	count++;
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -253,6 +271,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
 		table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
+		count++;
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){
@@ -266,37 +285,45 @@ public class CompilationEngine {
 	
 	outStream.write("</varDec>\n");
 	
+	return count;
+	
   }
   
   // Compiles a sentence of statements
   public void compileStatements() throws IOException {
 	
-	outStream.write("<statements>\n");
+	outStream.write("// Compiling statements\n");
+	//outStream.write("<statements>\n");
 	
 	String kwd = tokenizer.keyWord();
 	
 	Boolean cont = true;
 	while (cont){
 		if (kwd.equals("let")){
-					outStream.write("<letStatement>\n");
+					outStream.write("// Let statement\n");
+					//outStream.write("<letStatement>\n");
 					compileLet();
-					outStream.write("</letStatement>\n");
+					//outStream.write("</letStatement>\n");
 				} else if (kwd.equals("if")){
-					outStream.write("<ifStatement>\n");
+					outStream.write("// If statement\n");
+					//outStream.write("<ifStatement>\n");
 					compileIf();
-					outStream.write("</ifStatement>\n");
+					//outStream.write("</ifStatement>\n");
 				} else if (kwd.equals("while")){
-					outStream.write("<whileStatement>\n");
+					outStream.write("// While statement\n");
+					//outStream.write("<whileStatement>\n");
 					compileWhile();
-					outStream.write("</whileStatement>\n");
+					//outStream.write("</whileStatement>\n");
 				} else if (kwd.equals("do")){
-					outStream.write("<doStatement>\n");
+					outStream.write("// Do statement\n");
+					//outStream.write("<doStatement>\n");
 					compileDo();
-					outStream.write("</doStatement>\n");
+					//outStream.write("</doStatement>\n");
 				} else if (kwd.equals("return")){
-					outStream.write("<returnStatement>\n");
+					outStream.write("// Return statement\n");
+					//outStream.write("<returnStatement>\n");
 					compileReturn();
-					outStream.write("</returnStatement>\n");
+					//outStream.write("</returnStatement>\n");
 				} else {
 					System.err.println("Error parsing statements.");
 				}
@@ -309,53 +336,63 @@ public class CompilationEngine {
 				}
 			}
   
-	outStream.write("</statements>\n");
+	//outStream.write("</statements>\n");
   }
   
   // Compiles a do statement
   public void compileDo() throws IOException {
 	
 	// Print out the do keyword
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	compileSubroutine();
 	
 	// Get the ending semi-colon
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
   }
   
   public void compileSubroutine() throws IOException {
+	String name = "";
 	
 	// Print subroutine name or class name
-	OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+	//OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+	if (tokenizer.tokenType() == Token.IDENTIFIER){
+		name = tokenizer.identifier();
+	}
+	
 	tokenizer.advance();
 	
 	// If we have an expression list
 	if (tokenizer.symbol() == '('){
 		// Print opening parenthesis
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 
 		// Compile expression list
-		CompileExpressionList();
+		int count = CompileExpressionList();
+		writer.writeCall(name, count);
 		
 	} else if (tokenizer.symbol() == '.'){
 		// Print the . symbol
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
 		// Print the subroutine name
-		OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+		//OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+		name = name + "." + tokenizer.identifier();
+		
 		tokenizer.advance();
 		
 		// Print the opening parenthesis
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
 		// Compile the expression list
-		CompileExpressionList();
+		int count = CompileExpressionList();
+		
+		writer.writeCall(name, count);
 	}
   }
   
@@ -427,24 +464,24 @@ public class CompilationEngine {
   public void compileReturn() throws IOException {
 	
 	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	if (tokenizer.tokenType() == Token.SYMBOL){
 		if (tokenizer.symbol() == ';'){
 			// If it is returning void push zero, then return
-			writer.writePush(Segment.LOCAL, 0);
+			writer.writePush(Segment.CONST, 0);
 			writer.writeReturn();
 			
 			// Print out the semi-colon
-			OutputXML(tokenizer.tokenType());
+			//OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
 		}
 	} else {
 		CompileExpression();
 		
 		// Print out the semi-colon
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
   }
@@ -501,7 +538,7 @@ public class CompilationEngine {
   // Compiles an expression
   public void CompileExpression() throws IOException {
 	
-	outStream.write("<expression>\n");
+	//outStream.write("<expression>\n");
 	
 	// Print out the first term
 	CompileTerm();
@@ -511,29 +548,49 @@ public class CompilationEngine {
 	
 	while (sym == '+' || sym == '-' || sym == '*' || sym == '/' || sym == '&' || sym == '|' || sym == '<' || sym == '>' || sym == '='){
 		// Print out operation
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
 		// Print out term
 		CompileTerm();
 		
+		if (sym == '+') {
+			writer.writeArithmetic(Command.ADD);
+		} else if (sym == '-') {
+			writer.writeArithmetic(Command.SUB);
+		} else if (sym == '*') {
+			writer.writeCall("Math.multiply", 2);
+		} else if (sym == '/') {
+			writer.writeCall("Math.divide", 2);
+		} else if (sym == '&') {
+			writer.writeArithmetic(Command.AND);
+		} else if (sym == '|') {
+			writer.writeArithmetic(Command.OR);
+		} else if (sym == '<') {
+			writer.writeArithmetic(Command.LT);
+		} else if (sym == '>') {
+			writer.writeArithmetic(Command.GT);
+		} else if (sym == '=') {
+			writer.writeArithmetic(Command.EQ);
+		}
+		
 		// Check next symbol
 		sym = tokenizer.symbol();
 	}
 
-	outStream.write("</expression>\n");
+	//outStream.write("</expression>\n");
   }
   
   // Compiles a term
   public void CompileTerm() throws IOException {
 	
-	outStream.write("<term>\n");
+	//outStream.write("<term>\n");
 	
 	if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '(') {
-		outStream.write("<symbol> " + "(" + " </symbol>\n");
+		//outStream.write("<symbol> " + "(" + " </symbol>\n");
 		tokenizer.advance();
 		CompileExpression();
-		outStream.write("<symbol> " + ")" + " </symbol>\n");
+		//outStream.write("<symbol> " + ")" + " </symbol>\n");
 		tokenizer.advance();		
 	} else if(tokenizer.tokenType() == Token.SYMBOL && (tokenizer.symbol() == '-' || tokenizer.symbol() == '~'	)) {
 		OutputXML(tokenizer.tokenType());
@@ -543,7 +600,17 @@ public class CompilationEngine {
 		if(tokenizer.tokenType() == Token.IDENTIFIER) {
 			OutputXML(tokenizer.tokenType(), Cat.VAR, true);
 			tokenizer.advance();
-		}else{
+		}else if (tokenizer.tokenType() == Token.STRING_CONST) {
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+		} else if (tokenizer.tokenType() == Token.INT_CONST) {
+			//OutputXML(tokenizer.tokenType());
+			writer.writePush(Segment.CONST, tokenizer.intVal());
+			tokenizer.advance();
+		} else if (tokenizer.tokenType() == Token.KEYWORD) {
+			OutputXML(tokenizer.tokenType());
+			tokenizer.advance();
+		} else {
 			OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
 		}
@@ -570,13 +637,15 @@ public class CompilationEngine {
 			
 		}
 	}
-	outStream.write("</term>\n");
+	//outStream.write("</term>\n");
   }
   
   // Compiles a comma-separated list of expressions
-  public void CompileExpressionList() throws IOException {
+  public int CompileExpressionList() throws IOException {
+	int count = 0;
 	
-	outStream.write("<expressionList>\n");
+	outStream.write("// Compiling expression list\n");
+	//outStream.write("<expressionList>\n");
 	
 	Boolean cont = true;
 	token_type = tokenizer.tokenType();
@@ -584,10 +653,10 @@ public class CompilationEngine {
 	// If parameter list is empty, handle and return
 	if (token_type == Token.SYMBOL){
 		if (tokenizer.symbol() == ')'){
-			outStream.write("</expressionList>\n");
-			OutputXML(token_type);
+			//outStream.write("</expressionList>\n");
+			//OutputXML(token_type);
 			tokenizer.advance();
-			return;
+			return count;
 		}
 	}
 	
@@ -595,24 +664,28 @@ public class CompilationEngine {
 	while (cont){
     	//returns token's corresponding XML line
 		CompileExpression();
+		count++;
 		
 		token_type = tokenizer.tokenType();
 		if (token_type == Token.SYMBOL){
 			if (tokenizer.symbol() == ')'){
 				cont = false;
 			} else if (tokenizer.symbol() == ','){
-				OutputXML(tokenizer.tokenType());
+				//OutputXML(tokenizer.tokenType());
 				tokenizer.advance();
 			}
 		}
 	}
 		
-	outStream.write("</expressionList>\n");
+	//outStream.write("</expressionList>\n");
 	
 	// Handle closing parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
+	
+	return count;
   }
+  
   public void OutputXML(Token token_type) throws IOException {
 		if(token_type == Token.KEYWORD) {
 			try{

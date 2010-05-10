@@ -11,7 +11,7 @@ public class VMWriter {
 	public OutputStreamWriter outStream;
 	
 	public enum Segment {
-		CONST, ARG, LOCAL, STATIC, THIS, THAT, POINTER, TEMP
+		CONST, ARG, LOCAL, STATIC, THIS, THAT, POINTER, TEMP, NONE
 	}
 	
 	public enum Command {
@@ -34,6 +34,7 @@ public class VMWriter {
 			case THAT: outStream.write("push that " + index + "\n"); break;
 			case POINTER: outStream.write("push pointer " + index + "\n"); break;
 			case TEMP: outStream.write("push temp " + index + "\n"); break;
+			default: outStream.write("push " + index + "\n"); break;
 		}
 	}
 	

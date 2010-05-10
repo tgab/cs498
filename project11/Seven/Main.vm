@@ -1,57 +1,13 @@
-<class>
-<keyword> class </keyword>
-<identifier> Main CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> main CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> printInt CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-<symbol> + </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-<symbol> * </symbol>
-<term>
-<integerConstant> 3 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-push local 0
+function Main.main 0
+// Compiling statements
+// Do statement
+// Compiling expression list
+push constant 1
+push constant 2
+push constant 3
+call Math.multiply 2
+add
+call Output.printInt 1
+// Return statement
+push constant 0
 return
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>
