@@ -22,12 +22,14 @@ public class SymbolTable{
 	}
 	
 	//Declare three hashmaps - one for each command type
-	public static HashMap<String, Entry> symbols;
+	public HashMap<String, Entry> symbols;
+	public HashMap<String, Entry> classSymbols;
 
 	//creates a new empty symbol table
 	public SymbolTable()
 	{
-		symbols = new HashMap< String, Entry>();
+		symbols = new HashMap<String, Entry>();
+		classSymbols = new HashMap<String, Entry>();
 	}
 	
 	//Starts a new subroutine scope
@@ -37,7 +39,7 @@ public class SymbolTable{
 	}
 	
 	//Defines a new identifier of a given name, type, and kind and assigns it a running index
-	public void Define(String name, String type, Kind k){
+	public void Define(String name, String type, Kind k, Boolean classLevel){
 		Entry e = new Entry();
 		e.type = type;
 		e.kind = k;
@@ -58,7 +60,11 @@ public class SymbolTable{
 			var_counter++;
 		}
 		
-		symbols.put(name, e);
+		if (classLevel){
+			classSymbols.put(name, e);
+		} else {
+			symbols.put(name, e);
+		}
 		
 	}
 	

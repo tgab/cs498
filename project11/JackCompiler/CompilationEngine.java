@@ -19,7 +19,8 @@ public class CompilationEngine {
   public JackTokenizer tokenizer;
   public JackTokenizer.Token token_type;
   public char[] op = {'+','-','*','/','&','|','<','>','='};
-  public ArrayList<SymbolTable> symbolList;
+  //public ArrayList<SymbolTable> symbolList;
+  public SymbolTable table;
   public String className;
 
   public enum Cat {
@@ -28,7 +29,8 @@ public class CompilationEngine {
 
   // Creates a new compilation engine
   public CompilationEngine(JackTokenizer token, OutputStreamWriter stream) throws IOException {	
-	symbolList = new ArrayList<SymbolTable>();
+	//symbolList = new ArrayList<SymbolTable>();
+	table = new SymbolTable();
 	writer = new VMWriter(stream);
     outStream = stream;
 	tokenizer = token;
@@ -36,9 +38,6 @@ public class CompilationEngine {
 
   // Compiles a complete class
   public void CompileClass() throws IOException {
-	symbolList.add(new SymbolTable());
-	SymbolTable classTable = symbolList.get(symbolList.size()-1);
-	
 	// Starting to compile a class
 	outStream.write("<class>\n");
 
@@ -47,7 +46,7 @@ public class CompilationEngine {
 		String keyword = tokenizer.keyWord();
 		tokenizer.advance();
 		outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
-		classTable.Define(tokenizer.identifier(), keyword, Kind.STATIC);
+		table.Define(tokenizer.identifier(), keyword, Kind.STATIC, true);
 		
 		tokenizer.advance();
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
@@ -64,14 +63,14 @@ public class CompilationEngine {
 	// Finished with class, print closing bracket and tag
 	OutputXML(tokenizer.tokenType());
 	outStream.write("</class>\n");
-	
-	printTable(symbolList.get(symbolList.size()-1).symbols);
-	symbolList.remove(symbolList.size()-1);
+
+	// DEBUG
+	printTable(table.classSymbols);
   }
   
   // Compiles a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
-	SymbolTable classTable = symbolList.get(symbolList.size()-1);
+	//SymbolTable classTable = symbolList.get(symbolList.size()-1);
 	
 	Boolean cont = true;
 	Cat type = Cat.STATIC;
@@ -96,7 +95,7 @@ public class CompilationEngine {
 	
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), type, false);
-	classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+	table.Define(tokenizer.identifier(), keyword, Kind.VAR, true);
 	tokenizer.advance();
 	// Check if there are more
 	if (tokenizer.symbol() == ';'){
@@ -108,7 +107,7 @@ public class CompilationEngine {
 		OutputXML(tokenizer.tokenType(), type, false);
 		
 		if (tokenizer.tokenType() == Token.IDENTIFIER){
-			classTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+			table.Define(tokenizer.identifier(), keyword, Kind.VAR, true);
 		}
 		
 		tokenizer.advance();
@@ -129,8 +128,7 @@ public class CompilationEngine {
   
   // Compiles a complete method, function, or constructor
   public void CompileSubroutine() throws IOException {
-	symbolList.add(new SymbolTable());
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
+	table.startSubroutine();
 	
 	outStream.write("<subroutineDec>\n");
 	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
@@ -144,12 +142,14 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	OutputXML(tokenizer.tokenType(), Cat.SUB, false);
-	subTable.Define(tokenizer.identifier(), thing, Kind.ARG);							//right kind?
+	table.Define(tokenizer.identifier(), thing, Kind.ARG, true);							//right kind?
 	tokenizer.advance();
   	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
+	
 	//Parameter list
 	compileParameterList();
+	
 	//Subroutine body:
 	outStream.write("<subroutineBody>\n");
 	outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
@@ -165,14 +165,12 @@ public class CompilationEngine {
 	outStream.write("</subroutineBody>\n");
 	outStream.write("</subroutineDec>\n");
 	
-	System.out.println(symbolList.size());
-	printTable(symbolList.get(symbolList.size()-1).symbols);
-	symbolList.remove(symbolList.size()-1);
+	// DEBUG
+	printTable(table.symbols);
   }
   
   // Compiles a parameter list
   public void compileParameterList() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	outStream.write("<parameterList>\n");
 	
@@ -204,7 +202,7 @@ public class CompilationEngine {
 		token_type = tokenizer.tokenType();
     	//returns token's corresponding XML line
 		OutputXML(token_type, Cat.ARG, false);
-		subTable.Define(tokenizer.identifier(), keyword, Kind.ARG);
+		table.Define(tokenizer.identifier(), keyword, Kind.ARG, false);
 		
 		tokenizer.advance();
 		
@@ -229,7 +227,6 @@ public class CompilationEngine {
   
   // Compiles a var declaration
   public void compileVarDec() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
   	Boolean cont = true;
 	
@@ -242,7 +239,7 @@ public class CompilationEngine {
 	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
 	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-	subTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+	table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -255,7 +252,7 @@ public class CompilationEngine {
 		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
 		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-		subTable.Define(tokenizer.identifier(), keyword, Kind.VAR);
+		table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
 		tokenizer.advance();
 		
 		if (tokenizer.symbol() == ';'){
@@ -273,7 +270,6 @@ public class CompilationEngine {
   
   // Compiles a sentence of statements
   public void compileStatements() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	outStream.write("<statements>\n");
 	
@@ -318,7 +314,6 @@ public class CompilationEngine {
   
   // Compiles a do statement
   public void compileDo() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print out the do keyword
 	OutputXML(tokenizer.tokenType());
@@ -332,7 +327,6 @@ public class CompilationEngine {
   }
   
   public void compileSubroutine() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print subroutine name or class name
 	OutputXML(tokenizer.tokenType(), Cat.SUB, true);
@@ -367,7 +361,6 @@ public class CompilationEngine {
   
   // Compiles a let statement
   public void compileLet() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print out the let keyword
 	OutputXML(tokenizer.tokenType());
@@ -402,7 +395,6 @@ public class CompilationEngine {
   
   // Compiles a while statement
   public void compileWhile() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -433,7 +425,6 @@ public class CompilationEngine {
   
   // Compiles a return statement
   public void compileReturn() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -460,7 +451,6 @@ public class CompilationEngine {
   
   // Compiles an if statement
   public void compileIf() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	// Print out the first keyword
 	OutputXML(tokenizer.tokenType());
@@ -510,7 +500,6 @@ public class CompilationEngine {
   
   // Compiles an expression
   public void CompileExpression() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	outStream.write("<expression>\n");
 	
@@ -537,7 +526,6 @@ public class CompilationEngine {
   
   // Compiles a term
   public void CompileTerm() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	outStream.write("<term>\n");
 	
@@ -587,7 +575,6 @@ public class CompilationEngine {
   
   // Compiles a comma-separated list of expressions
   public void CompileExpressionList() throws IOException {
-	SymbolTable subTable = symbolList.get(symbolList.size()-1);
 	
 	outStream.write("<expressionList>\n");
 	
