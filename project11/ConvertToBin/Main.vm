@@ -1,19 +1,11 @@
-<varDec>
-<keyword> var </keyword>
-<keyword> int </keyword>
-<identifier> result CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> value CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
 function Main.main 2
 // Compiling statements
 // Do statement
 // Compiling expression list
 push constant 8001
 push constant 16
-<symbol> - </symbol>
 push constant 1
+neg
 call Main.fillMemory 3
 // Let statement
 <keyword> let </keyword>
@@ -37,20 +29,6 @@ return
 <identifier> value CAT=ARG USED=false </identifier>
 </parameterList>
 <symbol> ) </symbol>
-<varDec>
-<keyword> var </keyword>
-<keyword> int </keyword>
-<identifier> mask CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> position CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<varDec>
-<keyword> var </keyword>
-<keyword> boolean </keyword>
-<identifier> loop CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
 function Main.convert 1
 // Compiling statements
 // Let statement
@@ -95,22 +73,22 @@ call Memory.poke 2
 // If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
-<symbol> ~ </symbol>
 <identifier> position CAT=VAR USED=true </identifier>
 push constant 16
 gt
+not
 <symbol> ) </symbol>
 <symbol> { </symbol>
 // Compiling statements
 // If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
-<symbol> ~ </symbol>
 <identifier> value CAT=VAR USED=true </identifier>
 <identifier> mask CAT=VAR USED=true </identifier>
 and
 push constant 0
 eq
+not
 <symbol> ) </symbol>
 <symbol> { </symbol>
 // Compiling statements

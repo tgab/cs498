@@ -35,6 +35,8 @@ public class SymbolTable{
 	//Starts a new subroutine scope
 	public void startSubroutine(){
 		symbols.clear();
+		arg_counter = 0;
+		var_counter = 0;
 		
 	}
 	

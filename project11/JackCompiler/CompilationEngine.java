@@ -47,7 +47,7 @@ public class CompilationEngine {
 		String keyword = tokenizer.keyWord();
 		tokenizer.advance();
 		//outStream.write("<identifier> " + tokenizer.identifier() + " CAT=" + Cat.CLASS + " USED=" + false + " </identifier>\n");
-		table.Define(tokenizer.identifier(), keyword, Kind.STATIC, true);
+		//table.Define(tokenizer.identifier(), keyword, Kind.STATIC, true);
 		className = tokenizer.identifier();
 		
 		tokenizer.advance();
@@ -77,17 +77,17 @@ public class CompilationEngine {
 	Boolean cont = true;
 	Cat type = Cat.STATIC;
 	
-	outStream.write("<classVarDec>\n");
+	//outStream.write("<classVarDec>\n");
 	// Print out first keyword
 	if (tokenizer.keyWord().equals("field")){
 		type = Cat.FIELD;
 	}
 	
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out first variable declaration
-	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
+	//OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	String keyword;
 	if (tokenizer.tokenType() == Token.KEYWORD){
 		keyword = tokenizer.keyWord();
@@ -96,7 +96,7 @@ public class CompilationEngine {
 	}
 	
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), type, false);
+	//OutputXML(tokenizer.tokenType(), type, false);
 	table.Define(tokenizer.identifier(), keyword, Kind.VAR, true);
 	tokenizer.advance();
 	// Check if there are more
@@ -106,7 +106,7 @@ public class CompilationEngine {
 	
 	// If there are more variable declarations continue looping
 	while (cont){
-		OutputXML(tokenizer.tokenType(), type, false);
+		//OutputXML(tokenizer.tokenType(), type, false);
 		
 		if (tokenizer.tokenType() == Token.IDENTIFIER){
 			table.Define(tokenizer.identifier(), keyword, Kind.VAR, true);
@@ -122,10 +122,10 @@ public class CompilationEngine {
 	}
 	
 	// Handle semi-colon at end
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
-	outStream.write("</classVarDec>\n");
+	//outStream.write("</classVarDec>\n");
   }
   
   // Compiles a complete method, function, or constructor
@@ -144,7 +144,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	//OutputXML(tokenizer.tokenType(), Cat.SUB, false);
-	table.Define(tokenizer.identifier(), thing, Kind.ARG, true);							//right kind?
+	table.Define(tokenizer.identifier(), thing, Kind.ARG, false);
 	String functionName = className + "." + tokenizer.identifier();
 	
 	tokenizer.advance();
@@ -247,16 +247,23 @@ public class CompilationEngine {
   	Boolean cont = true;
 	int count = 0;
 	
-  	outStream.write("<varDec>\n");
+  	//outStream.write("<varDec>\n");
 	
 	// Print out first variable declaration
-	outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
-	String keyword = tokenizer.keyWord();
+	//outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
+	
+	String type;
+	// Get type
+	if(tokenizer.tokenType() == Token.IDENTIFIER) {
+		type = tokenizer.identifier();
+	}else{
+		type = tokenizer.keyWord();
+	}
+	//OutputXML(tokenizer.tokenType(), Cat.TYPE, true);
 	tokenizer.advance();
-	OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-	table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
+	//OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+	table.Define(tokenizer.identifier(), type, Kind.VAR, false);
 	count++;
 	tokenizer.advance();
 	
@@ -267,10 +274,10 @@ public class CompilationEngine {
 	
 	// If there are more variable declarations continue looping
 	while (cont){
-		outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+		//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 		tokenizer.advance();
-		OutputXML(tokenizer.tokenType(), Cat.VAR, false);
-		table.Define(tokenizer.identifier(), keyword, Kind.VAR, false);
+		//OutputXML(tokenizer.tokenType(), Cat.VAR, false);
+		table.Define(tokenizer.identifier(), type, Kind.VAR, false);
 		count++;
 		tokenizer.advance();
 		
@@ -280,10 +287,10 @@ public class CompilationEngine {
 	}
 	
 	// Handle semi-colon at end
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
-	outStream.write("</varDec>\n");
+	//outStream.write("</varDec>\n");
 	
 	return count;
 	
@@ -593,9 +600,15 @@ public class CompilationEngine {
 		//outStream.write("<symbol> " + ")" + " </symbol>\n");
 		tokenizer.advance();		
 	} else if(tokenizer.tokenType() == Token.SYMBOL && (tokenizer.symbol() == '-' || tokenizer.symbol() == '~'	)) {
-		OutputXML(tokenizer.tokenType());
+		char sym = tokenizer.symbol();
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		CompileTerm();
+		if (sym == '-') {
+			writer.writeArithmetic(Command.NEG);
+		} else if (sym == '~') {
+			writer.writeArithmetic(Command.NOT);
+		}
 	}else {
 		if(tokenizer.tokenType() == Token.IDENTIFIER) {
 			OutputXML(tokenizer.tokenType(), Cat.VAR, true);
@@ -788,9 +801,11 @@ public class CompilationEngine {
 	
 	while (iterator.hasNext()) {  
 	   String key = iterator.next().toString();  
-	   String value = map.get(key).toString();  
+	   Entry value = map.get(key);  
 
-	   System.out.println(key);  
+	   System.out.println(key + " " + value.type + " " + value.kind + " " + value.index);
 	}
+	
+	System.out.println();
 }
 }
