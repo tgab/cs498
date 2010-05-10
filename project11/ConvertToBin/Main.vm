@@ -3,24 +3,26 @@ function Main.main 2
 // Do statement
 // Compiling expression list
 push constant 8001
+here
 push constant 16
+here
 push constant 1
+here
 neg
 call Main.fillMemory 3
 // Let statement
-<keyword> let </keyword>
-<identifier> value CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
+push local 1
 <identifier> Memory CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> peek CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
 // Compiling expression list
 push constant 8000
-<symbol> ; </symbol>
+here
+call Memory.peek 1
+pop local 1
 // Do statement
 // Compiling expression list
 <identifier> value CAT=VAR USED=true </identifier>
+push local 1
+here
 call Main.convert 1
 // Return statement
 push constant 0
@@ -32,49 +34,57 @@ return
 function Main.convert 1
 // Compiling statements
 // Let statement
-<keyword> let </keyword>
-<identifier> loop CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
+push local 2
 <keyword> true </keyword>
-<symbol> ; </symbol>
+here
+pop local 2
 // While statement
 <keyword> while </keyword>
 <symbol> ( </symbol>
 <identifier> loop CAT=VAR USED=true </identifier>
+push local 2
+here
 <symbol> ) </symbol>
 <symbol> { </symbol>
 // Compiling statements
 // Let statement
-<keyword> let </keyword>
+push local 1
 <identifier> position CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<identifier> position CAT=VAR USED=true </identifier>
+push local 1
+here
 push constant 1
+here
 add
-<symbol> ; </symbol>
+pop local 1
 // Let statement
-<keyword> let </keyword>
-<identifier> mask CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
+push local 0
 <identifier> Main CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> nextMask CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
 // Compiling expression list
 <identifier> mask CAT=VAR USED=true </identifier>
-<symbol> ; </symbol>
+push local 0
+here
+call Main.nextMask 1
+pop local 0
 // Do statement
 // Compiling expression list
 push constant 9000
+here
 <identifier> position CAT=VAR USED=true </identifier>
+push local 1
+here
 add
 <identifier> mask CAT=VAR USED=true </identifier>
+push local 0
+here
 call Memory.poke 2
 // If statement
 <keyword> if </keyword>
 <symbol> ( </symbol>
 <identifier> position CAT=VAR USED=true </identifier>
+push local 1
+here
 push constant 16
+here
 gt
 not
 <symbol> ) </symbol>
@@ -84,9 +94,14 @@ not
 <keyword> if </keyword>
 <symbol> ( </symbol>
 <identifier> value CAT=VAR USED=true </identifier>
+push argument 1
+here
 <identifier> mask CAT=VAR USED=true </identifier>
+push local 0
+here
 and
 push constant 0
+here
 eq
 not
 <symbol> ) </symbol>
@@ -95,9 +110,13 @@ not
 // Do statement
 // Compiling expression list
 push constant 8000
+here
 <identifier> position CAT=VAR USED=true </identifier>
+push local 1
+here
 add
 push constant 1
+here
 call Memory.poke 2
 <symbol> } </symbol>
 <keyword> else </keyword>
@@ -106,9 +125,13 @@ call Memory.poke 2
 // Do statement
 // Compiling expression list
 push constant 8000
+here
 <identifier> position CAT=VAR USED=true </identifier>
+push local 1
+here
 add
 push constant 0
+here
 call Memory.poke 2
 <symbol> } </symbol>
 <symbol> } </symbol>
@@ -116,11 +139,10 @@ call Memory.poke 2
 <symbol> { </symbol>
 // Compiling statements
 // Let statement
-<keyword> let </keyword>
-<identifier> loop CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
+push local 2
 <keyword> false </keyword>
-<symbol> ; </symbol>
+here
+pop local 2
 <symbol> } </symbol>
 <symbol> } </symbol>
 // Return statement
@@ -136,20 +158,27 @@ function Main.nextMask 1
 <keyword> if </keyword>
 <symbol> ( </symbol>
 <identifier> mask CAT=VAR USED=true </identifier>
+push argument 1
+here
 push constant 0
+here
 eq
 <symbol> ) </symbol>
 <symbol> { </symbol>
 // Compiling statements
 // Return statement
 push constant 1
+here
 <symbol> } </symbol>
 <keyword> else </keyword>
 <symbol> { </symbol>
 // Compiling statements
 // Return statement
 <identifier> mask CAT=VAR USED=true </identifier>
+push argument 1
+here
 push constant 2
+here
 call Math.multiply 2
 <symbol> } </symbol>
 <keyword> int </keyword>
@@ -168,7 +197,10 @@ function Main.fillMemory 3
 <keyword> while </keyword>
 <symbol> ( </symbol>
 <identifier> length CAT=VAR USED=true </identifier>
+push argument 2
+here
 push constant 0
+here
 gt
 <symbol> ) </symbol>
 <symbol> { </symbol>
@@ -176,24 +208,30 @@ gt
 // Do statement
 // Compiling expression list
 <identifier> startAddress CAT=VAR USED=true </identifier>
+push argument 1
+here
 <identifier> value CAT=VAR USED=true </identifier>
+push argument 3
+here
 call Memory.poke 2
 // Let statement
-<keyword> let </keyword>
+push argument 2
 <identifier> length CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<identifier> length CAT=VAR USED=true </identifier>
+push argument 2
+here
 push constant 1
+here
 sub
-<symbol> ; </symbol>
+pop argument 2
 // Let statement
-<keyword> let </keyword>
+push argument 1
 <identifier> startAddress CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<identifier> startAddress CAT=VAR USED=true </identifier>
+push argument 1
+here
 push constant 1
+here
 add
-<symbol> ; </symbol>
+pop argument 1
 <symbol> } </symbol>
 // Return statement
 push constant 0

@@ -405,13 +405,35 @@ public class CompilationEngine {
   
   // Compiles a let statement
   public void compileLet() throws IOException {
+	Segment dest = Segment.NONE;
+	int destIndex = 0;
 	
 	// Print out the let keyword
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out the variable name
-	OutputXML(tokenizer.tokenType(), Cat.VAR, true);
+	//OutputXML(tokenizer.tokenType(), Cat.VAR, true);
+	
+	// Check to see if variable is in current scope
+	if (table.symbols.containsKey(tokenizer.identifier())){
+		if (table.KindOf(tokenizer.identifier(), false) == Kind.ARG) {
+			dest = Segment.ARG;
+		} else if (table.KindOf(tokenizer.identifier(), false) == Kind.VAR) {
+			dest = Segment.LOCAL;
+		}
+		destIndex = table.IndexOf(tokenizer.identifier(), false);
+	} else if (table.classSymbols.containsKey(tokenizer.identifier())){
+		if (table.KindOf(tokenizer.identifier(), true) == Kind.STATIC) {
+			dest = Segment.STATIC;
+		} else if (table.KindOf(tokenizer.identifier(), true) == Kind.FIELD) {
+			dest = Segment.THIS;
+		}
+		destIndex = table.IndexOf(tokenizer.identifier(), true);
+	}
+	
+	writer.writePush(dest, destIndex);
+	
 	tokenizer.advance();
 	
 	if (tokenizer.symbol() == '['){
@@ -426,15 +448,17 @@ public class CompilationEngine {
 	}
 	
 	// Print out equals sign
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Compile expression
 	CompileExpression();
 	
 	// Print out semi-colon
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
+	
+	writer.writePop(dest, destIndex);
   }
   
   // Compiles a while statement
@@ -610,8 +634,11 @@ public class CompilationEngine {
 			writer.writeArithmetic(Command.NOT);
 		}
 	}else {
+		String name = "";
+		
 		if(tokenizer.tokenType() == Token.IDENTIFIER) {
 			OutputXML(tokenizer.tokenType(), Cat.VAR, true);
+			name = tokenizer.identifier();
 			tokenizer.advance();
 		}else if (tokenizer.tokenType() == Token.STRING_CONST) {
 			OutputXML(tokenizer.tokenType());
@@ -627,6 +654,8 @@ public class CompilationEngine {
 			OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
 		}
+		
+		
 		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '[') {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
@@ -640,14 +669,42 @@ public class CompilationEngine {
 			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
 		}else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '.') {
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
-			OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+			//OutputXML(tokenizer.tokenType(), Cat.SUB, true);
+			name = name + "." + tokenizer.identifier();
 			tokenizer.advance();
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 			tokenizer.advance();
-			CompileExpressionList();
+			int count = CompileExpressionList();
 			
+			// Call the subroutine
+			writer.writeCall(name, count);
+			
+		} else {
+			Segment dest = Segment.NONE;
+			int destIndex = 0;
+			// Check to see if variable is in current scope
+			if (table.symbols.containsKey(name)){
+				if (table.KindOf(name, false) == Kind.ARG) {
+					dest = Segment.ARG;
+				} else if (table.KindOf(name, false) == Kind.VAR) {
+					dest = Segment.LOCAL;
+				}
+				destIndex = table.IndexOf(name, false);
+				writer.writePush(dest, destIndex);
+			} else if (table.classSymbols.containsKey(name)){
+				if (table.KindOf(name, true) == Kind.STATIC) {
+					dest = Segment.STATIC;
+				} else if (table.KindOf(name, true) == Kind.FIELD) {
+					dest = Segment.THIS;
+				}
+				destIndex = table.IndexOf(name, true);
+				writer.writePush(dest, destIndex);
+			}
+	
+			
+			outStream.write("here\n");
 		}
 	}
 	//outStream.write("</term>\n");

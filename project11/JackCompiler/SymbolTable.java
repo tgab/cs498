@@ -86,18 +86,29 @@ public class SymbolTable{
 	}
 	
 	//Returns the kind of the named identifier in the current scope
-	public Kind KindOf(String name) {
-		return symbols.get(name).kind;
+	public Kind KindOf(String name, Boolean classLevel) {
+		if (classLevel){
+			return classSymbols.get(name).kind;
+		} else {
+			return symbols.get(name).kind;
+		}
 	}	
 	
 	//Returns the type of the named identifier in the current scope
-	public String TypeOf(String name) {
-		return symbols.get(name).type;
+	public String TypeOf(String name, Boolean classLevel) {
+		if (classLevel){
+			return classSymbols.get(name).type;
+		} else {
+			return symbols.get(name).type;
+		}
 	}
 	
 	//Returns the index assigned to the name identifier
-	public int IndexOf(String name){
-		return symbols.get(name).index;
-		
+	public int IndexOf(String name, Boolean classLevel){
+		if (classLevel){
+			return classSymbols.get(name).index;
+		} else {
+			return symbols.get(name).index;
+		}
 	}
 }
