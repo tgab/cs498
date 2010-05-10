@@ -23,6 +23,7 @@ public class CompilationEngine {
   //public ArrayList<SymbolTable> symbolList;
   public SymbolTable table;
   public String className;
+  public int labelCount = 0;
 
   public enum Cat {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
@@ -144,7 +145,9 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	//OutputXML(tokenizer.tokenType(), Cat.SUB, false);
-	table.Define(tokenizer.identifier(), thing, Kind.ARG, false);
+	if (thing.equals("method")){
+		table.Define(tokenizer.identifier(), thing, Kind.ARG, false);
+	}
 	String functionName = className + "." + tokenizer.identifier();
 	
 	tokenizer.advance();
@@ -152,16 +155,16 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	//Parameter list
-	int count = compileParameterList();
+	compileParameterList();
 	
 
-	
+	int count = 0;
 	//Subroutine body:
 	//outStream.write("<subroutineBody>\n");
 	//outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
 	tokenizer.advance();
 	while (tokenizer.keyWord().equals("var")){
-		count = compileVarDec();
+		count = count + compileVarDec();
 	}
 	
 	// Write function declaration with name and num local variables
@@ -202,7 +205,7 @@ public class CompilationEngine {
 	
 	// Otherwise loop through and print out the parameter list
 	while (cont){
-		OutputXML(token_type);
+		//OutputXML(token_type);
 		
 		String keyword;
 		if (tokenizer.tokenType() == Token.KEYWORD){
@@ -214,7 +217,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		token_type = tokenizer.tokenType();
     	//returns token's corresponding XML line
-		OutputXML(token_type, Cat.ARG, false);
+		//OutputXML(token_type, Cat.ARG, false);
 		table.Define(tokenizer.identifier(), keyword, Kind.ARG, false);
 		count++;
 		
@@ -225,17 +228,17 @@ public class CompilationEngine {
 			if (tokenizer.symbol() == ')'){
 				cont = false;
 			} else {
-				OutputXML(token_type);
+				//OutputXML(token_type);
 				tokenizer.advance();
 				token_type = tokenizer.tokenType();
 			}
 		}
 	}
 		
-	outStream.write("</parameterList>\n");
+	//outStream.write("</parameterList>\n");
 	
 	// Handle closing parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	return count;
@@ -310,26 +313,31 @@ public class CompilationEngine {
 					outStream.write("// Let statement\n");
 					//outStream.write("<letStatement>\n");
 					compileLet();
+					outStream.write("// End let statement\n");
 					//outStream.write("</letStatement>\n");
 				} else if (kwd.equals("if")){
 					outStream.write("// If statement\n");
 					//outStream.write("<ifStatement>\n");
 					compileIf();
+					outStream.write("// End if statement\n");
 					//outStream.write("</ifStatement>\n");
 				} else if (kwd.equals("while")){
 					outStream.write("// While statement\n");
 					//outStream.write("<whileStatement>\n");
 					compileWhile();
+					outStream.write("// End while statement\n");
 					//outStream.write("</whileStatement>\n");
 				} else if (kwd.equals("do")){
 					outStream.write("// Do statement\n");
 					//outStream.write("<doStatement>\n");
 					compileDo();
+					outStream.write("// End do statement\n");
 					//outStream.write("</doStatement>\n");
 				} else if (kwd.equals("return")){
 					outStream.write("// Return statement\n");
 					//outStream.write("<returnStatement>\n");
 					compileReturn();
+					outStream.write("// End return statement\n");
 					//outStream.write("</returnStatement>\n");
 				} else {
 					System.err.println("Error parsing statements.");
@@ -400,6 +408,7 @@ public class CompilationEngine {
 		int count = CompileExpressionList();
 		
 		writer.writeCall(name, count);
+		writer.writePop(Segment.TEMP, 0);
 	}
   }
   
@@ -432,7 +441,7 @@ public class CompilationEngine {
 		destIndex = table.IndexOf(tokenizer.identifier(), true);
 	}
 	
-	writer.writePush(dest, destIndex);
+	//writer.writePush(dest, destIndex);
 	
 	tokenizer.advance();
 	
@@ -464,31 +473,47 @@ public class CompilationEngine {
   // Compiles a while statement
   public void compileWhile() throws IOException {
 	
+	// Create a label a beginning of while
+	String labelName1 = "whileStart" + labelCount;
+	String labelName2 = "whileEnd" + labelCount;
+	labelCount++;
+	writer.writeLabel(labelName1);
+	
 	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out opening parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Compile the expression
 	CompileExpression();
 	
+	// Check the opening condition by negation the expression
+	writer.writeArithmetic(Command.NOT);
+	writer.writeIf(labelName2);
+	
 	// Print out the closing parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out the opening bracket
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Compile statements
 	compileStatements();
 	
 	// Print out closing bracket
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
+	
+	// Write the goto statement so loop will continue
+	writer.writeGoto(labelName1);
+	
+	// Write out the label for the end of the while loop
+	writer.writeLabel(labelName2);
   }
   
   // Compiles a return statement
@@ -511,6 +536,8 @@ public class CompilationEngine {
 	} else {
 		CompileExpression();
 		
+		writer.writeReturn();
+		
 		// Print out the semi-colon
 		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
@@ -520,49 +547,67 @@ public class CompilationEngine {
   // Compiles an if statement
   public void compileIf() throws IOException {
 	
+	// Define label variables for if
+	String labelName1 = "ifEnd" + labelCount;
+	String labelName2 = "elseEnd" + labelCount;
+	labelCount++;
+	
 	// Print out the first keyword
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out opening parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Compile the expression
 	CompileExpression();
 	
+	// Negate the expression and check the condition
+	writer.writeArithmetic(Command.NOT);
+	writer.writeIf(labelName1);
+	
 	// Print out the closing parenthesis
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Print out the opening bracket
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// Compile statements
 	compileStatements();
 	
+	// Write statement to jump to end if statement held
+	writer.writeGoto(labelName2);
+	
+	// Write the first label after the first block of code
+	writer.writeLabel(labelName1);
+	
 	// Print out closing bracket
-	OutputXML(tokenizer.tokenType());
+	//OutputXML(tokenizer.tokenType());
 	tokenizer.advance();
 	
 	// If else statement advance until next keyword for now
 	if (tokenizer.tokenType() == Token.KEYWORD && tokenizer.keyWord().equals("else")){
 		// Print out the else
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
 		// Print out the opening bracket
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 		
 		// Compile statements
 		compileStatements();
 		
 		// Print out closing bracket
-		OutputXML(tokenizer.tokenType());
+		//OutputXML(tokenizer.tokenType());
 		tokenizer.advance();
 	}
+	
+	// Write the second label after the second block of code
+	writer.writeLabel(labelName2);
 	
   }
   
@@ -637,7 +682,7 @@ public class CompilationEngine {
 		String name = "";
 		
 		if(tokenizer.tokenType() == Token.IDENTIFIER) {
-			OutputXML(tokenizer.tokenType(), Cat.VAR, true);
+			//OutputXML(tokenizer.tokenType(), Cat.VAR, true);
 			name = tokenizer.identifier();
 			tokenizer.advance();
 		}else if (tokenizer.tokenType() == Token.STRING_CONST) {
@@ -648,7 +693,20 @@ public class CompilationEngine {
 			writer.writePush(Segment.CONST, tokenizer.intVal());
 			tokenizer.advance();
 		} else if (tokenizer.tokenType() == Token.KEYWORD) {
-			OutputXML(tokenizer.tokenType());
+			String keyword = tokenizer.keyWord();
+			
+			// Handle keyword constants
+			if (keyword.equals("true")) {
+				writer.writePush(Segment.CONST, 1);
+				writer.writeArithmetic(Command.NEG);
+				
+			}
+			
+			if (keyword.equals("false") || keyword.equals("null")) {
+				writer.writePush(Segment.CONST, 0);
+			}
+			
+			//OutputXML(tokenizer.tokenType());
 			tokenizer.advance();
 		} else {
 			OutputXML(tokenizer.tokenType());
@@ -704,7 +762,7 @@ public class CompilationEngine {
 			}
 	
 			
-			outStream.write("here\n");
+			//outStream.write("here\n");
 		}
 	}
 	//outStream.write("</term>\n");
