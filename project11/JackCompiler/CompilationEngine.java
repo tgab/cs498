@@ -73,11 +73,11 @@ public class CompilationEngine {
   // Compiles a static declaration or a field declaration
   public void CompileClassVarDec() throws IOException {
 	Boolean cont = true;
-	Cat cat = Cat.STATIC;
+	Kind cat = Kind.STATIC;
 	
 	// Save category of declaration
 	if (tokenizer.keyWord().equals("field")){
-		cat = Cat.FIELD;
+		cat = Kind.FIELD;
 	}
 	tokenizer.advance();
 	
@@ -91,7 +91,7 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// Save the variable in the class scope table
-	table.Define(tokenizer.identifier(), type, Kind.VAR, true);
+	table.Define(tokenizer.identifier(), type, cat, true);
 	tokenizer.advance();
 	
 	// Check if there are more
@@ -104,7 +104,7 @@ public class CompilationEngine {
 	
 		// Add variable name to class scope table (skips over commas)
 		if (tokenizer.tokenType() == Token.IDENTIFIER){
-			table.Define(tokenizer.identifier(), type, Kind.VAR, true);
+			table.Define(tokenizer.identifier(), type, cat, true);
 		}
 		tokenizer.advance();
 
@@ -137,7 +137,7 @@ public class CompilationEngine {
 	
 	// If this is a method, save subroutine name in local scope
 	// NOT NECESSARY???
-	if (thing.equals("method")){
+	if (thing.equals("method") || thing.equals("constructor")){
 		table.Define(tokenizer.identifier(), thing, Kind.ARG, false);
 	}
 	
@@ -352,7 +352,7 @@ public class CompilationEngine {
 		int count = CompileExpressionList();
 		
 		// Write the function call
-		writer.writeCall(name, count);
+		writer.writeCall(className + "." + name, count);
 		
 	} else if (tokenizer.symbol() == '.'){
 		// Pass up the . symbol

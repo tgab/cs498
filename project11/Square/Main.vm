@@ -1,70 +1,18 @@
-<class>
-<keyword> class </keyword>
-<identifier> Main CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> main CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<varDec>
-<keyword> var </keyword>
-<identifier> SquareGame CAT=TYPE USED=true </identifier>
-<identifier> game CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> game CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> SquareGame CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> new CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> game CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> run CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> game CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>
+function Main.main 1
+// Compiling statements
+// Let statement
+call SquareGame.new 0
+pop local 0
+// End let statement
+// Do statement
+call game.run 0
+pop temp 0
+// End do statement
+// Do statement
+call game.dispose 0
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement

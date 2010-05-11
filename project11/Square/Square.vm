@@ -1,1211 +1,395 @@
-<class>
-<keyword> class </keyword>
-<identifier> Square CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> x CAT=FIELD USED=false </identifier>
-<symbol> , </symbol>
-<identifier> y CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> size CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<subroutineDec>
-<keyword> constructor </keyword>
-<identifier> Square CAT=TYPE USED=true </identifier>
-<identifier> new CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-<keyword> int </keyword>
-<identifier> Ax CAT=ARG USED=false </identifier>
-<symbol> , </symbol>
-<keyword> int </keyword>
-<identifier> Ay CAT=ARG USED=false </identifier>
-<symbol> , </symbol>
-<keyword> int </keyword>
-<identifier> Asize CAT=ARG USED=false </identifier>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> x CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Ax CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> y CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Ay CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> size CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Asize CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> draw CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> dispose CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> deAlloc CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> draw CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> erase CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> incSize CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<integerConstant> 254 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &amp; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<integerConstant> 510 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> erase CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> size CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> draw CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> decSize CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> erase CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> size CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> draw CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveUp CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> y CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveDown CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<integerConstant> 254 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> y CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveLeft CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> x CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveRight CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<integerConstant> 510 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> x CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setColor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> x CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> y CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<identifier> size CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>
+function Square.new 0
+// Compiling statements
+// Let statement
+push argument 1
+pop this 0
+// End let statement
+// Let statement
+push argument 2
+pop this 1
+// End let statement
+// Let statement
+push argument 3
+pop this 2
+// End let statement
+// Do statement
+call Square.draw 0
+// End do statement
+// Return statement
+return
+// End return statement
+function Square.dispose 0
+// Compiling statements
+// Do statement
+call Memory.deAlloc 1
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.draw 0
+// Compiling statements
+// Do statement
+push constant 1
+neg
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.erase 0
+// Compiling statements
+// Do statement
+push constant 0
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.incSize 0
+// Compiling statements
+// If statement
+push this 1
+push this 2
+add
+push constant 254
+lt
+push this 0
+push this 2
+add
+push constant 510
+lt
+and
+not
+if-goto ifEnd0
+// Compiling statements
+// Do statement
+call Square.erase 0
+// End do statement
+// Let statement
+push this 2
+push constant 2
+add
+pop this 2
+// End let statement
+// Do statement
+call Square.draw 0
+// End do statement
+goto elseEnd0
+label ifEnd0
+label elseEnd0
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.decSize 0
+// Compiling statements
+// If statement
+push this 2
+push constant 2
+gt
+not
+if-goto ifEnd1
+// Compiling statements
+// Do statement
+call Square.erase 0
+// End do statement
+// Let statement
+push this 2
+push constant 2
+sub
+pop this 2
+// End let statement
+// Do statement
+call Square.draw 0
+// End do statement
+goto elseEnd1
+label ifEnd1
+label elseEnd1
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.moveUp 0
+// Compiling statements
+// If statement
+push this 1
+push constant 1
+gt
+not
+if-goto ifEnd2
+// Compiling statements
+// Do statement
+push constant 0
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 2
+add
+push constant 1
+sub
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Let statement
+push this 1
+push constant 2
+sub
+pop this 1
+// End let statement
+// Do statement
+push constant 1
+neg
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push constant 1
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+goto elseEnd2
+label ifEnd2
+label elseEnd2
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.moveDown 0
+// Compiling statements
+// If statement
+push this 1
+push this 2
+add
+push constant 254
+lt
+not
+if-goto ifEnd3
+// Compiling statements
+// Do statement
+push constant 0
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push constant 1
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Let statement
+push this 1
+push constant 2
+add
+pop this 1
+// End let statement
+// Do statement
+push constant 1
+neg
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 2
+add
+push constant 1
+sub
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+goto elseEnd3
+label ifEnd3
+label elseEnd3
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.moveLeft 0
+// Compiling statements
+// If statement
+push this 0
+push constant 1
+gt
+not
+if-goto ifEnd4
+// Compiling statements
+// Do statement
+push constant 0
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 2
+add
+push constant 1
+sub
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Let statement
+push this 0
+push constant 2
+sub
+pop this 0
+// End let statement
+// Do statement
+push constant 1
+neg
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push constant 1
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+goto elseEnd4
+label ifEnd4
+label elseEnd4
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function Square.moveRight 0
+// Compiling statements
+// If statement
+push this 0
+push this 2
+add
+push constant 510
+lt
+not
+if-goto ifEnd5
+// Compiling statements
+// Do statement
+push constant 0
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 1
+push this 0
+push constant 1
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Let statement
+push this 0
+push constant 2
+add
+pop this 0
+// End let statement
+// Do statement
+push constant 1
+neg
+call Screen.setColor 1
+pop temp 0
+// End do statement
+// Do statement
+push this 0
+push this 2
+add
+push constant 1
+sub
+push this 1
+push this 0
+push this 2
+add
+push this 1
+push this 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+goto elseEnd5
+label ifEnd5
+label elseEnd5
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement

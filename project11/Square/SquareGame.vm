@@ -1,643 +1,264 @@
-<class>
-<keyword> class </keyword>
-<identifier> SquareGame CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<classVarDec>
-<keyword> field </keyword>
-<identifier> Square CAT=TYPE USED=true </identifier>
-<identifier> square CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> direction CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<subroutineDec>
-<keyword> constructor </keyword>
-<identifier> SquareGame CAT=TYPE USED=true </identifier>
-<identifier> new CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> square CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Square CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> new CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 30 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> dispose CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> deAlloc CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> run CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<varDec>
-<keyword> var </keyword>
-<keyword> char </keyword>
-<identifier> key CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<varDec>
-<keyword> var </keyword>
-<keyword> boolean </keyword>
-<identifier> exit CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> exit CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> key CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Keyboard CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> keyPressed CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> moveSquare CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 81 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> exit CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 90 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> decSize CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 88 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> incSize CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 131 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 133 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 130 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 3 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 132 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> direction CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 4 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> key CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Keyboard CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> keyPressed CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> moveSquare CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveSquare CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> direction CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveUp CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> direction CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveDown CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> direction CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 3 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveLeft CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> direction CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 4 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> square CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveRight CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Sys CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> wait CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 5 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>
+function SquareGame.new 0
+// Compiling statements
+// Let statement
+push constant 0
+push constant 0
+push constant 30
+call Square.new 3
+pop this 0
+// End let statement
+// Let statement
+push constant 0
+pop this 1
+// End let statement
+// Return statement
+return
+// End return statement
+function SquareGame.dispose 0
+// Compiling statements
+// Do statement
+call square.dispose 0
+pop temp 0
+// End do statement
+// Do statement
+call Memory.deAlloc 1
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
+function SquareGame.run 2
+// Compiling statements
+// Let statement
+push constant 0
+pop local 1
+// End let statement
+// While statement
+label whileStart0
+push local 1
+not
+not
+if-goto whileEnd0
+// Compiling statements
+// While statement
+label whileStart1
+push local 0
+push constant 0
+eq
+not
+if-goto whileEnd1
+// Compiling statements
+// Let statement
+call Keyboard.keyPressed 0
+pop local 0
+// End let statement
+// Do statement
+call SquareGame.moveSquare 0
+// End do statement
+goto whileStart1
+label whileEnd1
+// End while statement
+// If statement
+push local 0
+push constant 81
+eq
+not
+if-goto ifEnd2
+// Compiling statements
+// Let statement
+push constant 1
+neg
+pop local 1
+// End let statement
+goto elseEnd2
+label ifEnd2
+label elseEnd2
+// End if statement
+// If statement
+push local 0
+push constant 90
+eq
+not
+if-goto ifEnd3
+// Compiling statements
+// Do statement
+call square.decSize 0
+pop temp 0
+// End do statement
+goto elseEnd3
+label ifEnd3
+label elseEnd3
+// End if statement
+// If statement
+push local 0
+push constant 88
+eq
+not
+if-goto ifEnd4
+// Compiling statements
+// Do statement
+call square.incSize 0
+pop temp 0
+// End do statement
+goto elseEnd4
+label ifEnd4
+label elseEnd4
+// End if statement
+// If statement
+push local 0
+push constant 131
+eq
+not
+if-goto ifEnd5
+// Compiling statements
+// Let statement
+push constant 1
+pop this 1
+// End let statement
+goto elseEnd5
+label ifEnd5
+label elseEnd5
+// End if statement
+// If statement
+push local 0
+push constant 133
+eq
+not
+if-goto ifEnd6
+// Compiling statements
+// Let statement
+push constant 2
+pop this 1
+// End let statement
+goto elseEnd6
+label ifEnd6
+label elseEnd6
+// End if statement
+// If statement
+push local 0
+push constant 130
+eq
+not
+if-goto ifEnd7
+// Compiling statements
+// Let statement
+push constant 3
+pop this 1
+// End let statement
+goto elseEnd7
+label ifEnd7
+label elseEnd7
+// End if statement
+// If statement
+push local 0
+push constant 132
+eq
+not
+if-goto ifEnd8
+// Compiling statements
+// Let statement
+push constant 4
+pop this 1
+// End let statement
+goto elseEnd8
+label ifEnd8
+label elseEnd8
+// End if statement
+// While statement
+label whileStart9
+push local 0
+push constant 0
+eq
+not
+not
+if-goto whileEnd9
+// Compiling statements
+// Let statement
+call Keyboard.keyPressed 0
+pop local 0
+// End let statement
+// Do statement
+call SquareGame.moveSquare 0
+// End do statement
+goto whileStart9
+label whileEnd9
+// End while statement
+goto whileStart0
+label whileEnd0
+// End while statement
+// Return statement
+push constant 0
+return
+// End return statement
+function SquareGame.moveSquare 0
+// Compiling statements
+// If statement
+push this 1
+push constant 1
+eq
+not
+if-goto ifEnd10
+// Compiling statements
+// Do statement
+call square.moveUp 0
+pop temp 0
+// End do statement
+goto elseEnd10
+label ifEnd10
+label elseEnd10
+// End if statement
+// If statement
+push this 1
+push constant 2
+eq
+not
+if-goto ifEnd11
+// Compiling statements
+// Do statement
+call square.moveDown 0
+pop temp 0
+// End do statement
+goto elseEnd11
+label ifEnd11
+label elseEnd11
+// End if statement
+// If statement
+push this 1
+push constant 3
+eq
+not
+if-goto ifEnd12
+// Compiling statements
+// Do statement
+call square.moveLeft 0
+pop temp 0
+// End do statement
+goto elseEnd12
+label ifEnd12
+label elseEnd12
+// End if statement
+// If statement
+push this 1
+push constant 4
+eq
+not
+if-goto ifEnd13
+// Compiling statements
+// Do statement
+call square.moveRight 0
+pop temp 0
+// End do statement
+goto elseEnd13
+label ifEnd13
+label elseEnd13
+// End if statement
+// Do statement
+push constant 5
+call Sys.wait 1
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
