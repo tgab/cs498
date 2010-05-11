@@ -151,6 +151,19 @@ public class CompilationEngine {
 	//Parameter list
 	compileParameterList();
 	
+	// TODO: If this is a method, set the base of "this" properly
+	if (thing.equals("method")){
+	
+	}
+	
+	// TODO: If this is a constructor, allocate the necessary memory
+	if (thing.equals("constructor")){
+		// Use class level symbol table to count number of words needed to allocate
+		
+		// Allocate the memory, and set this to point to the memory
+		
+	}
+	
 	//Subroutine body:
 	
 	// Skip over opening bracket
@@ -353,10 +366,15 @@ public class CompilationEngine {
 		
 		// Write the function call
 		writer.writeCall(className + "." + name, count);
+		writer.writePop(Segment.TEMP, 0);
 		
 	} else if (tokenizer.symbol() == '.'){
 		// Pass up the . symbol
 		tokenizer.advance();
+		
+		// TODO: Lookup name in local symbol table, if it is there this is a method call
+		// Need to push reference to this object, else
+		
 		
 		// Save the subroutine name
 		name = name + "." + tokenizer.identifier();

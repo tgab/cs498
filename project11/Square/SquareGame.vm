@@ -55,6 +55,7 @@ pop local 0
 // End let statement
 // Do statement
 call SquareGame.moveSquare 0
+pop temp 0
 // End do statement
 goto whileStart1
 label whileEnd1
@@ -180,6 +181,7 @@ pop local 0
 // End let statement
 // Do statement
 call SquareGame.moveSquare 0
+pop temp 0
 // End do statement
 goto whileStart9
 label whileEnd9
