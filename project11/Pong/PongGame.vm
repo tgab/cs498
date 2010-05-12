@@ -1,1248 +1,458 @@
-<class>
-<keyword> class </keyword>
-<identifier> PongGame CAT=CLASS USED=false </identifier>
-<symbol> { </symbol>
-<classVarDec>
-<keyword> static </keyword>
-<identifier> PongGame CAT=TYPE USED=true </identifier>
-<identifier> instance CAT=STATIC USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<identifier> Bat CAT=TYPE USED=true </identifier>
-<identifier> bat CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<identifier> Ball CAT=TYPE USED=true </identifier>
-<identifier> ball CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> wall CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> boolean </keyword>
-<identifier> exit CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> score CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> lastWall CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<classVarDec>
-<keyword> field </keyword>
-<keyword> int </keyword>
-<identifier> batWidth CAT=FIELD USED=false </identifier>
-<symbol> ; </symbol>
-</classVarDec>
-<subroutineDec>
-<keyword> constructor </keyword>
-<identifier> PongGame CAT=TYPE USED=true </identifier>
-<identifier> new CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> clearScreen CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> batWidth CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 50 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> bat CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Bat CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> new CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 230 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 229 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<identifier> batWidth CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 7 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> ball CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Ball CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> new CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 253 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 222 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 511 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 229 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> ball CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setDestination CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 400 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Screen CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> drawRectangle CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 238 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 511 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 240 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveCursor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 22 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> printString CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<stringConstant> Score: 0 </stringConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> exit CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<keyword> false </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> score CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> wall CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> lastWall CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> dispose CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> ball CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> dispose CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Memory CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> deAlloc CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<keyword> this </keyword>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> function </keyword>
-<keyword> void </keyword>
-<identifier> newInstance CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> instance CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> PongGame CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> new CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> function </keyword>
-<identifier> PongGame CAT=TYPE USED=true </identifier>
-<identifier> getInstance CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<statements>
-<returnStatement>
-<keyword> return </keyword>
-<expression>
-<term>
-<identifier> instance CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> run CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<varDec>
-<keyword> var </keyword>
-<keyword> char </keyword>
-<identifier> key CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<statements>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &amp; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> key CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Keyboard CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> keyPressed CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> move CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> moveBall CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 130 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setDirection CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-<keyword> else </keyword>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 132 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setDirection CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-<keyword> else </keyword>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 140 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> exit CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<keyword> true </keyword>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<whileStatement>
-<keyword> while </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> key CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &amp; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> key CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> Keyboard CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> keyPressed CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> move CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> moveBall CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-</statements>
-<symbol> } </symbol>
-</whileStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveCursor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 10 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 27 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> printString CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<stringConstant> Game Over </stringConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<keyword> method </keyword>
-<keyword> void </keyword>
-<identifier> moveBall CAT=SUB USED=false </identifier>
-<symbol> ( </symbol>
-<parameterList>
-</parameterList>
-<symbol> ) </symbol>
-<subroutineBody>
-<symbol> { </symbol>
-<varDec>
-<keyword> var </keyword>
-<keyword> int </keyword>
-<identifier> bouncingDirection CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> batLeft CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> batRight CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> ballLeft CAT=VAR USED=false </identifier>
-<symbol> , </symbol>
-<identifier> ballRight CAT=VAR USED=false </identifier>
-<symbol> ; </symbol>
-</varDec>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> wall CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> ball CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> move CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> wall CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> &amp; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> wall CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<identifier> lastWall CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> lastWall CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> wall CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> bouncingDirection CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 0 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> batLeft CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> bat CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> getLeft CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> batRight CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> bat CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> getRight CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> ballLeft CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> ball CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> getLeft CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> ballRight CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> ball CAT=VAR USED=true </identifier>
-<symbol> . </symbol>
-<identifier> getRight CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-</expressionList>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> wall CAT=VAR USED=true </identifier>
-</term>
-<symbol> = </symbol>
-<term>
-<integerConstant> 4 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> exit CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> batLeft CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<identifier> ballRight CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-<symbol> | </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> batRight CAT=VAR USED=true </identifier>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<identifier> ballLeft CAT=VAR USED=true </identifier>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<symbol> ~ </symbol>
-<term>
-<identifier> exit CAT=VAR USED=true </identifier>
-</term>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> ballRight CAT=VAR USED=true </identifier>
-</term>
-<symbol> &lt; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> batLeft CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 10 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> bouncingDirection CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-<keyword> else </keyword>
-<symbol> { </symbol>
-<statements>
-<ifStatement>
-<keyword> if </keyword>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> ballLeft CAT=VAR USED=true </identifier>
-</term>
-<symbol> &gt; </symbol>
-<term>
-<symbol> ( </symbol>
-<expression>
-<term>
-<identifier> batRight CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 10 </integerConstant>
-</term>
-</expression>
-<symbol> ) </symbol>
-</term>
-</expression>
-<symbol> ) </symbol>
-<symbol> { </symbol>
-<statements>
-<letStatement>
-<keyword> let </keyword>
-<identifier> bouncingDirection CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> batWidth CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> batWidth CAT=VAR USED=true </identifier>
-</term>
-<symbol> - </symbol>
-<term>
-<integerConstant> 2 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> bat CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> setWidth CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> batWidth CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<letStatement>
-<keyword> let </keyword>
-<identifier> score CAT=VAR USED=true </identifier>
-<symbol> = </symbol>
-<expression>
-<term>
-<identifier> score CAT=VAR USED=true </identifier>
-</term>
-<symbol> + </symbol>
-<term>
-<integerConstant> 1 </integerConstant>
-</term>
-</expression>
-<symbol> ; </symbol>
-</letStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> moveCursor CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<integerConstant> 22 </integerConstant>
-</term>
-</expression>
-<symbol> , </symbol>
-<expression>
-<term>
-<integerConstant> 7 </integerConstant>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> Output CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> printInt CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> score CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<doStatement>
-<keyword> do </keyword>
-<identifier> ball CAT=SUB USED=true </identifier>
-<symbol> . </symbol>
-<identifier> bounce CAT=SUB USED=true </identifier>
-<symbol> ( </symbol>
-<expressionList>
-<expression>
-<term>
-<identifier> bouncingDirection CAT=VAR USED=true </identifier>
-</term>
-</expression>
-</expressionList>
-<symbol> ) </symbol>
-<symbol> ; </symbol>
-</doStatement>
-</statements>
-<symbol> } </symbol>
-</ifStatement>
-<returnStatement>
-<keyword> return </keyword>
-<symbol> ; </symbol>
-</returnStatement>
-</statements>
-<symbol> } </symbol>
-</subroutineBody>
-</subroutineDec>
-<symbol> } </symbol>
-</class>
+function PongGame.new 0
+push constant 7
+call Memory.alloc 1
+pop pointer 0
+// Compiling statements
+// Do statement
+call Screen.clearScreen 0
+pop temp 0
+// End do statement
+// Let statement
+push constant 50
+pop this 6
+// End let statement
+// Let statement
+push constant 230
+push constant 229
+push this 6
+push constant 7
+call Bat.new 4
+pop this 0
+// End let statement
+// Let statement
+push constant 253
+push constant 222
+push constant 0
+push constant 511
+push constant 0
+push constant 229
+call Ball.new 6
+pop this 1
+// End let statement
+// Do statement
+push this 1
+push constant 400
+push constant 0
+call Ball.setDestination 3
+pop temp 0
+// End do statement
+// Do statement
+push constant 0
+push constant 238
+push constant 511
+push constant 240
+call Screen.drawRectangle 4
+pop temp 0
+// End do statement
+// Do statement
+push constant 22
+push constant 0
+call Output.moveCursor 2
+pop temp 0
+// End do statement
+// Do statement
+push constant 8
+call String.new 1
+push constant 83
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 48
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+// End do statement
+// Let statement
+push constant 0
+pop this 3
+// End let statement
+// Let statement
+push constant 0
+pop this 4
+// End let statement
+// Let statement
+push constant 0
+pop this 2
+// End let statement
+// Let statement
+push constant 0
+pop this 5
+// End let statement
+// Return statement
+push pointer 0
+return
+// End return statement
+function PongGame.dispose 0
+push argument 0
+pop pointer 0
+// Compiling statements
+// Do statement
+push this 0
+call Bat.dispose 1
+pop temp 0
+// End do statement
+// Do statement
+push this 1
+call Ball.dispose 1
+pop temp 0
+// End do statement
+// Do statement
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+// End do statement
+// Return statement
+push constant 0
+return
+// End return statement
+function PongGame.newInstance 0
+// Compiling statements
+// Let statement
+call PongGame.new 0
+pop static 0
+// End let statement
+// Return statement
+push constant 0
+return
+// End return statement
+function PongGame.getInstance 0
+// Compiling statements
+// Return statement
+push static 0
+return
+// End return statement
+function PongGame.run 1
+push argument 0
+pop pointer 0
+// Compiling statements
+// While statement
+label whileStart0
+push this 3
+not
+not
+if-goto whileEnd0
+// Compiling statements
+// While statement
+label whileStart1
+push local 0
+push constant 0
+eq
+push this 3
+not
+and
+not
+if-goto whileEnd1
+// Compiling statements
+// Let statement
+call Keyboard.keyPressed 0
+pop local 0
+// End let statement
+// Do statement
+push this 0
+call Bat.move 1
+pop temp 0
+// End do statement
+// Do statement
+push pointer 0
+call PongGame.moveBall 1
+pop temp 0
+// End do statement
+goto whileStart1
+label whileEnd1
+// End while statement
+// If statement
+push local 0
+push constant 130
+eq
+not
+if-goto ifEnd2
+// Compiling statements
+// Do statement
+push this 0
+push constant 1
+call Bat.setDirection 2
+pop temp 0
+// End do statement
+goto elseEnd2
+label ifEnd2
+// Compiling statements
+// If statement
+push local 0
+push constant 132
+eq
+not
+if-goto ifEnd3
+// Compiling statements
+// Do statement
+push this 0
+push constant 2
+call Bat.setDirection 2
+pop temp 0
+// End do statement
+goto elseEnd3
+label ifEnd3
+// Compiling statements
+// If statement
+push local 0
+push constant 140
+eq
+not
+if-goto ifEnd4
+// Compiling statements
+// Let statement
+push constant 0
+not
+pop this 3
+// End let statement
+goto elseEnd4
+label ifEnd4
+label elseEnd4
+// End if statement
+label elseEnd3
+// End if statement
+label elseEnd2
+// End if statement
+// While statement
+label whileStart5
+push local 0
+push constant 0
+eq
+not
+push this 3
+not
+and
+not
+if-goto whileEnd5
+// Compiling statements
+// Let statement
+call Keyboard.keyPressed 0
+pop local 0
+// End let statement
+// Do statement
+push this 0
+call Bat.move 1
+pop temp 0
+// End do statement
+// Do statement
+push pointer 0
+call PongGame.moveBall 1
+pop temp 0
+// End do statement
+goto whileStart5
+label whileEnd5
+// End while statement
+goto whileStart0
+label whileEnd0
+// End while statement
+// If statement
+push this 3
+not
+if-goto ifEnd6
+// Compiling statements
+// Do statement
+push constant 10
+push constant 27
+call Output.moveCursor 2
+pop temp 0
+// End do statement
+// Do statement
+push constant 9
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 79
+call String.appendChar 2
+push constant 118
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+// End do statement
+goto elseEnd6
+label ifEnd6
+label elseEnd6
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
+function PongGame.moveBall 5
+push argument 0
+pop pointer 0
+// Compiling statements
+// Let statement
+push this 1
+call Ball.move 1
+pop this 2
+// End let statement
+// If statement
+push this 2
+push constant 0
+gt
+push this 2
+push this 5
+eq
+not
+and
+not
+if-goto ifEnd7
+// Compiling statements
+// Let statement
+push this 2
+pop this 5
+// End let statement
+// Let statement
+push constant 0
+pop local 0
+// End let statement
+// Let statement
+push this 0
+call Bat.getLeft 1
+pop local 1
+// End let statement
+// Let statement
+push this 0
+call Bat.getRight 1
+pop local 2
+// End let statement
+// Let statement
+push this 1
+call Ball.getLeft 1
+pop local 3
+// End let statement
+// Let statement
+push this 1
+call Ball.getRight 1
+pop local 4
+// End let statement
+// If statement
+push this 2
+push constant 4
+eq
+not
+if-goto ifEnd8
+// Compiling statements
+// Let statement
+push local 1
+push local 4
+gt
+push local 2
+push local 3
+lt
+or
+pop this 3
+// End let statement
+// If statement
+push this 3
+not
+not
+if-goto ifEnd9
+// Compiling statements
+// If statement
+push local 4
+push local 1
+push constant 10
+add
+lt
+not
+if-goto ifEnd10
+// Compiling statements
+// Let statement
+push constant 1
+neg
+pop local 0
+// End let statement
+goto elseEnd10
+label ifEnd10
+// Compiling statements
+// If statement
+push local 3
+push local 2
+push constant 10
+sub
+gt
+not
+if-goto ifEnd11
+// Compiling statements
+// Let statement
+push constant 1
+pop local 0
+// End let statement
+goto elseEnd11
+label ifEnd11
+label elseEnd11
+// End if statement
+label elseEnd10
+// End if statement
+// Let statement
+push this 6
+push constant 2
+sub
+pop this 6
+// End let statement
+// Do statement
+push this 0
+push this 6
+call Bat.setWidth 2
+pop temp 0
+// End do statement
+// Let statement
+push this 4
+push constant 1
+add
+pop this 4
+// End let statement
+// Do statement
+push constant 22
+push constant 7
+call Output.moveCursor 2
+pop temp 0
+// End do statement
+// Do statement
+push this 4
+call Output.printInt 1
+pop temp 0
+// End do statement
+goto elseEnd9
+label ifEnd9
+label elseEnd9
+// End if statement
+goto elseEnd8
+label ifEnd8
+label elseEnd8
+// End if statement
+// Do statement
+push this 1
+push local 0
+call Ball.bounce 2
+pop temp 0
+// End do statement
+goto elseEnd7
+label ifEnd7
+label elseEnd7
+// End if statement
+// Return statement
+push constant 0
+return
+// End return statement
