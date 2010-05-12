@@ -5,11 +5,13 @@ call SquareGame.new 0
 pop local 0
 // End let statement
 // Do statement
-call game.run 0
+push local 0
+call SquareGame.run 1
 pop temp 0
 // End do statement
 // Do statement
-call game.dispose 0
+push local 0
+call SquareGame.dispose 1
 pop temp 0
 // End do statement
 // Return statement

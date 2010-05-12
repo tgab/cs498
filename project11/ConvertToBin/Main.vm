@@ -25,8 +25,8 @@ return
 function Main.convert 3
 // Compiling statements
 // Let statement
-push constant 1
-neg
+push constant 0
+not
 pop local 2
 // End let statement
 // While statement

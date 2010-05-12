@@ -1,27 +1,35 @@
 function Square.new 0
+push constant 3
+call Memory.alloc 1
+pop pointer 0
 // Compiling statements
 // Let statement
-push argument 1
+push argument 0
 pop this 0
 // End let statement
 // Let statement
-push argument 2
+push argument 1
 pop this 1
 // End let statement
 // Let statement
-push argument 3
+push argument 2
 pop this 2
 // End let statement
 // Do statement
-call Square.draw 0
+push pointer 0
+call Square.draw 1
 pop temp 0
 // End do statement
 // Return statement
+push pointer 0
 return
 // End return statement
 function Square.dispose 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // Do statement
+push pointer 0
 call Memory.deAlloc 1
 pop temp 0
 // End do statement
@@ -30,10 +38,12 @@ push constant 0
 return
 // End return statement
 function Square.draw 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // Do statement
-push constant 1
-neg
+push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 // End do statement
@@ -54,6 +64,8 @@ push constant 0
 return
 // End return statement
 function Square.erase 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // Do statement
 push constant 0
@@ -77,6 +89,8 @@ push constant 0
 return
 // End return statement
 function Square.incSize 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 1
@@ -94,7 +108,8 @@ not
 if-goto ifEnd0
 // Compiling statements
 // Do statement
-call Square.erase 0
+push pointer 0
+call Square.erase 1
 pop temp 0
 // End do statement
 // Let statement
@@ -104,7 +119,8 @@ add
 pop this 2
 // End let statement
 // Do statement
-call Square.draw 0
+push pointer 0
+call Square.draw 1
 pop temp 0
 // End do statement
 goto elseEnd0
@@ -116,6 +132,8 @@ push constant 0
 return
 // End return statement
 function Square.decSize 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 2
@@ -125,7 +143,8 @@ not
 if-goto ifEnd1
 // Compiling statements
 // Do statement
-call Square.erase 0
+push pointer 0
+call Square.erase 1
 pop temp 0
 // End do statement
 // Let statement
@@ -135,7 +154,8 @@ sub
 pop this 2
 // End let statement
 // Do statement
-call Square.draw 0
+push pointer 0
+call Square.draw 1
 pop temp 0
 // End do statement
 goto elseEnd1
@@ -147,6 +167,8 @@ push constant 0
 return
 // End return statement
 function Square.moveUp 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 1
@@ -183,8 +205,8 @@ sub
 pop this 1
 // End let statement
 // Do statement
-push constant 1
-neg
+push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 // End do statement
@@ -209,6 +231,8 @@ push constant 0
 return
 // End return statement
 function Square.moveDown 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 1
@@ -243,8 +267,8 @@ add
 pop this 1
 // End let statement
 // Do statement
-push constant 1
-neg
+push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 // End do statement
@@ -273,6 +297,8 @@ push constant 0
 return
 // End return statement
 function Square.moveLeft 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 0
@@ -309,8 +335,8 @@ sub
 pop this 0
 // End let statement
 // Do statement
-push constant 1
-neg
+push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 // End do statement
@@ -335,6 +361,8 @@ push constant 0
 return
 // End return statement
 function Square.moveRight 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 0
@@ -369,8 +397,8 @@ add
 pop this 0
 // End let statement
 // Do statement
-push constant 1
-neg
+push constant 0
+not
 call Screen.setColor 1
 pop temp 0
 // End do statement

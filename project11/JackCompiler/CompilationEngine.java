@@ -23,6 +23,7 @@ public class CompilationEngine {
   public SymbolTable table;
   public String className;
   public int labelCount = 0;
+  public Boolean Comment = true;
 
   public enum Cat {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
@@ -135,12 +136,6 @@ public class CompilationEngine {
 		tokenizer.advance();
 	}
 	
-	// If this is a method, save subroutine name in local scope
-	// NOT NECESSARY???
-	if (thing.equals("method") || thing.equals("constructor")){
-		table.Define(tokenizer.identifier(), thing, Kind.ARG, false);
-	}
-	
 	// Create a string to hold the function name
 	String functionName = className + "." + tokenizer.identifier();
 	tokenizer.advance();
@@ -150,19 +145,6 @@ public class CompilationEngine {
 	
 	//Parameter list
 	compileParameterList();
-	
-	// TODO: If this is a method, set the base of "this" properly
-	if (thing.equals("method")){
-	
-	}
-	
-	// TODO: If this is a constructor, allocate the necessary memory
-	if (thing.equals("constructor")){
-		// Use class level symbol table to count number of words needed to allocate
-		
-		// Allocate the memory, and set this to point to the memory
-		
-	}
 	
 	//Subroutine body:
 	
@@ -177,6 +159,24 @@ public class CompilationEngine {
 	
 	// Write function declaration with name and num local variables
 	writer.writeFunction(functionName, count);
+	
+	// If this is a constructor, allocate the necessary memory
+	if (thing.equals("constructor")){
+	
+		// Use class level symbol table to count number of fields needed to allocate
+		int fields = getCount(table.classSymbols, Kind.FIELD);
+		
+		// Allocate the memory, and set this to point to the memory
+		writer.writePush(Segment.CONST, fields);
+		writer.writeCall("Memory.alloc", 1);
+		writer.writePop(Segment.POINTER, 0);
+	}
+	
+	// If this is a method, set the base of "this" properly
+	if (thing.equals("method")){
+		writer.writePush(Segment.ARG, 0);
+		writer.writePop(Segment.POINTER, 0);
+	}
 	
 	// Compile statements
 	compileStatements();
@@ -295,32 +295,32 @@ public class CompilationEngine {
   // Compiles a sentence of statements
   public void compileStatements() throws IOException {
 	
-	outStream.write("// Compiling statements\n");
+	if (Comment) outStream.write("// Compiling statements\n");
 	
 	String kwd = tokenizer.keyWord();
 	
 	Boolean cont = true;
 	while (cont){
 		if (kwd.equals("let")){
-					outStream.write("// Let statement\n");
+					if (Comment) outStream.write("// Let statement\n");
 					compileLet();
-					outStream.write("// End let statement\n");
+					if (Comment) outStream.write("// End let statement\n");
 				} else if (kwd.equals("if")){
-					outStream.write("// If statement\n");
+					if (Comment) outStream.write("// If statement\n");
 					compileIf();
-					outStream.write("// End if statement\n");
+					if (Comment) outStream.write("// End if statement\n");
 				} else if (kwd.equals("while")){
-					outStream.write("// While statement\n");
+					if (Comment) outStream.write("// While statement\n");
 					compileWhile();
-					outStream.write("// End while statement\n");
+					if (Comment) outStream.write("// End while statement\n");
 				} else if (kwd.equals("do")){
-					outStream.write("// Do statement\n");
+					if (Comment) outStream.write("// Do statement\n");
 					compileDo();
-					outStream.write("// End do statement\n");
+					if (Comment) outStream.write("// End do statement\n");
 				} else if (kwd.equals("return")){
-					outStream.write("// Return statement\n");
+					if (Comment) outStream.write("// Return statement\n");
 					compileReturn();
-					outStream.write("// End return statement\n");
+					if (Comment) outStream.write("// End return statement\n");
 				} else {
 					System.err.println("Error parsing statements.");
 				}
@@ -364,17 +364,56 @@ public class CompilationEngine {
 		// Compile expression list
 		int count = CompileExpressionList();
 		
-		// Write the function call
+		// Push this object onto stack for method call
+		writer.writePush(Segment.POINTER, 0);
+		count++;
+		
+		// Write the method call
 		writer.writeCall(className + "." + name, count);
 		writer.writePop(Segment.TEMP, 0);
 		
 	} else if (tokenizer.symbol() == '.'){
+		int count = 0;
+		Segment dest = Segment.NONE;
+		int destIndex = 0;
+		String destType = "";
+		
 		// Pass up the . symbol
 		tokenizer.advance();
 		
-		// TODO: Lookup name in local symbol table, if it is there this is a method call
-		// Need to push reference to this object, else
+		// Check to see if variable is in current scope
+		if (table.symbols.containsKey(name)){
+	
+			// If in current scope, determine whether it is an argument or local variable
+			if (table.KindOf(name, false) == Kind.ARG) {
+				dest = Segment.ARG;
+			} else if (table.KindOf(name, false) == Kind.VAR) {
+				dest = Segment.LOCAL;
+			}
 		
+			// Save the index
+			destIndex = table.IndexOf(name, false);
+			destType = table.TypeOf(name, false);
+		
+		} else if (table.classSymbols.containsKey(name)){
+	
+			// If in class scope, determine whether it is a static or field variable
+			if (table.KindOf(name, true) == Kind.STATIC) {
+				dest = Segment.STATIC;
+			} else if (table.KindOf(name, true) == Kind.FIELD) {
+				dest = Segment.THIS;
+			}
+			
+			destIndex = table.IndexOf(name, true);
+			destType = table.TypeOf(name, true);
+		}
+		
+		if (dest != Segment.NONE){
+			writer.writePush(dest, destIndex);
+			count++;
+					
+			name = destType;
+		}
 		
 		// Save the subroutine name
 		name = name + "." + tokenizer.identifier();
@@ -385,7 +424,7 @@ public class CompilationEngine {
 		tokenizer.advance();
 		
 		// Compile the expression list
-		int count = CompileExpressionList();
+		count += CompileExpressionList();
 		
 		// Write the function call and then pop off the void return value
 		writer.writeCall(name, count);
@@ -677,8 +716,8 @@ public class CompilationEngine {
 			
 			// Handle keyword constants
 			if (keyword.equals("true")) {
-				writer.writePush(Segment.CONST, 1);
-				writer.writeArithmetic(Command.NEG);
+				writer.writePush(Segment.CONST, 0); //1
+				writer.writeArithmetic(Command.NOT); //NEG
 				
 			}
 			
@@ -687,6 +726,17 @@ public class CompilationEngine {
 			}
 			
 			tokenizer.advance();
+			
+			// If we have a return statement, then push the pointer to this
+			// Otherwise this should be an argument
+			if (keyword.equals("this") && tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == ';') {
+				writer.writePush(Segment.POINTER, 0);
+			} else if (keyword.equals("this")){
+				//writer.writePush(Segment.ARG, 0);
+				//writer.writePop(Segment.POINTER, 0);
+				writer.writePush(Segment.POINTER, 0);
+			}
+			
 		} else {
 			// Shouldn't get here
 			OutputXML(tokenizer.tokenType());
@@ -808,7 +858,7 @@ public class CompilationEngine {
 			try{
 				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 			}catch(IOException x){
-				//TODO: print error?
+				x.printStackTrace();
 			}
 		}
 		if(token_type == Token.SYMBOL) {
@@ -856,7 +906,7 @@ public class CompilationEngine {
 			try{
 				outStream.write("<keyword> " + tokenizer.keyWord() + " </keyword>\n");
 			}catch(IOException x){
-				//TODO: print error?
+				x.printStackTrace();
 			}
 		}
 		if(token_type == Token.SYMBOL) {
@@ -911,5 +961,21 @@ public class CompilationEngine {
 	}
 	
 	System.out.println();
-}
+  }
+  
+  public int getCount(HashMap<String, Entry> map, Kind thisKind) {
+	int count = 0;
+	Iterator iterator = map.keySet().iterator();  
+	
+	while (iterator.hasNext()) {  
+	   String key = iterator.next().toString();  
+	   Entry value = map.get(key);
+	   
+	   if (value.kind == thisKind){
+		count++;
+	   }
+	}
+	
+	return count;
+  }
 }

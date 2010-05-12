@@ -1,4 +1,7 @@
 function SquareGame.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
 // Compiling statements
 // Let statement
 push constant 0
@@ -12,15 +15,20 @@ push constant 0
 pop this 1
 // End let statement
 // Return statement
+push pointer 0
 return
 // End return statement
 function SquareGame.dispose 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // Do statement
-call square.dispose 0
+push this 0
+call Square.dispose 1
 pop temp 0
 // End do statement
 // Do statement
+push pointer 0
 call Memory.deAlloc 1
 pop temp 0
 // End do statement
@@ -29,6 +37,8 @@ push constant 0
 return
 // End return statement
 function SquareGame.run 2
+push argument 0
+pop pointer 0
 // Compiling statements
 // Let statement
 push constant 0
@@ -54,7 +64,8 @@ call Keyboard.keyPressed 0
 pop local 0
 // End let statement
 // Do statement
-call SquareGame.moveSquare 0
+push pointer 0
+call SquareGame.moveSquare 1
 pop temp 0
 // End do statement
 goto whileStart1
@@ -68,8 +79,8 @@ not
 if-goto ifEnd2
 // Compiling statements
 // Let statement
-push constant 1
-neg
+push constant 0
+not
 pop local 1
 // End let statement
 goto elseEnd2
@@ -84,7 +95,8 @@ not
 if-goto ifEnd3
 // Compiling statements
 // Do statement
-call square.decSize 0
+push this 0
+call Square.decSize 1
 pop temp 0
 // End do statement
 goto elseEnd3
@@ -99,7 +111,8 @@ not
 if-goto ifEnd4
 // Compiling statements
 // Do statement
-call square.incSize 0
+push this 0
+call Square.incSize 1
 pop temp 0
 // End do statement
 goto elseEnd4
@@ -180,7 +193,8 @@ call Keyboard.keyPressed 0
 pop local 0
 // End let statement
 // Do statement
-call SquareGame.moveSquare 0
+push pointer 0
+call SquareGame.moveSquare 1
 pop temp 0
 // End do statement
 goto whileStart9
@@ -194,6 +208,8 @@ push constant 0
 return
 // End return statement
 function SquareGame.moveSquare 0
+push argument 0
+pop pointer 0
 // Compiling statements
 // If statement
 push this 1
@@ -203,7 +219,8 @@ not
 if-goto ifEnd10
 // Compiling statements
 // Do statement
-call square.moveUp 0
+push this 0
+call Square.moveUp 1
 pop temp 0
 // End do statement
 goto elseEnd10
@@ -218,7 +235,8 @@ not
 if-goto ifEnd11
 // Compiling statements
 // Do statement
-call square.moveDown 0
+push this 0
+call Square.moveDown 1
 pop temp 0
 // End do statement
 goto elseEnd11
@@ -233,7 +251,8 @@ not
 if-goto ifEnd12
 // Compiling statements
 // Do statement
-call square.moveLeft 0
+push this 0
+call Square.moveLeft 1
 pop temp 0
 // End do statement
 goto elseEnd12
@@ -248,7 +267,8 @@ not
 if-goto ifEnd13
 // Compiling statements
 // Do statement
-call square.moveRight 0
+push this 0
+call Square.moveRight 1
 pop temp 0
 // End do statement
 goto elseEnd13
