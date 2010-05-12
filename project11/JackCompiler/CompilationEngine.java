@@ -391,7 +391,7 @@ public class CompilationEngine {
 				dest = Segment.LOCAL;
 			}
 		
-			// Save the index
+			// Save the index and type
 			destIndex = table.IndexOf(name, false);
 			destType = table.TypeOf(name, false);
 		
@@ -404,6 +404,7 @@ public class CompilationEngine {
 				dest = Segment.THIS;
 			}
 			
+			// Save the index and type
 			destIndex = table.IndexOf(name, true);
 			destType = table.TypeOf(name, true);
 		}
@@ -436,6 +437,9 @@ public class CompilationEngine {
   public void compileLet() throws IOException {
 	Segment dest = Segment.NONE;
 	int destIndex = 0;
+	String destType = "";
+	
+	Boolean array = false;
 	
 	// Pass up the let keyword
 	tokenizer.advance();
@@ -452,8 +456,9 @@ public class CompilationEngine {
 			dest = Segment.LOCAL;
 		}
 		
-		// Save the index
+		// Save the index and type
 		destIndex = table.IndexOf(tokenizer.identifier(), false);
+		destType = table.TypeOf(tokenizer.identifier(), false);
 		
 	} else if (table.classSymbols.containsKey(tokenizer.identifier())){
 	
@@ -464,20 +469,27 @@ public class CompilationEngine {
 			dest = Segment.THIS;
 		}
 		
-		// Save the index
+		// Save the index and type
 		destIndex = table.IndexOf(tokenizer.identifier(), true);
+		destType = table.TypeOf(tokenizer.identifier(), true);
 	}
 	tokenizer.advance();
 	
 	// Handle a bracketed expression if it exists
 	if (tokenizer.symbol() == '['){
-		// Print out opening bracket
-		OutputXML(tokenizer.tokenType());
+		array = true;
+		
+		// Pass up opening bracket
 		tokenizer.advance();
+		
 		// Compile expression
 		CompileExpression();
-		// Print out closing bracket
-		OutputXML(tokenizer.tokenType());
+		
+		// Push the base address of the array and add to argument
+		writer.writePush(dest, destIndex);
+		writer.writeArithmetic(Command.ADD);
+		
+		// Pass up closing bracket
 		tokenizer.advance();
 	}
 	
@@ -490,8 +502,23 @@ public class CompilationEngine {
 	// Pass up the semi-colon
 	tokenizer.advance();
 	
-	// Write a pop statement to pop the result into the destination variable
-	writer.writePop(dest, destIndex);
+	if (array){
+		// Store temporarily
+		writer.writePop(Segment.TEMP, 0);
+		
+		// Set that to be the address of the array
+		writer.writePop(Segment.POINTER, 1);
+		
+		// Get stored value
+		writer.writePush(Segment.TEMP, 0);
+		
+		// Pop the value into "that"
+		writer.writePop(Segment.THAT, 0);
+		
+	} else {
+		// Write a pop statement to pop the result into the destination variable
+		writer.writePop(dest, destIndex);
+	}
   }
   
   // Compiles a while statement
@@ -704,7 +731,18 @@ public class CompilationEngine {
 			name = tokenizer.identifier();
 			tokenizer.advance();
 		}else if (tokenizer.tokenType() == Token.STRING_CONST) {
-			OutputXML(tokenizer.tokenType());
+			String stringConst = tokenizer.stringVal();
+			
+			// Allocate memory for string constant
+			writer.writePush(Segment.CONST, stringConst.length());
+			writer.writeCall("String.new", 1);
+			
+			// Copy string into memory
+			for (int i=0; i < stringConst.length(); i++){
+				writer.writePush(Segment.CONST, stringConst.charAt(i));
+				writer.writeCall("String.appendChar", 2);
+			}
+			
 			tokenizer.advance();
 		} else if (tokenizer.tokenType() == Token.INT_CONST) {
 			// Push the integer constant
@@ -743,26 +781,90 @@ public class CompilationEngine {
 			tokenizer.advance();
 		}
 		
+		Segment dest = Segment.NONE;
+		int destIndex = 0;
+		String destType = "";
+		
+		// Check to see if variable is in current scope or class scope
+		if (table.symbols.containsKey(name)){
+			
+			// If in current scope, determine whether it is an argument or local variable
+			if (table.KindOf(name, false) == Kind.ARG) {
+				dest = Segment.ARG;
+			} else if (table.KindOf(name, false) == Kind.VAR) {
+				dest = Segment.LOCAL;
+			}
+				
+			// Save the index and type
+			destIndex = table.IndexOf(name, false);
+			destType = table.TypeOf(name, false);
+				
+		} else if (table.classSymbols.containsKey(name)){
+			
+			// If in class scope, determine whether it is a static or field variable
+			if (table.KindOf(name, true) == Kind.STATIC) {
+				dest = Segment.STATIC;
+			} else if (table.KindOf(name, true) == Kind.FIELD) {
+				dest = Segment.THIS;
+			}
+				
+			// Save the index and type
+			destIndex = table.IndexOf(name, true);
+			destType = table.TypeOf(name, true);
+				
+		}
+			
 		// If there is more to the term (another expression or subroutine call) handle this
 		if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '[') {
 			// Handle expression
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			// Pass up opening bracket
 			tokenizer.advance();
+			
+			// Compile the expression
 			CompileExpression();
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			
+			// Push the base address of the array and add to argument
+			writer.writePush(dest, destIndex);
+			writer.writeArithmetic(Command.ADD);
+			
+			// Set pointer to point to address and push value store in "that"
+			writer.writePop(Segment.POINTER, 1);
+			writer.writePush(Segment.THAT, 0);
+			
+			// Pass up closing bracket
 			tokenizer.advance();
 		} else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '('){
 			// Handle subroutine call
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			
+			// Pass up opening parenthesis
 			tokenizer.advance();
-			CompileExpressionList();
-			outStream.write("<symbol> " + tokenizer.symbol() + " </symbol>\n");
+			
+			// Get count of expressions
+			int count = CompileExpressionList();
+			
+			// Push this object onto stack for method call
+			writer.writePush(Segment.POINTER, 0);
+			count++;
+		
+			// Write the method call
+			writer.writeCall(className + "." + name, count);
+			writer.writePop(Segment.TEMP, 0);
+			
+			// Pass up closing parenthesis
 			tokenizer.advance();
 		} else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '.') {
 			// Handle subroutine call
+			int count = 0;
 			
 			// Pass up . symbol
 			tokenizer.advance();
+			
+			if (dest != Segment.NONE){
+				writer.writePush(dest, destIndex);
+				count++;
+					
+				name = destType;
+			}
 			
 			// Add subroutine name to overall name
 			name = name + "." + tokenizer.identifier();
@@ -772,7 +874,7 @@ public class CompilationEngine {
 			tokenizer.advance();
 			
 			// Compile the argument list for the subroutine
-			int count = CompileExpressionList();
+			count += CompileExpressionList();
 			
 			// Call the subroutine
 			writer.writeCall(name, count);
@@ -780,12 +882,13 @@ public class CompilationEngine {
 		} else {
 			
 			// Handle case for variable name
-			Segment dest = Segment.NONE;
-			int destIndex = 0;
+			//Segment dest = Segment.NONE;
+			//int destIndex = 0;
 			
 			// Check to see if variable is in current scope or class scope
 			if (table.symbols.containsKey(name)){
 			
+				/*
 				// If in current scope, determine whether it is an argument or local variable
 				if (table.KindOf(name, false) == Kind.ARG) {
 					dest = Segment.ARG;
@@ -795,10 +898,11 @@ public class CompilationEngine {
 				
 				// Write a push statement for the variable
 				destIndex = table.IndexOf(name, false);
+				*/
 				writer.writePush(dest, destIndex);
 				
 			} else if (table.classSymbols.containsKey(name)){
-			
+				/*
 				// If in class scope, determine whether it is a static or field variable
 				if (table.KindOf(name, true) == Kind.STATIC) {
 					dest = Segment.STATIC;
@@ -808,6 +912,7 @@ public class CompilationEngine {
 				
 				// Write a push statement for the variable
 				destIndex = table.IndexOf(name, true);
+				*/
 				writer.writePush(dest, destIndex);
 				
 			}
