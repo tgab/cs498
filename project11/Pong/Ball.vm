@@ -2,103 +2,63 @@ function Ball.new 0
 push constant 15
 call Memory.alloc 1
 pop pointer 0
-// Compiling statements
-// Let statement
 push argument 0
 pop this 0
-// End let statement
-// Let statement
 push argument 1
 pop this 1
-// End let statement
-// Let statement
 push argument 2
 pop this 10
-// End let statement
-// Let statement
 push argument 3
 push constant 6
 sub
 pop this 11
-// End let statement
-// Let statement
 push argument 4
 pop this 12
-// End let statement
-// Let statement
 push argument 5
 push constant 6
 sub
 pop this 13
-// End let statement
-// Let statement
 push constant 0
 pop this 14
-// End let statement
-// Do statement
 push pointer 0
 call Ball.show 1
 pop temp 0
-// End do statement
-// Return statement
 push pointer 0
 return
-// End return statement
 function Ball.dispose 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Ball.show 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call Ball.draw 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Ball.hide 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call Ball.draw 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Ball.draw 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -109,399 +69,259 @@ push constant 5
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Ball.getLeft 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Return statement
 push this 0
 return
-// End return statement
 function Ball.getRight 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Return statement
 push this 0
 push constant 5
 add
 return
-// End return statement
 function Ball.setDestination 3
 push argument 0
 pop pointer 0
-// Compiling statements
-// Let statement
-push argument 0
+push argument 1
 push this 0
 sub
 pop this 2
-// End let statement
-// Let statement
-push argument 1
+push argument 2
 push this 1
 sub
 pop this 3
-// End let statement
-// Let statement
 push this 2
 call Math.abs 1
 pop local 0
-// End let statement
-// Let statement
 push this 3
 call Math.abs 1
 pop local 1
-// End let statement
-// Let statement
 push local 0
 push local 1
 lt
 pop this 7
-// End let statement
-// If statement
 push this 7
 not
 if-goto ifEnd0
-// Compiling statements
-// Let statement
 push local 0
 pop local 2
-// End let statement
-// Let statement
 push local 1
 pop local 0
-// End let statement
-// Let statement
 push local 2
 pop local 1
-// End let statement
-// Let statement
 push this 1
-push argument 1
+push argument 2
 lt
 pop this 8
-// End let statement
-// Let statement
 push this 0
-push argument 0
+push argument 1
 lt
 pop this 9
-// End let statement
 goto elseEnd0
 label ifEnd0
-// Compiling statements
-// Let statement
 push this 0
-push argument 0
-lt
-pop this 8
-// End let statement
-// Let statement
-push this 1
 push argument 1
 lt
+pop this 8
+push this 1
+push argument 2
+lt
 pop this 9
-// End let statement
 label elseEnd0
-// End if statement
-// Let statement
 push constant 2
 push local 1
 call Math.multiply 2
 push local 0
 sub
 pop this 4
-// End let statement
-// Let statement
 push constant 2
 push local 1
 call Math.multiply 2
 pop this 5
-// End let statement
-// Let statement
 push constant 2
 push local 1
 push local 0
 sub
 call Math.multiply 2
 pop this 6
-// End let statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Ball.move 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push pointer 0
 call Ball.hide 1
 pop temp 0
-// End do statement
-// If statement
 push this 4
 push constant 0
 lt
 not
 if-goto ifEnd1
-// Compiling statements
-// Let statement
 push this 4
 push this 5
 add
 pop this 4
-// End let statement
 goto elseEnd1
 label ifEnd1
-// Compiling statements
-// Let statement
 push this 4
 push this 6
 add
 pop this 4
-// End let statement
-// If statement
 push this 9
 not
 if-goto ifEnd2
-// Compiling statements
-// If statement
 push this 7
 not
 if-goto ifEnd3
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 add
 pop this 0
-// End let statement
 goto elseEnd3
 label ifEnd3
-// Compiling statements
-// Let statement
 push this 1
 push constant 4
 add
 pop this 1
-// End let statement
 label elseEnd3
-// End if statement
 goto elseEnd2
 label ifEnd2
-// Compiling statements
-// If statement
 push this 7
 not
 if-goto ifEnd4
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 sub
 pop this 0
-// End let statement
 goto elseEnd4
 label ifEnd4
-// Compiling statements
-// Let statement
 push this 1
 push constant 4
 sub
 pop this 1
-// End let statement
 label elseEnd4
-// End if statement
 label elseEnd2
-// End if statement
 label elseEnd1
-// End if statement
-// If statement
 push this 8
 not
 if-goto ifEnd5
-// Compiling statements
-// If statement
 push this 7
 not
 if-goto ifEnd6
-// Compiling statements
-// Let statement
 push this 1
 push constant 4
 add
 pop this 1
-// End let statement
 goto elseEnd6
 label ifEnd6
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 add
 pop this 0
-// End let statement
 label elseEnd6
-// End if statement
 goto elseEnd5
 label ifEnd5
-// Compiling statements
-// If statement
 push this 7
 not
 if-goto ifEnd7
-// Compiling statements
-// Let statement
 push this 1
 push constant 4
 sub
 pop this 1
-// End let statement
 goto elseEnd7
 label ifEnd7
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 sub
 pop this 0
-// End let statement
 label elseEnd7
-// End if statement
 label elseEnd5
-// End if statement
-// If statement
 push this 0
 push this 10
 gt
 not
 not
 if-goto ifEnd8
-// Compiling statements
-// Let statement
 push constant 1
 pop this 14
-// End let statement
-// Let statement
 push this 10
 pop this 0
-// End let statement
 goto elseEnd8
 label ifEnd8
 label elseEnd8
-// End if statement
-// If statement
 push this 0
 push this 11
 lt
 not
 not
 if-goto ifEnd9
-// Compiling statements
-// Let statement
 push constant 2
 pop this 14
-// End let statement
-// Let statement
 push this 11
 pop this 0
-// End let statement
 goto elseEnd9
 label ifEnd9
 label elseEnd9
-// End if statement
-// If statement
 push this 1
 push this 12
 gt
 not
 not
 if-goto ifEnd10
-// Compiling statements
-// Let statement
 push constant 3
 pop this 14
-// End let statement
-// Let statement
 push this 12
 pop this 1
-// End let statement
 goto elseEnd10
 label ifEnd10
 label elseEnd10
-// End if statement
-// If statement
 push this 1
 push this 13
 lt
 not
 not
 if-goto ifEnd11
-// Compiling statements
-// Let statement
 push constant 4
 pop this 14
-// End let statement
-// Let statement
 push this 13
 pop this 1
-// End let statement
 goto elseEnd11
 label ifEnd11
 label elseEnd11
-// End if statement
-// Do statement
 push pointer 0
 call Ball.show 1
 pop temp 0
-// End do statement
-// Return statement
 push this 14
 return
-// End return statement
 function Ball.bounce 5
 push argument 0
 pop pointer 0
-// Compiling statements
-// Let statement
 push this 2
 push constant 10
 call Math.divide 2
 pop local 2
-// End let statement
-// Let statement
 push this 3
 push constant 10
 call Math.divide 2
 pop local 3
-// End let statement
-// If statement
-push argument 0
+push argument 1
 push constant 0
 eq
 not
 if-goto ifEnd12
-// Compiling statements
-// Let statement
 push constant 10
 pop local 4
-// End let statement
 goto elseEnd12
 label ifEnd12
-// Compiling statements
-// If statement
 push this 2
 push constant 0
 lt
 not
-push argument 0
+push argument 1
 push constant 1
 eq
 and
@@ -509,41 +329,28 @@ push this 2
 push constant 0
 lt
 or
-push argument 0
+push argument 1
 push constant 1
 neg
 eq
 and
 not
 if-goto ifEnd13
-// Compiling statements
-// Let statement
 push constant 20
 pop local 4
-// End let statement
 goto elseEnd13
 label ifEnd13
-// Compiling statements
-// Let statement
 push constant 5
 pop local 4
-// End let statement
 label elseEnd13
-// End if statement
 label elseEnd12
-// End if statement
-// If statement
 push this 14
 push constant 1
 eq
 not
 if-goto ifEnd14
-// Compiling statements
-// Let statement
 push constant 506
 pop local 0
-// End let statement
-// Let statement
 push local 3
 push constant 50
 neg
@@ -551,60 +358,42 @@ call Math.multiply 2
 push local 2
 call Math.divide 2
 pop local 1
-// End let statement
-// Let statement
 push this 1
 push local 1
 push local 4
 call Math.multiply 2
 add
 pop local 1
-// End let statement
 goto elseEnd14
 label ifEnd14
-// Compiling statements
-// If statement
 push this 14
 push constant 2
 eq
 not
 if-goto ifEnd15
-// Compiling statements
-// Let statement
 push constant 0
 pop local 0
-// End let statement
-// Let statement
 push local 3
 push constant 50
 call Math.multiply 2
 push local 2
 call Math.divide 2
 pop local 1
-// End let statement
-// Let statement
 push this 1
 push local 1
 push local 4
 call Math.multiply 2
 add
 pop local 1
-// End let statement
 goto elseEnd15
 label ifEnd15
-// Compiling statements
-// If statement
 push this 14
 push constant 3
 eq
 not
 if-goto ifEnd16
-// Compiling statements
-// Let statement
 push constant 250
 pop local 1
-// End let statement
-// Let statement
 push local 2
 push constant 25
 neg
@@ -612,52 +401,35 @@ call Math.multiply 2
 push local 3
 call Math.divide 2
 pop local 0
-// End let statement
-// Let statement
 push this 0
 push local 0
 push local 4
 call Math.multiply 2
 add
 pop local 0
-// End let statement
 goto elseEnd16
 label ifEnd16
-// Compiling statements
-// Let statement
 push constant 0
 pop local 1
-// End let statement
-// Let statement
 push local 2
 push constant 25
 call Math.multiply 2
 push local 3
 call Math.divide 2
 pop local 0
-// End let statement
-// Let statement
 push this 0
 push local 0
 push local 4
 call Math.multiply 2
 add
 pop local 0
-// End let statement
 label elseEnd16
-// End if statement
 label elseEnd15
-// End if statement
 label elseEnd14
-// End if statement
-// Do statement
+push pointer 0
 push local 0
 push local 1
-push pointer 0
 call Ball.setDestination 3
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement

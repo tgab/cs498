@@ -2,52 +2,32 @@ function Square.new 0
 push constant 3
 call Memory.alloc 1
 pop pointer 0
-// Compiling statements
-// Let statement
 push argument 0
 pop this 0
-// End let statement
-// Let statement
 push argument 1
 pop this 1
-// End let statement
-// Let statement
 push argument 2
 pop this 2
-// End let statement
-// Do statement
 push pointer 0
 call Square.draw 1
 pop temp 0
-// End do statement
-// Return statement
 push pointer 0
 return
-// End return statement
 function Square.dispose 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.draw 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -58,21 +38,14 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.erase 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -83,16 +56,11 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.incSize 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 1
 push this 2
 add
@@ -106,83 +74,55 @@ lt
 and
 not
 if-goto ifEnd0
-// Compiling statements
-// Do statement
 push pointer 0
 call Square.erase 1
 pop temp 0
-// End do statement
-// Let statement
 push this 2
 push constant 2
 add
 pop this 2
-// End let statement
-// Do statement
 push pointer 0
 call Square.draw 1
 pop temp 0
-// End do statement
 goto elseEnd0
 label ifEnd0
 label elseEnd0
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.decSize 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 2
 push constant 2
 gt
 not
 if-goto ifEnd1
-// Compiling statements
-// Do statement
 push pointer 0
 call Square.erase 1
 pop temp 0
-// End do statement
-// Let statement
 push this 2
 push constant 2
 sub
 pop this 2
-// End let statement
-// Do statement
 push pointer 0
 call Square.draw 1
 pop temp 0
-// End do statement
 goto elseEnd1
 label ifEnd1
 label elseEnd1
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.moveUp 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 1
 push constant 1
 gt
 not
 if-goto ifEnd2
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 2
@@ -197,20 +137,14 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Let statement
 push this 1
 push constant 2
 sub
 pop this 1
-// End let statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -221,20 +155,14 @@ push constant 1
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 goto elseEnd2
 label ifEnd2
 label elseEnd2
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.moveDown 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 1
 push this 2
 add
@@ -242,13 +170,9 @@ push constant 254
 lt
 not
 if-goto ifEnd3
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -259,20 +183,14 @@ push constant 1
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Let statement
 push this 1
 push constant 2
 add
 pop this 1
-// End let statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 2
@@ -287,32 +205,22 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 goto elseEnd3
 label ifEnd3
 label elseEnd3
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.moveLeft 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 0
 push constant 1
 gt
 not
 if-goto ifEnd4
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 2
 add
@@ -327,20 +235,14 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Let statement
 push this 0
 push constant 2
 sub
 pop this 0
-// End let statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -351,20 +253,14 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 goto elseEnd4
 label ifEnd4
 label elseEnd4
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Square.moveRight 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 0
 push this 2
 add
@@ -372,13 +268,9 @@ push constant 510
 lt
 not
 if-goto ifEnd5
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -389,20 +281,14 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Let statement
 push this 0
 push constant 2
 add
 pop this 0
-// End let statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 2
 add
@@ -417,12 +303,8 @@ push this 2
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 goto elseEnd5
 label ifEnd5
 label elseEnd5
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement

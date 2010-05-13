@@ -2,91 +2,55 @@ function Bat.new 0
 push constant 5
 call Memory.alloc 1
 pop pointer 0
-// Compiling statements
-// Let statement
 push argument 0
 pop this 0
-// End let statement
-// Let statement
 push argument 1
 pop this 1
-// End let statement
-// Let statement
 push argument 2
 pop this 2
-// End let statement
-// Let statement
 push argument 3
 pop this 3
-// End let statement
-// Let statement
 push constant 2
 pop this 4
-// End let statement
-// Do statement
 push pointer 0
 call Bat.show 1
 pop temp 0
-// End do statement
-// Return statement
 push pointer 0
 return
-// End return statement
 function Bat.dispose 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.show 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call Bat.draw 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.hide 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call Bat.draw 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.draw 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -97,101 +61,65 @@ push this 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.setDirection 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Let statement
-push argument 0
+push argument 1
 pop this 4
-// End let statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.getLeft 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Return statement
 push this 0
 return
-// End return statement
 function Bat.getRight 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Return statement
 push this 0
 push this 2
 add
 return
-// End return statement
 function Bat.setWidth 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push pointer 0
 call Bat.hide 1
 pop temp 0
-// End do statement
-// Let statement
-push argument 0
+push argument 1
 pop this 2
-// End let statement
-// Do statement
 push pointer 0
 call Bat.show 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Bat.move 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// If statement
 push this 4
 push constant 1
 eq
 not
 if-goto ifEnd0
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 sub
 pop this 0
-// End let statement
-// If statement
 push this 0
 push constant 0
 lt
 not
 if-goto ifEnd1
-// Compiling statements
-// Let statement
 push constant 0
 pop this 0
-// End let statement
 goto elseEnd1
 label ifEnd1
 label elseEnd1
-// End if statement
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 2
 add
@@ -208,14 +136,10 @@ push this 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 1
 push this 0
@@ -226,17 +150,12 @@ push this 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 goto elseEnd0
 label ifEnd0
-// Compiling statements
-// Let statement
 push this 0
 push constant 4
 add
 pop this 0
-// End let statement
-// If statement
 push this 0
 push this 2
 add
@@ -244,23 +163,16 @@ push constant 511
 gt
 not
 if-goto ifEnd2
-// Compiling statements
-// Let statement
 push constant 511
 push this 2
 sub
 pop this 0
-// End let statement
 goto elseEnd2
 label ifEnd2
 label elseEnd2
-// End if statement
-// Do statement
 push constant 0
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push constant 4
 sub
@@ -273,14 +185,10 @@ push this 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Do statement
 push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-// End do statement
-// Do statement
 push this 0
 push this 2
 add
@@ -295,10 +203,6 @@ push this 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
 label elseEnd0
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement

@@ -1,6 +1,4 @@
 function Main.main 4
-// Compiling statements
-// Let statement
 push constant 18
 call String.new 1
 push constant 72
@@ -41,25 +39,17 @@ push constant 32
 call String.appendChar 2
 call Keyboard.readInt 1
 pop local 1
-// End let statement
-// Let statement
 push local 1
 call Array.new 1
 pop local 0
-// End let statement
-// Let statement
 push constant 0
 pop local 2
-// End let statement
-// While statement
 label whileStart0
 push local 2
 push local 1
 lt
 not
 if-goto whileEnd0
-// Compiling statements
-// Let statement
 push local 2
 push local 0
 add
@@ -116,33 +106,22 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push local 2
 push constant 1
 add
 pop local 2
-// End let statement
 goto whileStart0
 label whileEnd0
-// End while statement
-// Let statement
 push constant 0
 pop local 2
-// End let statement
-// Let statement
 push constant 0
 pop local 3
-// End let statement
-// While statement
 label whileStart1
 push local 2
 push local 1
 lt
 not
 if-goto whileEnd1
-// Compiling statements
-// Let statement
 push local 3
 push local 2
 push local 0
@@ -151,17 +130,12 @@ pop pointer 1
 push that 0
 add
 pop local 3
-// End let statement
-// Let statement
 push local 2
 push constant 1
 add
 pop local 2
-// End let statement
 goto whileStart1
 label whileEnd1
-// End while statement
-// Do statement
 push constant 16
 call String.new 1
 push constant 84
@@ -198,19 +172,12 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push local 3
 push local 1
 call Math.divide 2
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement

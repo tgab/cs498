@@ -2,24 +2,16 @@ function PongGame.new 0
 push constant 7
 call Memory.alloc 1
 pop pointer 0
-// Compiling statements
-// Do statement
 call Screen.clearScreen 0
 pop temp 0
-// End do statement
-// Let statement
 push constant 50
 pop this 6
-// End let statement
-// Let statement
 push constant 230
 push constant 229
 push this 6
 push constant 7
 call Bat.new 4
 pop this 0
-// End let statement
-// Let statement
 push constant 253
 push constant 222
 push constant 0
@@ -28,29 +20,21 @@ push constant 0
 push constant 229
 call Ball.new 6
 pop this 1
-// End let statement
-// Do statement
 push this 1
 push constant 400
 push constant 0
 call Ball.setDestination 3
 pop temp 0
-// End do statement
-// Do statement
 push constant 0
 push constant 238
 push constant 511
 push constant 240
 call Screen.drawRectangle 4
 pop temp 0
-// End do statement
-// Do statement
 push constant 22
 push constant 0
 call Output.moveCursor 2
 pop temp 0
-// End do statement
-// Do statement
 push constant 8
 call String.new 1
 push constant 83
@@ -71,78 +55,46 @@ push constant 48
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Let statement
 push constant 0
 pop this 3
-// End let statement
-// Let statement
 push constant 0
 pop this 4
-// End let statement
-// Let statement
 push constant 0
 pop this 2
-// End let statement
-// Let statement
 push constant 0
 pop this 5
-// End let statement
-// Return statement
 push pointer 0
 return
-// End return statement
 function PongGame.dispose 0
 push argument 0
 pop pointer 0
-// Compiling statements
-// Do statement
 push this 0
 call Bat.dispose 1
 pop temp 0
-// End do statement
-// Do statement
 push this 1
 call Ball.dispose 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function PongGame.newInstance 0
-// Compiling statements
-// Let statement
 call PongGame.new 0
 pop static 0
-// End let statement
-// Return statement
 push constant 0
 return
-// End return statement
 function PongGame.getInstance 0
-// Compiling statements
-// Return statement
 push static 0
 return
-// End return statement
 function PongGame.run 1
 push argument 0
 pop pointer 0
-// Compiling statements
-// While statement
 label whileStart0
 push this 3
 not
 not
 if-goto whileEnd0
-// Compiling statements
-// While statement
 label whileStart1
 push local 0
 push constant 0
@@ -152,77 +104,51 @@ not
 and
 not
 if-goto whileEnd1
-// Compiling statements
-// Let statement
 call Keyboard.keyPressed 0
 pop local 0
-// End let statement
-// Do statement
 push this 0
 call Bat.move 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call PongGame.moveBall 1
 pop temp 0
-// End do statement
 goto whileStart1
 label whileEnd1
-// End while statement
-// If statement
 push local 0
 push constant 130
 eq
 not
 if-goto ifEnd2
-// Compiling statements
-// Do statement
 push this 0
 push constant 1
 call Bat.setDirection 2
 pop temp 0
-// End do statement
 goto elseEnd2
 label ifEnd2
-// Compiling statements
-// If statement
 push local 0
 push constant 132
 eq
 not
 if-goto ifEnd3
-// Compiling statements
-// Do statement
 push this 0
 push constant 2
 call Bat.setDirection 2
 pop temp 0
-// End do statement
 goto elseEnd3
 label ifEnd3
-// Compiling statements
-// If statement
 push local 0
 push constant 140
 eq
 not
 if-goto ifEnd4
-// Compiling statements
-// Let statement
 push constant 0
 not
 pop this 3
-// End let statement
 goto elseEnd4
 label ifEnd4
 label elseEnd4
-// End if statement
 label elseEnd3
-// End if statement
 label elseEnd2
-// End if statement
-// While statement
 label whileStart5
 push local 0
 push constant 0
@@ -233,39 +159,25 @@ not
 and
 not
 if-goto whileEnd5
-// Compiling statements
-// Let statement
 call Keyboard.keyPressed 0
 pop local 0
-// End let statement
-// Do statement
 push this 0
 call Bat.move 1
 pop temp 0
-// End do statement
-// Do statement
 push pointer 0
 call PongGame.moveBall 1
 pop temp 0
-// End do statement
 goto whileStart5
 label whileEnd5
-// End while statement
 goto whileStart0
 label whileEnd0
-// End while statement
-// If statement
 push this 3
 not
 if-goto ifEnd6
-// Compiling statements
-// Do statement
 push constant 10
 push constant 27
 call Output.moveCursor 2
 pop temp 0
-// End do statement
-// Do statement
 push constant 9
 call String.new 1
 push constant 71
@@ -288,25 +200,17 @@ push constant 114
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
 goto elseEnd6
 label ifEnd6
 label elseEnd6
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement
 function PongGame.moveBall 5
 push argument 0
 pop pointer 0
-// Compiling statements
-// Let statement
 push this 1
 call Ball.move 1
 pop this 2
-// End let statement
-// If statement
 push this 2
 push constant 0
 gt
@@ -317,43 +221,27 @@ not
 and
 not
 if-goto ifEnd7
-// Compiling statements
-// Let statement
 push this 2
 pop this 5
-// End let statement
-// Let statement
 push constant 0
 pop local 0
-// End let statement
-// Let statement
 push this 0
 call Bat.getLeft 1
 pop local 1
-// End let statement
-// Let statement
 push this 0
 call Bat.getRight 1
 pop local 2
-// End let statement
-// Let statement
 push this 1
 call Ball.getLeft 1
 pop local 3
-// End let statement
-// Let statement
 push this 1
 call Ball.getRight 1
 pop local 4
-// End let statement
-// If statement
 push this 2
 push constant 4
 eq
 not
 if-goto ifEnd8
-// Compiling statements
-// Let statement
 push local 1
 push local 4
 gt
@@ -362,14 +250,10 @@ push local 3
 lt
 or
 pop this 3
-// End let statement
-// If statement
 push this 3
 not
 not
 if-goto ifEnd9
-// Compiling statements
-// If statement
 push local 4
 push local 1
 push constant 10
@@ -377,16 +261,11 @@ add
 lt
 not
 if-goto ifEnd10
-// Compiling statements
-// Let statement
 push constant 1
 neg
 pop local 0
-// End let statement
 goto elseEnd10
 label ifEnd10
-// Compiling statements
-// If statement
 push local 3
 push local 2
 push constant 10
@@ -394,65 +273,43 @@ sub
 gt
 not
 if-goto ifEnd11
-// Compiling statements
-// Let statement
 push constant 1
 pop local 0
-// End let statement
 goto elseEnd11
 label ifEnd11
 label elseEnd11
-// End if statement
 label elseEnd10
-// End if statement
-// Let statement
 push this 6
 push constant 2
 sub
 pop this 6
-// End let statement
-// Do statement
 push this 0
 push this 6
 call Bat.setWidth 2
 pop temp 0
-// End do statement
-// Let statement
 push this 4
 push constant 1
 add
 pop this 4
-// End let statement
-// Do statement
 push constant 22
 push constant 7
 call Output.moveCursor 2
 pop temp 0
-// End do statement
-// Do statement
 push this 4
 call Output.printInt 1
 pop temp 0
-// End do statement
 goto elseEnd9
 label ifEnd9
 label elseEnd9
-// End if statement
 goto elseEnd8
 label ifEnd8
 label elseEnd8
-// End if statement
-// Do statement
 push this 1
 push local 0
 call Ball.bounce 2
 pop temp 0
-// End do statement
 goto elseEnd7
 label ifEnd7
 label elseEnd7
-// End if statement
-// Return statement
 push constant 0
 return
-// End return statement

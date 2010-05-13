@@ -1,20 +1,11 @@
 function Main.main 1
-// Compiling statements
-// Let statement
 call SquareGame.new 0
 pop local 0
-// End let statement
-// Do statement
 push local 0
 call SquareGame.run 1
 pop temp 0
-// End do statement
-// Do statement
 push local 0
 call SquareGame.dispose 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement

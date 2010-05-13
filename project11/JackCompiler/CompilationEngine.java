@@ -23,7 +23,7 @@ public class CompilationEngine {
   public SymbolTable table;
   public String className;
   public int labelCount = 0;
-  public Boolean Comment = true;
+  public Boolean Comment = false;
 
   public enum Cat {
 	  VAR, ARG, STATIC, FIELD, CLASS, SUB, TYPE;
@@ -130,10 +130,18 @@ public class CompilationEngine {
 	tokenizer.advance();
 	
 	// Check return type
+	String type = "";
 	if(tokenizer.tokenType() == Token.IDENTIFIER) {
+		type = tokenizer.identifier();
 		tokenizer.advance();
 	}else{
+		type = tokenizer.keyWord();
 		tokenizer.advance();
+	}
+	
+	// If a method, add the method name to symbol table
+	if (thing.equals("method")){
+		table.Define(tokenizer.identifier(), type, Kind.ARG, false);
 	}
 	
 	// Create a string to hold the function name
@@ -358,15 +366,17 @@ public class CompilationEngine {
 	
 	// If that is all there is to the subroutine call, get the arguments
 	if (tokenizer.symbol() == '('){
+		int count = 0;
+		
 		// Pass up opening parenthesis
 		tokenizer.advance();
 
-		// Compile expression list
-		int count = CompileExpressionList();
-		
 		// Push this object onto stack for method call
 		writer.writePush(Segment.POINTER, 0);
 		count++;
+		
+		// Compile expression list
+		count += CompileExpressionList();
 		
 		// Write the method call
 		writer.writeCall(className + "." + name, count);
@@ -765,13 +775,8 @@ public class CompilationEngine {
 			
 			tokenizer.advance();
 			
-			// If we have a return statement, then push the pointer to this
-			// Otherwise this should be an argument
-			if (keyword.equals("this") && tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == ';') {
-				writer.writePush(Segment.POINTER, 0);
-			} else if (keyword.equals("this")){
-				//writer.writePush(Segment.ARG, 0);
-				//writer.writePop(Segment.POINTER, 0);
+			// Handle "this" keyword
+			if (keyword.equals("this")){
 				writer.writePush(Segment.POINTER, 0);
 			}
 			
@@ -835,16 +840,18 @@ public class CompilationEngine {
 			tokenizer.advance();
 		} else if(tokenizer.tokenType() == Token.SYMBOL && tokenizer.symbol() == '('){
 			// Handle subroutine call
+			int count = 0;
 			
 			// Pass up opening parenthesis
 			tokenizer.advance();
 			
-			// Get count of expressions
-			int count = CompileExpressionList();
-			
+						
 			// Push this object onto stack for method call
 			writer.writePush(Segment.POINTER, 0);
 			count++;
+			
+			// Get count of expressions
+			count += CompileExpressionList();
 		
 			// Write the method call
 			writer.writeCall(className + "." + name, count);

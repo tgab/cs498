@@ -1,21 +1,13 @@
 function Main.main 3
-// Compiling statements
-// Let statement
 push constant 10
 call Array.new 1
 pop local 0
-// End let statement
-// Let statement
 push constant 5
 call Array.new 1
 pop local 1
-// End let statement
-// Let statement
 push constant 1
 call Array.new 1
 pop local 2
-// End let statement
-// Let statement
 push constant 3
 push local 0
 add
@@ -24,8 +16,6 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 4
 push local 0
 add
@@ -34,8 +24,6 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 5
 push local 0
 add
@@ -44,8 +32,6 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 3
 push local 0
 add
@@ -64,8 +50,6 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 3
 push local 0
 add
@@ -107,8 +91,6 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 0
 push local 2
 add
@@ -117,16 +99,12 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 0
 push local 2
 add
 pop pointer 1
 push that 0
 pop local 2
-// End let statement
-// Do statement
 push constant 44
 call String.new 1
 push constant 84
@@ -219,8 +197,6 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push constant 2
 push local 1
 add
@@ -228,12 +204,8 @@ pop pointer 1
 push that 0
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Do statement
 push constant 45
 call String.new 1
 push constant 84
@@ -328,8 +300,6 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push constant 5
 push local 0
 add
@@ -337,12 +307,8 @@ pop pointer 1
 push that 0
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Do statement
 push constant 44
 call String.new 1
 push constant 84
@@ -435,42 +401,28 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push local 2
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Let statement
 push constant 0
 pop local 2
-// End let statement
-// If statement
 push local 2
 push constant 0
 eq
 not
 if-goto ifEnd0
-// Compiling statements
-// Do statement
 push local 0
 push constant 10
 call Main.fill 2
 pop temp 0
-// End do statement
-// Let statement
 push constant 3
 push local 0
 add
 pop pointer 1
 push that 0
 pop local 2
-// End let statement
-// Let statement
 push constant 1
 push local 2
 add
@@ -479,16 +431,12 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 7
 push local 0
 add
 pop pointer 1
 push that 0
 pop local 2
-// End let statement
-// Let statement
 push constant 1
 push local 2
 add
@@ -497,16 +445,12 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
-// Let statement
 push constant 3
 push local 0
 add
 pop pointer 1
 push that 0
 pop local 1
-// End let statement
-// Let statement
 push constant 1
 push local 1
 add
@@ -525,12 +469,9 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
 goto elseEnd0
 label ifEnd0
 label elseEnd0
-// End if statement
-// Do statement
 push constant 45
 call String.new 1
 push constant 84
@@ -625,8 +566,6 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push constant 1
 push local 2
 add
@@ -634,12 +573,8 @@ pop pointer 1
 push that 0
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Do statement
 push constant 46
 call String.new 1
 push constant 84
@@ -736,8 +671,6 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-// End do statement
-// Do statement
 push constant 1
 push local 1
 add
@@ -745,40 +678,26 @@ pop pointer 1
 push that 0
 call Output.printInt 1
 pop temp 0
-// End do statement
-// Do statement
 call Output.println 0
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Main.double 0
-// Compiling statements
-// Return statement
 push argument 0
 push constant 2
 call Math.multiply 2
 return
-// End return statement
 function Main.fill 0
-// Compiling statements
-// While statement
 label whileStart1
 push argument 1
 push constant 0
 gt
 not
 if-goto whileEnd1
-// Compiling statements
-// Let statement
 push argument 1
 push constant 1
 sub
 pop argument 1
-// End let statement
-// Let statement
 push argument 1
 push argument 0
 add
@@ -788,11 +707,7 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
-// End let statement
 goto whileStart1
 label whileEnd1
-// End while statement
-// Return statement
 push constant 0
 return
-// End return statement

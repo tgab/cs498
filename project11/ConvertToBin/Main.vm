@@ -1,68 +1,45 @@
 function Main.main 2
-// Compiling statements
-// Do statement
 push constant 8001
 push constant 16
 push constant 1
 neg
 call Main.fillMemory 3
 pop temp 0
-// End do statement
-// Let statement
 push constant 8000
 call Memory.peek 1
 pop local 1
-// End let statement
-// Do statement
 push local 1
 call Main.convert 1
 pop temp 0
-// End do statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Main.convert 3
-// Compiling statements
-// Let statement
 push constant 0
 not
 pop local 2
-// End let statement
-// While statement
 label whileStart0
 push local 2
 not
 if-goto whileEnd0
-// Compiling statements
-// Let statement
 push local 1
 push constant 1
 add
 pop local 1
-// End let statement
-// Let statement
 push local 0
 call Main.nextMask 1
 pop local 0
-// End let statement
-// Do statement
 push constant 9000
 push local 1
 add
 push local 0
 call Memory.poke 2
 pop temp 0
-// End do statement
-// If statement
 push local 1
 push constant 16
 gt
 not
 not
 if-goto ifEnd1
-// Compiling statements
-// If statement
 push argument 0
 push local 0
 and
@@ -71,100 +48,65 @@ eq
 not
 not
 if-goto ifEnd2
-// Compiling statements
-// Do statement
 push constant 8000
 push local 1
 add
 push constant 1
 call Memory.poke 2
 pop temp 0
-// End do statement
 goto elseEnd2
 label ifEnd2
-// Compiling statements
-// Do statement
 push constant 8000
 push local 1
 add
 push constant 0
 call Memory.poke 2
 pop temp 0
-// End do statement
 label elseEnd2
-// End if statement
 goto elseEnd1
 label ifEnd1
-// Compiling statements
-// Let statement
 push constant 0
 pop local 2
-// End let statement
 label elseEnd1
-// End if statement
 goto whileStart0
 label whileEnd0
-// End while statement
-// Return statement
 push constant 0
 return
-// End return statement
 function Main.nextMask 0
-// Compiling statements
-// If statement
 push argument 0
 push constant 0
 eq
 not
 if-goto ifEnd3
-// Compiling statements
-// Return statement
 push constant 1
 return
-// End return statement
 goto elseEnd3
 label ifEnd3
-// Compiling statements
-// Return statement
 push argument 0
 push constant 2
 call Math.multiply 2
 return
-// End return statement
 label elseEnd3
-// End if statement
 function Main.fillMemory 0
-// Compiling statements
-// While statement
 label whileStart4
 push argument 1
 push constant 0
 gt
 not
 if-goto whileEnd4
-// Compiling statements
-// Do statement
 push argument 0
 push argument 2
 call Memory.poke 2
 pop temp 0
-// End do statement
-// Let statement
 push argument 1
 push constant 1
 sub
 pop argument 1
-// End let statement
-// Let statement
 push argument 0
 push constant 1
 add
 pop argument 0
-// End let statement
 goto whileStart4
 label whileEnd4
-// End while statement
-// Return statement
 push constant 0
 return
-// End return statement
